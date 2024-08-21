@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    {% load static %}
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/data-icon.css' %}">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .student-list li {
+            list-style: none;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .batch-dropdown {
+            width: 200px;
+        }
+
+        .assign-button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome, {{ teacher.name }}</h1>
+
+        <h2>Students in Your Branch:</h2>
+        <ul class="list-group">
+            {% for student in students %}
+            <li class="list-group-item">{{ student.name }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Assign Batches to Students:</h2>
+        <form id="assign-batch-form">
+            <div class="form-group">
+                <label for="student">Select Student:</label>
+                <select class="form-control" id="student" name="student">
+                    {% for student in students %}
+                    <option value="{{ student.id }}">{{ student.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="batch">Select Batch:</label>
+                <select class="form-control" id="batch" name="batch">
+                    {% for batch in batches %}
+                    <option value="{{ batch.id }}">{{batch.name}}-{{ batch.start_time }} - {{ batch.end_time }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="assignBatch()">Assign Batch</button>
+        </form>
+
+        <script>
+            function assignBatch() {
+                var studentId = document.getElementById('student').value;
+                var batchId = document.getElementById('batch').value;
+                // var teacherId = document.getElementById('teacher').value;
+
+                var apiUrl = `/assign_batch/${studentId}/${batchId}/`;
+
+                fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',  
+                        'Content-Type': 'application/json'  
+                    },
+                    body: JSON.stringify({}) 
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Batch assigned successfully');
+                        } else {
+                            alert('Failed to assign batch');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error assigning batch:', error);
+                        alert('Error assigning batch');
+                    });
+            }
+        </script>
+
+        <!-- Bootstrap JS and jQuery (optional) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

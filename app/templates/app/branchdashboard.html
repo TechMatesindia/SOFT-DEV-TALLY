@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+  <title>RTC-RAMA TECHNICAL COLLEGE LMS</title>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description"
+    content="Free Datta Able Admin Template come up with latest Bootstrap 4 framework with basic components, form elements and lots of pre-made layout options" />
+  <meta name="keywords"
+    content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, datta able, datta able bootstrap admin template, free admin theme, free dashboard template" />
+  <meta name="author" content="CodedThemes" />
+
+
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min1.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/style1.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/fontawesome-all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/data-icon.css' %}">
+  <script src="https://kit.fontawesome.com/d753e98eb0.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+
+  <!-- [ Pre-loader ] start -->
+  <div class="loader-bg">
+    <div class="loader-track">
+      <div class="loader-fill"></div>
+    </div>
+  </div>
+  <!-- [ Pre-loader ] End -->
+
+
+
+  <!--  -->
+
+  <nav class="pcoded-navbar">
+    <div class="navbar-wrapper">
+      <div class="navbar-brand header-logo">
+        <a href="/" class="b-brand">
+          <div class="">
+            <i href=></i>
+          </div>
+          <span class="b-title">{{ branch.name}}</span>
+        </a>
+        <br>
+
+        <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+        <br>
+      </div>
+
+      <div class="navbar-content scroll-div">
+        <span class="b-title" style="color: #dad602;">{{branch.branchstaticid}}</span>
+        <ul class="nav pcoded-inner-navbar">
+          <li class="nav-item pcoded-menu-caption">
+
+            <label>Navigation</label>
+          </li>
+          <li data-username="" class="nav-item active">
+
+            <a href="{% url 'branchdashboard' branch_id=branch.id %}" class="nav-link ">
+
+              <span class="pcoded-micon"><i class="feather icon-home"></i></span><span
+                class="pcoded-mtext">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a href="{% url 'studentables' branch_id=branch.id %}" class="nav-link "><span class="pcoded-micon"><i
+                  class="feather icon-server text-c"></i></span><span class="pcoded-mtext">Students</span></a>
+          </li>
+          <li class="nav-item ">
+            <a href="{% url 'teachertables' branch_id=branch.id  %}" class="nav-link "><span class="pcoded-micon"><i
+                  class="feather icon-book  text-c"></i></span><span class="pcoded-mtext">Teachers</span></a>
+          </li>
+          <!-- <li class="nav-item ">
+            <a href="{% url 'branchtables' %}" class="nav-link "><span class="pcoded-micon"><i
+                  class="feather icon-book  text-c"></i></span><span class="pcoded-mtext">Branch</span></a>
+          </li> -->
+          <li class="nav-item">
+            <a href="{% url 'createcourse' branch_id=branch.id %}" class="nav-link">
+              <span class="pcoded-micon"><i class="feather icon-book text-c"></i></span>
+              <span class="pcoded-mtext">Create Course</span>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a href="{% url 'createsubject' %}" class="nav-link "><span class="pcoded-micon"><i
+                  class="feather icon-book  text-c"></i></span><span class="pcoded-mtext">Create Subject</span></a>
+          </li>
+          <li class="nav-item ">
+            <a href="{% url 'marks' %}" class="nav-link "><span class="pcoded-micon"><i
+                  class="feather icon-book  text-c"></i></span><span class="pcoded-mtext"> Enter Marks</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'studentfeestable' branch_id=branch.id%}" class="nav-link "><span class="pcoded-micon"><i
+                  class="feather icon-server text-c"></i></span><span class="pcoded-mtext">Student
+                Fees</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="{%url 'marksheetrequestpanel' branch_id=branch.id%}" class="nav-link "><span
+                class="pcoded-micon"><i class="feather icon-server text-c"></i></span><span
+                class="pcoded-mtext">Marksheet
+                Request</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="{%url 'monthlyadmitcard' branch_id=branch.id %}" class="nav-link "><span class="pcoded-micon"><i
+                  class="feather icon-server text-c"></i></span><span class="pcoded-mtext">Monthly
+                Admit Card</span></a>
+          </li>
+          <li>
+            <a href="{%url 'issuemonthlyadmitcard' %}" class="nav-link "><span class="pcoded-micon"><i
+                  class="feather icon-server text-c"></i></span><span class="pcoded-mtext">
+                Issue Monthly Admit Card</span></a>
+          </li>
+          <li>
+            <a href="{%url 'yearlyadmitcard' branch_id=branch.id %}" class="nav-link "><span class="pcoded-micon"><i
+                  class="feather icon-server text-c"></i></span><span class="pcoded-mtext">
+                Yearly Admit Card</span></a>
+          </li>
+          <li> <a href="{%url 'issueyearlyadmitcard' %}" class="nav-link "><span class="pcoded-micon"><i
+                  class="feather icon-server text-c"></i></span><span class="pcoded-mtext">
+                Issue Yearly Admit Card</span></a>
+          </li>
+          </li>
+          <li> <a href="{%url 'monthlyadmitcardhistory' branch_id=branch.id %}" class="nav-link "><span
+                class="pcoded-micon"><i class="feather icon-server text-c"></i></span><span class="pcoded-mtext">
+                Monthly Admit Card History</span></a>
+          </li>
+          </li>
+          <li> <a href="{%url 'yearlyadmitcardhistory' branch_id=branch.id %}" class="nav-link "><span
+                class="pcoded-micon"><i class="feather icon-server text-c"></i></span><span class="pcoded-mtext">
+                Yearly Admit Card History</span></a>
+          </li>
+          <li> <a href="{%url 'admitcardhistory' branch_id=branch.id %}" class="nav-link "><span class="pcoded-micon"><i
+                  class="feather icon-server text-c"></i></span><span class="pcoded-mtext">
+                Admit Card History</span></a>
+          </li>
+
+
+
+
+
+          <!-- <li
+          data-username="Authentication Sign up Sign in reset password Change password Personal information profile settings map form subscribe"
+          class="nav-item pcoded-hasmenu">
+          <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
+                class="feather icon-lock"></i></span><span class="pcoded-mtext">Authentication</span></a>
+          <ul class="pcoded-submenu">
+            <li class=""><a href="/accounts/login/" class="">Sign IN</a></li>
+            <li class=""><a href="/accounts/register/" class="">Sign UP</a></li>
+          </ul>
+        </li> -->
+
+
+
+
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+  <header class="navbar pcoded-header navbar-expand-lg navbar-light">
+    <div class="m-header">
+      <a class="mobile-menu" id="mobile-collapse1" href="javascript:"><span></span></a>
+      <a href="/" class="b-brand">
+        <div class="b-bg">
+          <i class="feather icon-trending-up"></i>
+        </div>
+        <span class="b-title">Soft Dev Tally LMS</span>
+      </a>
+    </div>
+    <a class="mobile-menu" id="mobile-header" href="javascript:">
+      <i class="feather icon-more-horizontal"></i>
+    </a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li>
+          <a href="#" class="full-screen" onclick="toggleFullScreen()">
+            <i class="feather icon-maximize"></i>
+          </a>
+        </li>
+
+        <script>
+          function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+              document.documentElement.requestFullscreen();
+            } else {
+              if (document.exitFullscreen) {
+                document.exitFullscreen();
+              }
+            }
+          }
+        </script>
+        <li class="nav-item dropdown">
+          <a class="dropdown-toggle" href="javascript:" data-toggle="dropdown">Dropdown</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="javascript:">Action</a></li>
+            <li><a class="dropdown-item" href="javascript:">Another action</a></li>
+            <li><a class="dropdown-item" href="javascript:">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <div class="main-search">
+            <div class="input-group">
+              <input type="text" id="m-search" class="form-control" placeholder="Search . . .">
+              <a href="javascript:" class="input-group-append search-close">
+                <i class="feather icon-x input-group-text"></i>
+              </a>
+              <span class="input-group-append search-btn btn btn-primary">
+                <i class="feather icon-search input-group-text"></i>
+              </span>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li>
+          <label>
+            <i class="icon feather icon-sun" id="theme-indicator"></i>
+            <input type="checkbox" id="theme-switch" class="d-none">
+          </label>
+        </li>
+        <li>
+          <label style="font-size: 24px;">
+            <i class="fa-solid fa-wallet"></i>
+            ₹{{wallet.amount}}
+          </label>
+        </li>
+        <li>
+          <!-- <div class="dropdown">
+            <a class="dropdown-toggle" href="javascript:" data-toggle="dropdown"><i
+                class="icon feather icon-bell"></i></a>
+            <div class="dropdown-menu dropdown-menu-right notification">
+              <div class="noti-head">
+                <h6 class="d-inline-block m-b-0">Notifications</h6>
+                <div class="float-right">
+                  <a href="javascript:" class="m-r-10">mark as read</a>
+                  <a href="javascript:">clear all</a>
+                </div>
+              </div>
+              <ul class="noti-body">
+                <li class="n-title">
+                  <p class="m-b-0">NEW</p>
+                </li>
+                <li class="notification">
+                  <div class="media">
+                    <img class="img-radius" src="/static/assets/img/avatar-1.jpg"
+                      alt="Generic placeholder image">
+                    <div class="media-body">
+                      <p><strong>John Doe</strong><span class="n-time text-muted"><i
+                            class="icon feather icon-clock m-r-10"></i>30 min</span></p>
+                      <p>New ticket Added</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="n-title">
+                  <p class="m-b-0">EARLIER</p>
+                </li>
+                <li class="notification">
+                  <div class="media">
+                    <img class="img-radius" src="/static/assets/img/avatar-2.jpg"
+                      alt="Generic placeholder image">
+                    <div class="media-body">
+                      <p><strong>Joseph William</strong><span class="n-time text-muted"><i
+                            class="icon feather icon-clock m-r-10"></i>30 min</span></p>
+                      <p>Prchace New Theme and make payment</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="notification">
+                  <div class="media">
+                    <img class="img-radius" src="/static/assets/img/avatar-3.jpg"
+                      alt="Generic placeholder image">
+                    <div class="media-body">
+                      <p><strong>Sara Soudein</strong><span class="n-time text-muted"><i
+                            class="icon feather icon-clock m-r-10"></i>30 min</span></p>
+                      <p>currently login</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div class="noti-footer">
+                <a href="javascript:">show all</a>
+              </div>
+            </div>
+          </div> -->
+        </li>
+        <li>
+          <div class="dropdown drp-user">
+            <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="icon feather icon-settings"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right profile-notification">
+              <style>
+                .circular-frame {
+                  width: 100px;
+                  /* Adjust width and height as needed */
+                  height: 100px;
+                  border-radius: 50%;
+                  /* Make it circular */
+                  overflow: hidden;
+                  /* Hide overflow */
+                }
+
+                .circular-frame img {
+                  width: 100%;
+                  /* Ensure image fills the circular frame */
+                  height: 100%;
+                  object-fit: cover;
+                  /* Cover the frame */
+                }
+              </style>
+              <div class="pro-head">
+                <img src="/Ramatechnicalcollege/media/{{ branch.profile_picture }}" class="image rounded-circle" alt="Profile Picture"
+                  width="100px" height="60px">
+                <span>{{branch.manager}}</span>
+              </div>
+              <ul class="pro-body">
+                <li><a href="#" class="dropdown-item"><i class="feather icon-settings"></i>
+                    Settings</a></li>
+                <li><a href="{% url 'branchadminprofile' branch_id=branch.id  %}" class="dropdown-item"><i
+                      class="feather icon-user"></i>
+                    Profile</a></li>
+                <li><a href="#" class="dropdown-item"><i class="feather icon-mail"></i> My
+                    Messages</a></li>
+                <li><a href="{% url 'signup' %}" class="dropdown-item"><i class="feather icon-lock"></i> Log Out</a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+
+  <!-- [ Main Content ] start -->
+  <div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+      <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+          <!-- [ breadcrumb ] start -->
+
+          <!-- [ breadcrumb ] end -->
+          <div class="main-body">
+            <div class="page-wrapper">
+
+
+              <!-- [ Main Content ] start -->
+              <!-- <div class="row"> -->
+
+              <!--[ daily sales section ] start-->
+              <!-- <div class="col-md-6 col-xl-4">
+                  <div class="card daily-sales">
+                    <div class="card-block">
+                      <h6 class="mb-4">total teachers</h6>
+                      <div class="row d-flex align-items-center">
+                        <div class="col-9">
+                          <h3 class="f-w-300 d-flex align-items-center m-b-0">
+                            3</h3>
+                        </div>
+
+                        <div class="col-3 text-right">
+                          <p class="m-b-0"></p>
+                        </div>
+                      </div>
+                      <div class="" style="height: 7px;">
+                        <div class="progress-bar progress-c-theme" role="progressbar" style="width: 50%;"
+                          aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                  <div class="card Monthly-sales">
+                    <div class="card-block">
+                      <h6 class="mb-4">Fees Collected</h6>
+                      <div class="row d-flex align-items-center">
+                        <div class="col-9">
+                          <h3 class="f-w-300 d-flex align-items-center  m-b-0">₹
+                            2.942.32</h3>
+                        </div>
+                      </div>
+                      <div class="" style="height: 7px;">
+                        <div class="progress-bar progress-c-theme2" role="progressbar" style="width: 35%;"
+                          aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                [ Monthly  sales section ] end
+                [ year  sales section ] starts-->
+              <!-- <div class="col-md-12 col-xl-4">
+                  <div class="card yearly-sales">
+                    <div class="card-block">
+                      <h6 class="mb-4">total Students</h6>
+                      <div class="row d-flex align-items-center">
+                        <div class="col-9">
+                          <h3 class="f-w-300 d-flex align-items-center  m-b-0">2123</h3>
+                        </div>
+                        <div class="col-3 text-right">
+                          <p class="m-b-0">2123</p>
+                        </div>
+                      </div>
+                      <div class="" style="height: 7px;">
+                        <div class="progress-bar progress-c-theme" role="progressbar" style="width: 70%;"
+                          aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <div class="row">
+                <div class="col-xl-7 col-md-6">
+                  <div class="card Recent-Users">
+
+
+                    <div class="card-header">
+                      <h5>Payment Requests</h5>
+                    </div>
+                    <div class="card-block px-0 py-3">
+                      <div class="table-responsive">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>User ID</th>
+                              <th>Amount</th>
+                              <th>Course</th>
+                              <th>Course Fees</th>
+                              <th>Email </th>
+                              <th>Payment Date</th>
+                              <th>Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for paymentrequest in payment_requests %}
+                            {% if paymentrequest.approved == 0 %}
+                            <tr id="payment_request_row_{{ paymentrequest.id }}">
+                              <td>{{ paymentrequest.user.id }}</td>
+                              <td>{{ paymentrequest.payment_amount }}</td>
+                              <td>{{ paymentrequest.course.name }}</td>
+                              <td>{{ paymentrequest.price }}</td>
+                              <td>{{ paymentrequest.email }}</td>
+                              <td>{{ paymentrequest.created_at }}</td>
+                              <td>
+                                {% if paymentrequest.status == 'pending' %}
+                                <span class="badge badge-warning">Pending</span>
+                                {% elif paymentrequest.status == 'approved' %}
+                                <span class="badge badge-success">Approved</span>
+                                {% elif paymentrequest.status == 'rejected' %}
+                                <span class="badge badge-danger">Rejected</span>
+                                {% endif %}
+                              </td>
+                              <td>
+                                <div class="form-group">
+                                  <label for="roll_number_{{ paymentrequest.id }}">Roll Number:</label>
+                                  <input type="text" class="form-control" id="roll_number_{{ paymentrequest.id }}"
+                                    name="roll_number" required>
+                                </div>
+                                <div class="form-group">
+                                  <label for="enrollment_number_{{ paymentrequest.id }}">Enrollment Number:</label>
+                                  <input type="text" class="form-control" id="enrollment_number_{{ paymentrequest.id }}"
+                                    name="enrollment_number" required>
+                                </div>
+                                <button onclick="approvePayment('{{ paymentrequest.id }}')"
+                                  class="btn btn-success btn-sm">Approve</button>
+                                <a href="{% url 'reject_payment' paymentrequest.id %}"
+                                  class="btn btn-danger btn-sm">Reject</a>
+                              </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                          </tbody>
+
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--[ Recent Users ] end-->
+
+                <div class="col-xl-5 col-md-5">
+                  <div class="card Recent-Users">
+                    <div class="card-header">
+                      <h5>Create Batch</h5>
+                    </div>
+                    <div class="card-block px-0 py-3">
+                      <form method="post" action="{% url 'create_batch' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                          <label for="name">Batch Name:</label>
+                          <input type="text" class="form-control" id="name" name="name" required>
+                          <!-- Add the 'required' attribute to make this field mandatory -->
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="start_time">Start Time:</label>
+                            <input type="time" class="form-control" id="start_time" name="start_time" required>
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="end_time">End Time:</label>
+                            <input type="time" class="form-control" id="end_time" name="end_time" required>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="form-group">
+                            <label for="branch">Branch:</label>
+                            <input type="text" id="branch" name="branch" class="form-control" value="{{ branch.id }}"
+                              readonly>
+                          </div>
+
+                          <!-- Add an option for "Select Branch" with an empty value for better usability -->
+                        </div>
+                        <button id="createBatchButton" type="submit" class="btn btn-primary">Create Batch</button>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-xl-12">
+                    <div class="card Recent-Users">
+                      <div class="card-header">
+                        <h5>Batch List</h5>
+                      </div>
+                      <div class="card-block px-0 py-3">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr class="unread">
+                              <th>Batch Name</th>
+                              <th>Start Time</th>
+                              <th>End Time</th>
+                              <th>Branch</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for batch in batches %}
+                            <tr>
+                              <td>{{ batch.name }}</td>
+                              <td>{{ batch.start_time }}</td>
+                              <td>{{ batch.end_time }}</td>
+                              <td>{{ batch.branch.name}}</td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-7 col-md-6">
+                  <div class="card Recent-Users">
+                    <!-- HTML template -->
+
+                    <!-- HTML template -->
+                    <form method="post" action="{%url 'allocate_batch_to_teacher'%}" class="mb-5">
+                      {% csrf_token %}
+                      <table class="table table-hover">
+                        <thead>
+                          <tr class="unread">
+                            <th>Teacher Name</th>
+                            <th>Batch Allocation</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                          <tr>
+                            <td> <select class="selectpicker form-control" name="teacher_id" id="teacher_id"
+                                data-live-search="true">
+                                <option value="">Select Teacher</option>
+                                {% for teacher in teachers %}
+                                <option value="{{ teacher.id }}">{{ teacher.name }}</option>
+                                {% endfor %}
+                              </select></td>
+                            <td>
+                              <select class="selectpicker form-control" name="batch_id" id="batch_id"
+                                data-live-search="true">
+                                <option value="">Select Batch</option>
+                                {% for batch in batches %}
+                                <option value="{{ batch.id }}">{{ batch.name }}</option>
+                                {% endfor %}
+                              </select>
+                            </td>
+                            <td>
+                              <button type="submit" name="submit" id="batchalloctbtn" onclick="allocateBatchToTeacher()"
+                                class="btn btn-primary">Allocate</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form>
+                  </div>
+                </div>
+                <table class="table table-hover">
+                  <thead>
+                    <tr class="unread">
+                      <th>Teacher Name</th>
+                      <th>Allocated Batches</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for teacher in teachers %}
+                    <tr>
+                      <td>{{ teacher.name }}</td>
+                      <td>
+                        <ul>
+                          {% for batch in teacher.batches.all %}
+                          <li>{{ batch.name }}</li>
+                          {% endfor %}
+                        </ul>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                <!-- <div class="col-xl-4 col-md-6">
+                  <div class="card card-event">
+                    <div class="card-block">
+                      <div class="row align-items-center justify-content-center">
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-block border-bottom">
+                        <div class="row d-flex align-items-center">
+                          <div class="col-auto">
+                            <i class="feather icon-book f-30 text-c-green"></i>
+                          </div>
+                          <div class="col">
+                            <h3 class="f-w-300">3000</h3>
+                            <span class="d-block text-uppercase">TOTAL STUDENTS</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-block">
+                        <div class="row d-flex align-items-center">
+                          <div class="col-auto">
+                            <i class="feather icon-map-pin f-30 text-c-blue"></i>
+                          </div>
+                          <div class="col">
+                            <h3 class="f-w-300">3</h3>
+                            <span class="d-block text-uppercase">TOTAL Branch</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+              <div class="container mt-5">
+                <h2>Transaction History</h2>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Branch Static ID</th>
+                        <th>Amount</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for transaction in Transactions %}
+                      <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ transaction.branchstaticid }}</td>
+                        <td>{{ transaction.amount }}</td>
+                        <td>{{ transaction.transaction_type }}</td>
+                        <td>{{ transaction.timestamp }}</td>
+                      </tr>
+                      {% empty %}
+                      <tr>
+                        <td colspan="5">No transactions found</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+              <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                  const branchId = document.getElementById('branch').value;
+                  fetchStudents(branchId);
+                });
+
+
+                document.getElementById('studentId').addEventListener('input', function () {
+                  const studentId = this.value.trim();
+                  if (studentId) {
+                    fetchCourses(studentId);
+                  } else {
+                    document.getElementById('course').innerHTML = '<option value="">Select Course</option>';
+                  }
+                });
+
+                function fetchCourses(studentId) {
+                  fetch(`/fetch_student_courses/`, {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({ 'student_id': studentId })
+                  })
+                    .then(response => {
+                      if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                      }
+                      return response.json();
+                    })
+                    .then(data => {
+                      const courseDropdown = document.getElementById('course');
+                      courseDropdown.innerHTML = '<option value="">Select Course</option>';
+                      if (data.course_data !== null && data.course_data !== undefined) {
+                        const option = document.createElement('option');
+                        option.value = data.course_data.id;
+                        option.text = data.course_data.name;
+                        courseDropdown.appendChild(option);
+                      } else {
+                        console.error('No course found for the student');
+                      }
+                    })
+                    .catch(error => console.error('Error fetching course:', error));
+                }
+
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    document.getElementById('createBatchButton').addEventListener('click', function () {
+      fetch('/create_batch/')
+        .then(response => {
+          if (response.ok) {
+            alert('Batch created successfully.');
+            // Reload the page
+            location.reload();
+          } else {
+            alert('An issue occurred while creating the batch.');
+          }
+        })
+        .catch(error => console.error('Error creating batch:', error));
+    });
+  </script>
+  <script>
+    function allocateBatchToTeacher() {
+      var teacherId = document.getElementById('teacher_id').value;
+      var batchId = document.getElementById('batch_id').value;
+
+      console.log(teacherId, batchId)
+
+      var data = {
+        "teacher_id": teacherId,
+        "batch_id": batchId
+      };
+
+      axios.post('/allocate_batch_to_teacher/', {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: data,
+      })
+        .then(function (response) {
+          console.log(response);
+          if (response.status === 200) {
+            alert("Batch allocated Successfully");
+          } else {
+            throw new Error('Network response was not ok.');
+          }
+        })
+        .catch(function (error) {
+          console.error('Error:', error);
+          alert('Error: ' + error.message); // Display error message
+        });
+    }
+  </script>
+  <script>
+    function approvePayment(paymentRequestId) {
+      const rollNumber = document.getElementById(`roll_number_${paymentRequestId}`).value;
+      const enrollmentNumber = document.getElementById(`enrollment_number_${paymentRequestId}`).value;
+
+
+      if (!rollNumber || !enrollmentNumber) {
+        alert('Please enter both Roll Number and Enrollment Number.');
+        return;
+      }
+
+      console.log(enrollmentNumber, rollNumber);
+
+      fetch(`/approve-payment/${paymentRequestId}/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify({
+          'roll_number': rollNumber,
+          'enrollment_number': enrollmentNumber
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            window.location.href = data.redirect_url;
+          } else {
+            alert('Error: ' + data.error);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  </script>
+
+
+
+  <!-- Required Js -->
+  <script src="{% static 'assets/js/vendor-all.min.js' %}"></script>
+  <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'assets/js/pcoded.min.js' %}"></script>
+  <script src="{% static 'assets/js/dark-mode.js' %}"></script>
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+
+
+
+</body>
+
+</html>

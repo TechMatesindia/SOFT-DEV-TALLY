@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Marksheet</title>
+    {% load static %}
+
+    <style>
+        * {
+            -webkit-print-color-adjust: exact !important;
+            /* Chrome, Safari 6 – 15.3, Edge */
+            color-adjust: exact !important;
+            /* Firefox 48 – 96 */
+            print-color-adjust: exact !important;
+            /* Firefox 97+, Safari 15.4+ */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            /* Ensure consistent font */
+        }
+
+        #bgimg {
+            height: 1122px;
+            width: 794px;
+            /* object-fit: contain; */
+        }
+
+        .certificatecontainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* Center align text */
+            position: relative;
+            height:  1122px;
+            width:  794px;
+            /* background-image: url("{% static 'cf/img/rama.png' %}");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain; */
+        }
+
+        #studentName {
+            font-size: 14px;
+            position: absolute;
+            bottom: 78%;
+            /* Adjust as needed */
+            left: 30%;
+            transform: translateX(-50%);
+
+        }
+
+        #studentCourse {
+            font-size: 14px;
+            position: absolute;
+            bottom: 78%;
+            /* Adjust as needed */
+            left: 20%;
+            /* transform: translateX(-50%); */
+        }
+
+        #studentBranchCode {
+            font-size: 14px;
+            position: absolute;
+            bottom: 78%;
+            /* Adjust as needed */
+            left: 72%;
+            transform: translateX(-50%);
+        }
+
+        #studentFatherName {
+            font-size: 14px;
+            position: absolute;
+            bottom: 75.7%;
+            /* Adjust as needed */
+            left: 30%;
+            transform: translateX(-50%);
+        }
+
+        #studentBranchCode {
+            font-size: 14px;
+            position: absolute;
+            bottom: 75.7%;
+            /* Adjust as needed */
+            left: 72%;
+            transform: translateX(-50%);
+        }
+
+        #studentEnrollmentNo {
+            font-size: 14px;
+            position: absolute;
+            bottom: 73.5%;
+            /* Adjust as needed */
+            left: 30%;
+            transform: translateX(-50%);
+        }
+
+        #studentSession {
+            font-size: 14px;
+            position: absolute;
+            bottom: 73.5%;
+            /* Adjust as needed */
+            left: 65%;
+            transform: translateX(-50%);
+        }
+
+        #studentDOB {
+            font-size: 14px;
+            position: absolute;
+            bottom: 71.2%;
+            /* Adjust as needed */
+            left: 27%;
+            transform: translateX(-50%);
+        }
+
+        #studentIssueDate {
+            font-size: 14px;
+            position: absolute;
+            bottom: 3.2%;
+            /* Adjust as needed */
+            left: 90%;
+            transform: translateX(-50%);
+        }
+
+        #studentBranchName {
+            font-size: 14px;
+            position: absolute;
+            bottom: 68.2%;
+            /* Adjust as needed */
+            left: 32%;
+            transform: translateX(-50%);
+        }
+
+        #grade {
+            font-size: 14px;
+            position: absolute;
+            bottom: 15.5%;
+            /* Adjust as needed */
+            left: 92.4%;
+            transform: translateX(-50%);
+        }
+
+        #Division {
+            font-size: 14px;
+            position: absolute;
+            Top: 83%;
+            /* Adjust as needed */
+            left: 20.4%;
+            transform: translateX(-50%);
+        }
+
+        #GrandobtainedTotal {
+            font-size: 14px;
+            position: absolute;
+            top: 83%;
+            /* Adjust as needed */
+            left: 85.4%;
+            transform: translateX(-50%);
+        }
+
+        #GrandTotal {
+            font-size: 14px;
+            position: absolute;
+            top: 83%;
+            /* Adjust as needed */
+            left: 66.4%;
+            transform: translateX(-50%);
+
+        }
+
+        #studentCourseName {
+            font-size: 14px;
+            position: absolute;
+            bottom: 66.2%;
+            left: 20%;
+        }
+
+        #MarksTable {
+            position: absolute;
+            top: 42%;
+            left: 4%;
+
+        }
+
+        .MtRow {
+            height: 8px;
+            /* height: 30px; */
+            width: 660px;
+            /* display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center; */
+            font-size: 12px;
+            font-weight: none;
+
+        }
+
+        .counter {
+            height: 8px;
+            width: 40px;
+        }
+
+        .MtSub {
+            height: 8px;
+            width: 392px;
+            text-align: left;
+        }
+
+        .MtMMT {
+            height: 8px;
+            width: 50px;
+        }
+
+        .MtOMT {
+            height: 8px;
+            width: 50px;
+        }
+
+        .MtMMP {
+            height: 8px;
+            width: 50px;
+        }
+
+        .MtOMP {
+            height: 8px;
+            width: 50px;
+        }
+
+        .MtMMTo {
+            height: 8px;
+            width: 50px;
+        }
+
+        .MtOMto {
+
+            height: 8px;
+            width: 50px;
+        }
+
+        .image {
+            position: absolute;
+            bottom: 72.3%;
+            /* Adjust as needed */
+            left: 89%;
+            transform: translateX(-50%);
+        }
+
+        #studentbranchcode {
+            font-size: 14px;
+            position: absolute;
+            bottom: 71.5%;
+            /* Adjust as needed */
+            left: 70%;
+            transform: translateX(-50%);
+        }
+
+
+        .print-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="certificatecontainer" id="certificatecontainer">
+        <img id="bgimg" src="{% static 'assets/img/rama.png' %}" alt="certificate" />
+        <div id="studentName">{{ student.name }}</div>
+        <div id="studentFatherName">{{ student.father_name }}</div>
+        <div id="studentEnrollmentNo">{{ student.Studentid }}</div>
+        <div id="studentSession">{{ student.studentsession }}</div>
+        <div id="studentbranchcode">{{ student.branch.branchstaticid }}</div>
+        <div id="studentDOB">{{ student.dob }}</div>
+        <div id="studentIssueDate">26/04/2024</div>
+        <div id="studentBranchName">{{ student.branch.name }}</div>
+        <div id="studentCourseName">{{ student.course.name }}</div>
+        <img src="/media/{{ student.profile_picture }}" class="image" alt="Profile Picture" width="80px" height="80px">
+
+        <table id="MarksTable">
+            {% for mark in marks %}
+            <tr class="MtRow">
+                <td class="MtSub">{{ mark.subject.name }}</td>
+                <td class="MtMMT">{{ mark.theory_max_marks }}</td>
+                <td class="MtOMT">{{ mark.theory_marks_obtained }}</td>
+                <td class="MtMMP">{{ mark.practical_max_marks }}</td>
+                <td class="MtOMP">{{ mark.practical_marks_obtained }}</td>
+                <td class="MtOMto"></td>
+                <td class="MtMMTo"></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <div id="grade">B</div>
+        <div id="Division">GrandTotal</div>
+        <div id="GrandobtainedTotal"></div>
+        <div id="GrandTotal"></div>
+    </div>
+    <div class="loader" id="loader"></div>
+    <button class="print-button" id="downloadBtn">Download</button>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script>
+
+
+        // Function to get the current date in the format DD/MM/YYYY
+        function getCurrentDate() {
+            const today = new Date();
+            const day = String(today.getDate()).padStart(2, '0');
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const year = today.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+
+        function populateIssueDate() {
+            document.querySelectorAll('#studentIssueDate').forEach(element => {
+                element.textContent = getCurrentDate();
+            });
+        }
+
+        function populateTotalMarks() {
+            let totalObtainedMarks = 0;
+            let totalPossibleMarks = 0;
+
+            const rows = document.querySelectorAll('.MtRow');
+            rows.forEach(row => {
+                const theoryObtainedMarks = parseInt(row.querySelector('.MtOMT').textContent) || 0;
+                const practicalObtainedMarks = parseInt(row.querySelector('.MtOMP').textContent) || 0;
+                const theoryMaxMarks = parseInt(row.querySelector('.MtMMT').textContent) || 0;
+                const practicalMaxMarks = parseInt(row.querySelector('.MtMMP').textContent) || 0;
+
+                const totalObtainedMarksSubject = theoryObtainedMarks + practicalObtainedMarks;
+                const totalMaxMarksSubject = theoryMaxMarks + practicalMaxMarks;
+
+                totalObtainedMarks += totalObtainedMarksSubject;
+                totalPossibleMarks += totalMaxMarksSubject;
+
+                row.querySelector('.MtOMto').textContent = totalObtainedMarksSubject;
+                // row.querySelector('.MtMMTo').textContent = totalMaxMarksSubject;
+            });
+
+            const percentage = (totalObtainedMarks / totalPossibleMarks) * 100;
+            document.getElementById('grade').textContent = calculateGrade(percentage);
+            // document.getElementById('Division').textContent = calculateDivision(percentage);
+
+            document.getElementById('GrandobtainedTotal').textContent = totalObtainedMarks;
+            document.getElementById('GrandTotal').textContent = totalPossibleMarks;
+        }
+
+        function calculateGrade(percentage) {
+            if (percentage >= 75) {
+                return 'A+';
+            } else if (percentage >= 70) {
+                return 'A';
+            } else if (percentage >= 60) {
+                return 'B';
+            } else if (percentage >= 50) {
+                return 'C';
+            } else if (percentage >= 40) {
+                return 'D';
+            } else {
+                return 'F';
+            }
+        }
+
+        function calculateDivision(percentage) {
+            if (percentage >= 60) {
+                return 'First Division';
+            } else if (percentage >= 50) {
+                return 'Second Division';
+            } else if (percentage >= 40) {
+                return 'Third Division';
+            } else {
+                return 'Fail';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            populateIssueDate();
+            populateTotalMarks();
+        });
+    </script>
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function () {
+            var loader = document.getElementById('loader');
+            loader.style.display = 'block'; // Show the loader
+
+            var element = document.getElementById('certificatecontainer');
+            var opt = {
+                margin: 0,
+                filename: 'marksheet.pdf', // Consider generating a dynamic filename
+                image: { type: 'jpeg', quality: 1 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+                var pdfBlob = pdf.output('blob');
+                var formData = new FormData();
+                formData.append('pdf', pdfBlob);
+                formData.append('studentid', '{{ student.Studentid }}');
+
+                fetch("{% url 'save_automatic_admit_pdf' %}", {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    }
+                }).then(response => {
+                    loader.style.display = 'none'; // Hide the loader
+
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Failed to save PDF');
+                    }
+                }).then(data => {
+                    if (data.success) {
+                        pdf.save(`marksheet.pdf`); // Dynamic filename
+                        window.location.href = `/adashboard/`; // Redirect to dashboard
+                    } else {
+                        alert('Failed to save PDF: ' + data.error);
+                    }
+                }).catch(error => {
+                    loader.style.display = 'none'; // Hide the loader
+                    console.error('Error:', error);
+                    alert('An error occurred while saving the PDF');
+                });
+            });
+        });
+    </script>
+
+</body>
+
+
+</html>

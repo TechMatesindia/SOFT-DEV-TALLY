@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holiday Entry Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 50px;
+            max-width: 600px;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .table-responsive {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Holiday Entry Form</h2>
+        <form id="holidayForm">
+            <div class="form-group">
+                <label for="holidayName">Holiday Name</label>
+                <input type="text" class="form-control" id="holidayName" name="holiday_name" placeholder="Enter holiday name" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="dateFrom">Date From</label>
+                    <input type="date" class="form-control" id="dateFrom" name="date_from" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="dateTo">Date To</label>
+                    <input type="date" class="form-control" id="dateTo" name="date_to" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="noOfHolidays">Number of Holidays</label>
+                <input type="number" class="form-control" id="noOfHolidays" name="number_of_holidays" placeholder="Enter number of holidays" required>
+            </div>
+            <div class="form-group">
+                <label for="remarks">Remarks</label>
+                <textarea class="form-control" id="remarks" name="remarks" rows="3" placeholder="Enter any remarks"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+        <div id="successMessage" class="alert alert-success mt-3" style="display: none;">
+            Holiday entry created successfully!
+        </div>
+        <div id="errorMessage" class="alert alert-danger mt-3" style="display: none;">
+            An error occurred while creating the holiday entry.
+        </div>
+
+        <!-- Table to showcase holidays -->
+        <div class="table-responsive">
+            <h3 class="text-center mt-5">All Holidays</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Holiday Name</th>
+                        <th>Date From</th>
+                        <th>Date To</th>
+                        <th>Number of Holidays</th>
+                        <th>Remarks</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="holidayTableBody">
+                    <!-- Holiday data will be appended here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        document.getElementById('holidayForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+
+            fetch('/create_holiday', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('errorMessage').style.display = 'none';
+                    document.getElementById('holidayForm').reset();
+                    fetchHolidayData(); // Refresh the table after adding a new entry
+                } else {
+                    document.getElementById('errorMessage').style.display = 'block';
+                    document.getElementById('successMessage').style.display = 'none';
+                }
+            })
+            .catch(error => {
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+            });
+        });
+
+        function fetchHolidayData() {
+            fetch('/get_holiday_data')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    const holidayTableBody = document.getElementById('holidayTableBody');
+                    holidayTableBody.innerHTML = '';
+                    data.forEach(holiday => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${holiday.name}</td>
+                            <td>${holiday.date_from}</td>
+                            <td>${holiday.date_to}</td>
+                            <td>${holiday.no_of_holidays}</td>
+                            <td>${holiday.remarks}</td>
+                            <td><button class="btn btn-danger btn-sm" onclick="deleteHoliday(${holiday.id})">Delete</button></td>
+                        `;
+                        holidayTableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error fetching holiday data:', error));
+        }
+
+        function deleteHoliday(id) {
+            if (confirm('Are you sure you want to delete this holiday?')) {
+                fetch(`/delete_holiday/${id}/`, {
+                    method: 'DELETE',
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        fetchHolidayData(); // Refresh the table after deletion
+                    } else {
+                        alert('An error occurred while deleting the holiday.');
+                    }
+                })
+                .catch(error => console.error('Error deleting holiday:', error));
+            }
+        }
+
+        // Fetch holiday data when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchHolidayData();
+        });
+    </script>
+</body>
+</html>

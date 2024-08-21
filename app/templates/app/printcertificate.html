@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Certificate</title>
+    <style>
+        * {
+            -webkit-print-color-adjust: exact !important;
+            /* Chrome, Safari 6 – 15.3, Edge */
+            color-adjust: exact !important;
+            /* Firefox 48 – 96 */
+            print-color-adjust: exact !important;
+            /* Firefox 97+, Safari 15.4+ */
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            font-family: Arial, sans-serif; /* Ensure consistent font */
+        }
+        #bgimgcf{
+            height: 900px;
+            width: 650px;
+            /* object-fit: contain; */
+        }
+        .cfcontainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center; /* Center align text */
+            position: relative;
+            height: 900px;
+            width: 650px;
+            /* background-image: url("{% static 'cf/img/rama.png' %}");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain; */
+        }
+        #CfHeadCourseName{
+            font-size: 14px;
+            position: absolute;
+            bottom: 61%; /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #CfName{
+            font-size: 14px;
+            position: absolute;
+            bottom: 56%; /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #CfMotherName{
+            font-size: 14px;
+            position: absolute;
+            bottom: 52.8%; /* Adjust as needed */
+            left: 30%;
+            transform: translateX(-50%);
+        }
+        #CfFatherName{
+            font-size: 14px;
+            position: absolute;
+            bottom: 49.2%; /* Adjust as needed */
+            left: 20%;
+            transform: translateX(-50%);
+        }
+        #CfDOB{
+            font-size: 14px;
+            position: absolute;
+            bottom: 49.2%; /* Adjust as needed */
+            left: 82%;
+            transform: translateX(-50%);
+        }
+        #CfCourseName{
+            font-size: 13px;
+            position: absolute;
+            bottom: 46%; /* Adjust as needed */
+            left: 39%;
+
+        }
+        #CfYear{
+            font-size: 14px;
+            position: absolute;
+            bottom: 42.8%; /* Adjust as needed */
+            left: 62%;
+            transform: translateX(-50%);
+        }
+        #CfBranch{
+            font-size: 13px;
+            position: absolute;
+            bottom: 39.8%; /* Adjust as needed */
+            left: 56%;
+
+        }
+        #CfState{
+            font-size: 14px;
+            position: absolute;
+            bottom: 36.4%; /* Adjust as needed */
+            left: 39%;
+        }
+        #CfPin{
+            font-size: 14px;
+            position: absolute;
+            bottom: 36.4%; /* Adjust as needed */
+            left: 72%;
+            transform: translateX(-50%);
+        }
+        .image{
+            position: absolute;
+            bottom: 18%;
+            /* Adjust as needed */
+            left: 85.5%;
+            transform: translateX(-50%);  
+        }
+    </style>
+</head>
+<body>
+    <div class="cfcontainer">
+        <img id="bgimgcf" src="{% static 'assets/img/certificate.png' %}" alt="certificate"/>
+        {% for marksheet in marksheets %}
+
+        <div id="CfHeadCourseName">{{marksheet.course.name}}</div>
+        <div id="CfName">{{marksheet.student.name}}</div>
+        <div id="CfMotherName">{{marksheet.student.mother_name}}</div>
+        <div id="CfFatherName">{{marksheet.student.father_name}}</div>
+        <div id="CfDOB">{{marksheet.student.dob}}</div>
+        <div id="CfCourseName">{{marksheet.course.name}}</div>
+        <div id="CfYear">{{marksheet.student.studentsession}}</div>
+        <div id="CfBranch">{{marksheet.branch.name}}</div>
+        <div id="CfState">{{marksheet.branch.state}}</div>
+        <div id="CfPin">{{marksheet.branch.pincode}}</div>
+        <img src="/Ramatechnicalcollege/media/{{marksheet.student.profile_picture}}" class="image" alt="Profile Picture" width="100px" height="120px">
+
+        {% endfor %}
+        
+
+    </div>
+    
+</body>
+</html>

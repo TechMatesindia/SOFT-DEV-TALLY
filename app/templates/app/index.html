@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>RTC-RAMA TECHNICAL COLLEGE</title>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'assets/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-n3D4NvOgeDZ6fuZlFgGUoZVoK3fcr2Q4jc4Fko3pJ21+4r1XGcJJJ6m5IAGfFkC1xMfMnjVvuV6oE5eZr6dU9Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        #certificateMenu {
+            display: none;
+            margin-left: 15vh !important;
+        }
+
+        #diplomaMenu {
+            display: none;
+            margin-left: 15vh !important;
+        }
+
+        #advdiplomaMenu {
+            display: none;
+            margin-left: 15vh !important;
+        }
+    </style>
+
+
+</head>
+
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <div class="ferry-head-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-6"
+                    style="display: flex;align-items: center;flex-direction: row;min-inline-size: max-content;align-content: center;">
+                    <ul class="info-left" style="list-style-type: none; margin: 0; padding: 0;">
+                        <li style="color: #dad602; margin-right: 10px;"><a href="tel:+916390424209"><i
+                                    class="fa fa-phone"></i>+919452313195</a></li>
+                        <li style="margin-right: 30px;"><a href="mailto:info@rtcdelhi.com" title="Mail Me"><i
+                                    class="fa fa-envelope"></i> info@rtcdelhi.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-xs-12 icons" style="display: flex; align-items: center;">
+                    <ul class="info-right"
+                        style="list-style-type: none; margin-top: 10px;margin-bottom: 10px;padding: 0;">
+                        <!-- <li style="margin-right: 10px;"><a href="#">Admission</a></li>
+                        <li style="margin-right: 10px;"><a href="#">Branch Login</a></li> -->
+                        <li style="margin-right: 10px;"><a href="#" id="branchEnquiryLink">Branch Enquiry</a></li>
+                        <li style="margin-right: 10px;"><a href="#" id="studentEnquiryLink">Student Enquiry</a></li>
+
+                    </ul>
+                    <!-- <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-twitter"></i></a> -->
+                    <a id="fb" class="btn btn-square btn-outline-light me-1"
+                        href="https://www.facebook.com/profile.php?id=61555714598383&mibextid=ZbWKwL"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a id="insta" class="btn btn-square btn-outline-light me-1"
+                        href="https://www.instagram.com/ramah1309?utm_source=qr&igsh=MTE5Y3U1a3F1Z3h5cw=="><i
+                            class="fab fa-instagram"></i></a>
+                    <!-- <a class="btn btn-square btn-outline-light me-0" href=""><i class="fab fa-linkedin-in"></i></a> -->
+                    <!-- <button class="navbar-toggler dropbutton navbar-toggler-icon" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#ftco-navbar" aria-controls="ftco-navbar"
+                        aria-expanded="false" aria-label="Toggle navigation" style="background-color: #dad602;">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- < Navbar Start > -->
+
+
+
+    <div class="container-fluid" style="position: relative; background: #fff; display: flex; justify-content: center;">
+        <div class="container text-center">
+            <a href="#">
+                <img src="{% static 'assets/img/header.png' %}" class="img-fluid" alt="Header Image">
+            </a>
+        </div>
+    </div>
+
+    </div>
+
+    <nav class="navbar1 navbar-expand-lg ftco_navbar ftco-navbar-light">
+        <div class="container navcontainer">
+            <div class="collapse navbar-collapse" id="ftco-navbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item active"><a href="{% url 'Home' %}" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            About
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="{% url 'about' %}" class="dropdown-item">About RTC</a></li>
+                            <li><a href="{% url 'director' %}" class="dropdown-item">Chairman's Message</a></li>
+                            <li><a href="{% url 'team' %}" class="dropdown-item">Board of Directors</a></li>
+                            <li><a href="{% url 'vision' %}" class="dropdown-item">Mission and Vision</a></li>
+                            <!-- <li><a href="Vision.html" class="dropdown-item">Vision</a></li> -->
+                            <li><a href="{% url 'certificate' %}" class="dropdown-item">Accreditation and
+                                    Recognition</a></li>
+                            <li><a href="{% url 'excellence' %}" class="dropdown-item">Mark of Excellence</a></li>
+                            <!-- <li><a href="certificate.html" class="dropdown-item">Accreditation & recognition</a></li>
+                            <li><a href="Excellence.html" class="dropdown-item">The Mark of Excellence</a></li> -->
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="coursedropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Courses
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="coursedropdown">
+                            <li><a class="nav-link dropdown-toggle" href="#" id="certificatedropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Certificate</a>
+                                <ul class="dropdown-menu dropdown-submenu" aria-labelledby="certificatedropdown"
+                                    id="certificateMenu">
+                                    <li><a href="https://drive.google.com/file/d/1roYVlIY7f2iJ4HJWGmL5br315OnNM8wn/view?usp=sharing"
+                                            class="dropdown-item">Refridgration and Air Condition</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1tqapAydjHyAxDop_TZKKU2lsKt2zsW5t/view?usp=sharing"
+                                            class="dropdown-item">Fan Motor Binding Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1dx_6zHPdk661HGepXp9qMZMTvYFLShG1/view?usp=sharing"
+                                            class="dropdown-item">Laptop Repairing Course</a></li>
+                                    <!-- <li><a href="#" class="dropdown-item">Computer Assembling and Formatting Course</a></li> -->
+                                    <li><a href="https://drive.google.com/file/d/13J0czmJU7PaoeWjB-bkjjCQmyVbnNKlT/view?usp=sharing"
+                                            class="dropdown-item">Computer Accounting Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1K6WGXd57zmZIu1otKxlzlAFTvY50Q83U/view?usp=sharing"
+                                            class="dropdown-item">Computer DTP Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1y6YRjejeobxAd4Q2DLdYZAfBJolVAItB/view?usp=sharing"
+                                            class="dropdown-item">Digital Marketing Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1lZJo_QIQAB3Wc6qPMjGjEQpG_Xmf1qtP/view?usp=sharing"
+                                            class="dropdown-item">CCC</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1bdJggmdEfW6lAs1mcCY7LtTtMGy-CI9h/view?usp=drive_link"
+                                            class="dropdown-item">Typing</a></li>
+                                    <li><a href="https://drive.google.com/file/d/12A1iLO2CU3dM5b6dmCqmwf1eqgyE7TQ4/view?usp=sharing"
+                                            class="dropdown-item">Auto Cad Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1yvLYUTwM03_6ucuMsT3mIoqE_VNQD75w/view?usp=sharing"
+                                            class="dropdown-item">Mobile Phone Repairing Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/12MwN9zd6O5nvF3d34FVZH5_yyFcZ0S3Z/view?usp=sharing"
+                                            class="dropdown-item">PCB Repairing Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1YxaDi2T-WTKxTdlVRz3ZLkQt2nNo2sc3/view?usp=sharing"
+                                            class="dropdown-item">Programming Language Course</a></li>
+                                    <!-- <li><a href="#" class="dropdown-item">Python Programming Language</a></li> -->
+                                    <li><a href="https://drive.google.com/file/d/1sLqPY0Ao-yq6xuX_dHXXfYgKUHaRy143/view?usp=sharing"
+                                            class="dropdown-item">Core Java Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1ELNrsCITgpffXRsCtojKcwrW45OTb2XY/view?usp=sharin"
+                                            class="dropdown-item">Advance Java Course</a></li>
+                                    <!-- <li><a href="#" class="dropdown-item">Arc and Argon Veldor Certification Course</a></li>
+                                    <li><a href="#" class="dropdown-item">Argon Veldor Certification Course</a></li>
+                                    <li><a href="#" class="dropdown-item">Arc Veldor Certification Course</a></li>
+                                    <li><a href="#" class="dropdown-item">21 Plumber (Sanetory Fitting)</a></li>
+                                    <li><a href="#" class="dropdown-item">Pipe Fitter , Fabricator</a></li> -->
+                                    <li><a href="https://drive.google.com/file/d/1Gvn5-dNZ9kbCbe1VxZ7zH9ZBAgH7xz8c/view?usp=sharing"
+                                            class="dropdown-item">Household and Commercial Wiring</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a class="nav-link dropdown-toggle" href="#" id="diplomadropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Diploma</a>
+                                <ul class="dropdown-menu dropdown-submenu" aria-labelledby="diplomadropdown"
+                                    id="diplomaMenu">
+                                    <li><a href="https://drive.google.com/file/d/134_VbTbcRao6iraf45H9oUdSDNIW0EXI/view?usp=sharing"
+                                            class="dropdown-item">Refridgration and Air Condition Diploma (DRA)</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1J8gYL2cG0oUJUlEgk0TKVi3ITXWimP_K/view?usp=sharing"
+                                            class="dropdown-item">Computer Diploma Course (DCA)</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1hpaZWhOU9r_Nj38Crw_b-XHMUpCxi4KO/view?usp=sharing"
+                                            class="dropdown-item">CCA</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1Dotle4GBwSCD2iDULkokfNC_9Vo2YUD6/view?usp=sharing"
+                                            class="dropdown-item">Diploma in Computer Hardware and Networking</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1YMic2GtNLmS-cP5y7u7DkNy-fY7zpaI2/view?usp=sharing"
+                                            class="dropdown-item">Web Designing</a></li>
+                                    <li><a href="https://drive.google.com/file/d/156dq-hO41VVe-UFmu_g3XAjsiPWhNLYd/view?usp=sharing"
+                                            class="dropdown-item">Electrical Diploma (DELE)</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a class="nav-link dropdown-toggle" href="#" id="advdiplomadropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Advanced Diploma</a>
+                                <ul class="dropdown-menu dropdown-submenu" aria-labelledby="advdiplomadropdown"
+                                    id="advdiplomaMenu">
+                                    <li><a href="https://drive.google.com/file/d/1kzG9bk5gH1OBxYnudBppea4yRdTeD4ug/view?usp=sharing"
+                                            class="dropdown-item">Advanced Diploma in Computer Applications (ADCA)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <script>
+                        // JavaScript to toggle visibility of nested dropdown menu
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const certDropdownToggle = document.getElementById('certificatedropdown');
+                            const certDropdownMenu = document.getElementById('certificateMenu');
+                            const dipDropdownToggle = document.getElementById('diplomadropdown');
+                            const dipDropdownMenu = document.getElementById('diplomaMenu');
+                            const advdipDropdownToggle = document.getElementById('advdiplomadropdown');
+                            const advdipDropdownMenu = document.getElementById('advdiplomaMenu');
+
+                            certDropdownToggle.addEventListener('click', function (event) {
+                                // Optional: uncomment if future links need to prevent default behavior
+                                // event.preventDefault();
+                                dipDropdownMenu.style.display = 'none'
+                                advdipDropdownMenu.style.display = 'none'
+                                certDropdownMenu.style.display = (certDropdownMenu.style.display === 'none' || certDropdownMenu.style.display === '') ? 'block' : 'none';
+                            });
+                            dipDropdownToggle.addEventListener('click', function (event) {
+                                // Optional: uncomment if future links need to prevent default behavior
+                                // event.preventDefault();
+                                certDropdownMenu.style.display = 'none'
+                                advdipDropdownMenu.style.display = 'none'
+                                dipDropdownMenu.style.display = (dipDropdownMenu.style.display === 'none' || dipDropdownMenu.style.display === '') ? 'block' : 'none';
+                            });
+                            advdipDropdownToggle.addEventListener('click', function (event) {
+                                // Optional: uncomment if future links need to prevent default behavior
+                                // event.preventDefault();
+                                certDropdownMenu.style.display = 'none'
+                                dipDropdownMenu.style.display = 'none'
+                                advdipDropdownMenu.style.display = (advdipDropdownMenu.style.display === 'none' || advdipDropdownMenu.style.display === '') ? 'block' : 'none';
+                            });
+                        });
+                    </script>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Student Zone
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="{% url 'signup' %}" class="dropdown-item">Online Registration</a></li>
+                            <!-- <li><a href="" class="dropdown-item">Verify Student</a></li> -->
+                            <li><a href="{% url 'login' %}" class="dropdown-item">Student Login</a></li>
+                            <li><a href="" class="dropdown-item">Download ID Card</a></li>
+                            <li><a href="{% url 'admitcarddownload' %}" class="dropdown-item">Download Admit Card</a>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="rulesDropdown" role="button">
+                                    Rules and Regulations
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="rulesDropdown">
+                                    <li><a href="https://docs.google.com/document/d/1hW0-5NbSpWs-tuwl_melavkAINhck1Pn/edit?usp=sharing&ouid=116207330453175177062&rtpof=true&sd=true"
+                                            class="dropdown-item">Rules of Training</a></li>
+                                    <li><a href="https://docs.google.com/document/d/1T251fA9aqgEKF4Sj_EPhOPAm_SozpoBz/edit?usp=sharing&ouid=116207330453175177062&rtpof=true&sd=true"
+                                            class="dropdown-item">Rules of Examination</a></li>
+                                    <li><a href="https://docs.google.com/document/d/1teVXwii_KQ7kpSwQWl6CLikTnhhhxY75/edit?usp=sharing&ouid=116207330453175177062&rtpof=true&sd=true"
+                                            class="dropdown-item">Rules of Admission</a></li>
+                                </ul>
+                            </li>
+                            <!-- <li><a href="{% url 'certificatedownload' %}" class="dropdown-item">Download certificate</a> -->
+                            <li><a href="{% url 'marksheet_verify' %}" class="dropdown-item">Verify Marksheet</a></li>
+                            <li><a href="{% url 'results' %}" class="dropdown-item">View Result</a></li>
+                            <li><a href="{% url 'feespayment' %}" class="dropdown-item">Fee Payment</a></li>
+                            <li><a href="" class="dropdown-item">Apply Final Exam</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Add CSS for dropdown-submenu -->
+                    <style>
+                        .dropdown-submenu {
+                            position: relative;
+                        }
+
+                        .dropdown-submenu .dropdown-menu {
+                            display: none;
+                            top: 0;
+                            left: 100%;
+                            margin-top: -1px;
+                        }
+
+                        .dropdown-submenu.show .dropdown-menu {
+                            display: block;
+                        }
+                    </style>
+
+                    <!-- Add JavaScript for toggling the nested dropdown -->
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            var rulesDropdown = document.getElementById('rulesDropdown');
+                            rulesDropdown.addEventListener('click', function (e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                var parentLi = this.parentElement;
+                                parentLi.classList.toggle('show');
+                            });
+                        });
+                    </script>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Download
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="{% url 'brochure' %}" class="dropdown-item">Brochure</a></li>
+                            <li><a href="{% url 'pdfmaterial' %}" class="dropdown-item">Pdf Material</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="{% url 'gallery' %}" class="nav-link">Gallery</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Branch
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="#" id="branchEnquiryform" class="dropdown-item">Enquiry Form</a></li>
+                            <li><a href="{% url 'branchlisthome' %}" class="dropdown-item">Branch List</a></li>
+                        </ul>
+                    </li> <!-- <li class="nav-item"><a href="#" class="nav-link">Results</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Career</a></li> -->
+                    <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Login
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="{% url 'adminlogin' %}" class="dropdown-item"> Admin Login</a></li>
+                            <li><a href="{% url 'login' %}" class="dropdown-item"> Student Login</a></li>
+                            <li><a href="{% url 'branchlogin' %}" class="dropdown-item"> Branch Login</a></li>
+                            <li><a href="{% url 'teacherlogin' %}" class="dropdown-item"> Faculty Login</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+            <!-- <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5" style="
+                        justify-content: center">
+                        <img src="img/logo.png" width="200" height="200" class="custom-logo" alt="RAMA TECHNICAL COLLEGE"
+                            decoding="async">
+                    </a>
+        
+                    <ul class="logo-detail col-md-7 mb-0">
+                        <li>रमा टेक्निकल कालेज, नई दिल्ली</li>
+                        <li>RAMA TECHNICAL COLLEGE (RTC), NEW DELHI</li>
+                        <li>AN AUTONOMOUS ORGANIZATION REDG. BY GOVT. OF NCT-DELHI UNDER ITA 2083 GOVT. OF INDIA</li>
+                        <li>REGD. UNDER CR-ACT1957, MINISTRY OF HRD GOVT. OF INDIA</li>
+                        <li>Niti Aayog, Government of india. regd.DL/2019/0248331</li>
+                        <li>(AN ISO 9001:2015 CERTIFIED ORGANIZATION)</li>
+                    </ul>
+        
+                    <div class="ms-auto d-flex extra-detail">
+                        <div class="col-md-10" style="margin-left: 50px;">
+                            Helpline No:<br>
+                            <span>+91 6390-424-209</span><br>
+                            <img src="img/india.png" width="200" height="150"> -->
+
+        </div>
+        <button class="navbar-toggler navbar-toggler-icon" type="button" data-bs-toggle="collapse"
+            data-bs-target="#ftco-navbar" aria-controls="ftco-navbar" aria-expanded="false"
+            aria-label="Toggle navigation" style="background-color: #dad602;">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+        </button>
+        </div>
+    </nav>
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="{%static 'assets/img/2.jpeg'%}" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="{%static 'assets/img/slider.jpg'%}" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <!-- Carousel End -->
+    <div class="pm-button"><a
+            href="https://drive.google.com/file/d/16mOfJM2u-71BeCdM57t94Tpp27oCY34I/view?usp=sharing"><span
+                class="blink blink-infinite">Franchise Proposal</span></div>
+
+    <!-- Facts Start -->
+    <div class="container-fluid facts py-5 pt-lg-0">
+        <div class="container py-5 pt-lg-0">
+            <div class="row gx-0">
+                <div class="col-lg-3 wow fadeIn card1 " data-wow-delay="0.1s">
+                    <a href="{% url 'registrationverification' %}">
+                        <div class="bg-primary shadow d-flex align-items-center h-100 p-4 " style="min-height: 150px;">
+                            <div class="d-flex ">
+                                <div class="flex-shrink-0 btn-lg-square bg-secondary">
+                                    <i class="fa fa-check text-white" id="flip"></i>
+                                </div>
+                                <div class="ps-4">
+                                    <h5 class="text-white">REGISTRATION VERIFICATION</h5>
+                                    <span class="text-white">"Verify your registration instantly."</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 wow fadeIn card2" data-wow-delay="0.3s">
+                    <a href="{% url 'marksheet_verify' %}">
+                        <div class="bg-primary shadow d-flex align-items-center h-100 p-4" style="min-height: 150px;">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 btn-lg-square bg-secondary">
+                                    <i class="fa fa-certificate text-white" id="flip"></i>
+                                </div>
+                                <div class="ps-4">
+                                    <h5 class="text-white">MARKSHEET VERIFICATION</h5>
+                                    <span class="text-white">"Verify certificates seamlessly."</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 wow fadeIn card3" data-wow-delay="0.5s">
+                    <a href="{% url 'signup' %}">
+                        <div class="bg-primary shadow d-flex align-items-center h-100 p-4" style="min-height: 150px;">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 btn-lg-square bg-secondary">
+                                    <i class="fa fa-school text-white" id="flip"></i>
+                                </div>
+                                <div class="ps-4">
+                                    <h5 class="text-white">ONLINE ADMISSION</h5>
+                                    <span class="text-white">"Complete your online admissions."</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 wow fadeIn card4" data-wow-delay="0.3s">
+                    <a href="{% url 'admitcarddownload' %}">
+                        <div class="bg-primary shadow d-flex align-items-center h-100 p-4" style="min-height: 150px;">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 btn-lg-square bg-secondary">
+                                    <i class="fa fa-address-card text-white" id="flip"></i>
+                                </div>
+                                <div class="ps-4">
+                                    <h5 class="text-white">ADMIT CARD</h5>
+                                    <span class="text-white">"Download your admit card hassle-free."</span>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <style>
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            background-color: #132041;
+            color: rgb(237, 214, 8);
+            /* Add a background strip */
+            padding: 10px 0;
+            /* Add some padding */
+        }
+
+        .marquee {
+            display: flex;
+            white-space: nowrap;
+            box-sizing: border-box;
+            animation: marquee 20s linear infinite;
+            font-size: 1.75rem;
+            /* Adjusted to be responsive */
+        }
+
+        .marquee span {
+            display: inline-block;
+            white-space: nowrap;
+            padding-right: 100%;
+            /* Ensure enough space for scrolling */
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .marquee {
+                font-size: 1.5rem;
+                /* Adjust font size for tablets */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .marquee {
+                font-size: 1.25rem;
+                /* Adjust font size for mobile */
+            }
+        }
+    </style>
+
+    </head>
+
+    <body>
+        <div class="marquee-container">
+            <div class="marquee">
+                <span>पूरे भारत वर्ष में फ़्रेंचाइजी शाखा लेने हेतु संपर्क करें । मो०- 9452313195</span>
+            </div>
+        </div>
+        <!-- Facts End -->
+
+
+        <!-- About Start -->
+        <!-- <div class="container-xxl py-6">
+        <div class="container">
+            <div class="row g-5">
+                <div class="image-column col-lg-6 col-md-12 col-sm-12">
+
+                    <div class="about-image-wrapper">
+
+                        <figure class="image-3 wow  animated" data-wow-delay="900ms" style="visibility: visible; animation-delay: 900ms; animation-name: zoomIn;"><img src="img/about-1.jpg" alt=""></figure>
+
+                        <figure class="image-2 wow  animated" data-wow-delay="600ms" style="visibility: visible; animation-delay: 600ms; animation-name: zoomIn;"><img src="img/about-2.jpg" alt=""></figure>
+
+                        <figure class="image-1 wow zoomIn animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: zoomIn;"><img src="images/vector.png" alt=""></figure>
+
+                      
+
+                    </div>
+
+                </div> -->
+
+
+        <!-- <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="h-100">
+                        <h6 class="text-primary text-uppercase mb-2">About Us</h6>
+                        <h1 class="display-6 mb-4">Rama Technical College
+                        </h1>
+                        <p>(रमा टेक्निकल कॉलेज) देश व समाज के विकास में सहयोग देने वाली एक मात्र प्रमाणित एवं सर्वोच्च
+                            संस्था
+                            है। जो व्यावहारिक तकनीकी प्रशिक्षण कार्यक्रम के साथ साथ सभी प्रकार शिक्षा (टीचर ट्रेनिंग,
+                            फैशन
+                            डिजाइनिंग, ब्यूटिशियन, फायर एंड सेफ्टी, स्पोकेन इंलिश और पर्सनाल्टी डेवलपमेंट, शार्ट टर्म
+                            कम्प्यूटर
+                            एंड वोकेशनल कोर्स) आप सब की सेवा के लिए समर्पित है। यह संस्था Govt. of india NCT-DELHI Under
+                            1882,
+                            Govt. of india (Regd.by MHRD Under CR-Act 1957, Govt. india) द्वारा Registered है। तथा यह
+                            संस्था QMS
+                            I.S.O 9001:2015 प्राप्त भी है। इसका कार्यक्षेत्र सम्पूर्ण भारत वर्ष में है।</p>
+
+                        <p>देश की व्यापक बेरोजगारी को देखते हुए आज रमा टेक्निकल कालेज उच्च मापदण्ड एवं आदर्श स्थापित
+                            करते हुए एक
+                            विश्वसनीय रोजगारोन्मुख शैक्षिक संस्थान स्थापित हुआ है।</p>
+                        <div class="row g-4">
+                            <div class="col-sm-6">
+                                <a class="btn btn-primary py-3 px-5 bg-primary" href="">Read More</a>
+                            </div>
+                            <div class="col-sm-6">
+                                <a class="d-inline-flex align-items-center btn btn-outline-primary border-2 p-2"
+                                    href="tel:+91 6390-424-209">
+                                    <span class="flex-shrink-0 btn-square bg-primary">
+                                        <i class="fa fa-phone-alt text-white"></i>
+                                    </span>
+                                    <span class="px-3">+91 6390-424-209</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+        <!-- About End -->
+        <section class="about-section">
+
+            <div class="auto-container">
+
+                <div class="row">
+
+                    <!-- Image Column -->
+
+                    <div class="image-column col-lg-6 col-md-12 col-sm-12">
+
+                        <div class="about-image-wrapper">
+
+                            <figure class="image-3 wow zoomIn animated" data-wow-delay="900ms"
+                                style="visibility: visible; animation-delay: 900ms; animation-name: zoomIn;"><img
+                                    src="{%static 'assets/img/buld.png'%}" alt=""></figure>
+
+                            <figure class="image-2 wow zoomIn animated" data-wow-delay="600ms"
+                                style="visibility: visible; animation-delay: 600ms; animation-name: zoomIn;"><img
+                                    src="{%static 'assets/img/buld1.png'%}" alt=""></figure>
+
+                            <figure class="image0 wow zoomIn animated" data-wow-delay="300ms"
+                                style="visibility: visible; animation-delay: 300ms; animation-name: zoomIn;"><img
+                                    src="{%static 'assets/img/world.png'%}" alt=""></figure>
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Content Column -->
+
+
+                    <div class="content-column col-lg-6 col-md-12 col-sm-12">
+
+                        <div class="inner-column">
+
+                            <div class="sec-title">
+
+                                <span class="sub-title">WELCOME TO </span>
+
+                                <h1 class="display-6 mb-4">Rama Technical College
+                                </h1>
+
+                                <span class="divider"></span>
+
+                            </div>
+
+                            <p class="text-justify"> रमा टेक्निकल कॉलेज देश व समाज के विकास में सहयोग देने वाली एक मात्र
+                                प्रमाणित एवं सर्वोच्च संस्था है। जो व्यवहारिक तकनीकी प्रशिक्षण कार्यक्रम के साथ-साथ सभी
+                                प्रकार की शिक्षा (टीचर ट्रेनिंग, फैशन डिजाइनिंग, ब्यूटिशियन, फायर एंड सेफ्टी, स्पोकेन
+                                इंग्लिश और पर्सनैलिटी डेवलपमेंट, शार्ट टर्म कम्प्यूटर एंड वोकेशनल कोर्स) आप सब की सेवा
+                                के
+                                लिए समर्पित हैं। यह संस्था Govt. of India NCT- DELHI Under 1882, Govt. of india (Regd.
+                                by
+                                MHRD Under CR-Act 1957, Govt. India) द्वारा रजिस्टर्ड है तथा यह संस्था QMS I.S.O.
+                                9001:2015
+                                भी प्राप्त है। इसका कार्यक्षेत्र सम्पूर्ण भारत वर्ष में है।</p>
+                            <p class="text-justify">
+                                यह संस्था व्यहाारिक तकनीकी प्रशिक्षण चला रही है जिसके माध्यम से प्रयास किया गया है। जिस
+                                स्तर
+                                की शिक्षा प्राप्त करने के लिए छात्र-छात्राएं बड़े शहरों की तरफ भागते हैं और अपना अमूल्य
+                                समय
+                                और पैसा लगातें हैं, उसी स्तर की शिक्षण व्यवस्था हम आपके पास के शहर व कस्बे में उपलब्ध
+                                करायेंगे। सह संस्था वर्तमान में भी स्थापित उन्नत तकनीकी एवं सिस्टम पर आधारित प्रशिक्षण
+                                देने
+                                का प्रयास करती रहेगी जिससे छात्रों का भविष्य और भी बेहतर हो सके। देश की व्यापक बेरोजगारी
+                                को
+                                देखते हुए आज रमा टेक्निकल कालेज उच्च मापदण्ड एवं आदर्श स्थापित करते हुए एक विश्वसनीय
+                                रोजगारोन्मुख शैक्षिक संस्थान स्थापित हुआ है।
+                            </p>
+
+
+
+                            <div class="btn-box">
+
+                                <a href="{% url 'about' %}" class="theme-btn btn-style-one"><span class="btn-title">Read
+                                        More</span></a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <section class="about-section">
+
+            <div class="auto-container">
+
+                <div class="row">
+
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 mx-auto">
+                                    <div class="news-container">
+                                        <div class="latest-news">
+
+                                            <h4>
+                                                LATEST NEWS &amp; NOTIFICATIONS
+                                            </h4>
+                                        </div>
+                                        <ul class="news">
+                                            <li>प्रवेश प्रारम्भ</li>
+                                            <li>एसी फ्रिज बनाना सीखे मात्र 5 महीने में 100% जॉब की गारंटी</li>
+                                            <li><strong>प्रवेश प्रारम्भ 2024-25</strong> DCA , ADCA, PGDCA, DTP, TALLY,
+                                                CCC,
+                                                CCA, DCFA, PHOTOSHOP, HARDWARE & NETWORKING, HOUSE WIRING , MOBILE
+                                                REPAIRING, AC
+                                                & FRIDGE etc</li>
+                                            <li>Tally ( Accounting) with GST , AC FRIDGE COURSE 5 MONTH</li>
+                                            <li><strong>CCC</strong> Admission by <strong>NIELIT</strong></li>
+                                            <li>सम्पूर्ण भारतवर्ष में <strong>फ्रेंचाइजी</strong> शाखा लेने हेतु संपर्क
+                                                करें
+                                                |
+                                                9452313195</li>
+                                            <li><strong>सेफ्टी ऑफिसर</strong> बनने का सुनहरा अवसर| <strong>फायर एंड
+                                                    सेफ्टी
+                                                    में
+                                                    डिप्लोमा</strong> करे और पायें <strong>100% जॉब सम्पूर्ण भारत
+                                                    में</strong> |
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-column col-lg-6 col-md-12 col-sm-12">
+                        <div class="inner-column">
+                            <!-- First set of columns for the first three images -->
+                            <div class="row images-row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 border-right">
+                                    <figure class="image">
+                                        <img src="{% static 'assets/img/ccc.png' %}" alt="" class="img-fluid rounded">
+                                    </figure>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 border-right">
+                                    <figure class="image">
+                                        <img src="{% static 'assets/img/autocad.png' %}" alt=""
+                                            class="img-fluid rounded">
+                                    </figure>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <figure class="image">
+                                        <img src="{% static 'assets/img/tally.png' %}" alt="" class="img-fluid rounded">
+                                    </figure>
+                                </div>
+                            </div>
+                            <hr style="color: black;">
+                            <!-- Second set of columns for the last three images -->
+                            <div class="row images-row mt-3">
+                                <div class="col-lg-4 col-md-4 col-sm-4 border-right">
+                                    <figure class="image">
+                                        <img src="{% static 'assets/img/python.png' %}" alt="" class="img-fluid rounded"
+                                            style="width: 100px;height: 100px;align-items: center;margin-left: 30px;margin-top: 12px;">
+                                    </figure>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 border-right">
+                                    <figure class="image">
+                                        <img src="{% static 'assets/img/java.png' %}" alt="" class="img-fluid rounded">
+                                    </figure>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <figure class="image">
+                                        <img src="{% static 'assets/img/c++.png' %}" alt="" class="img-fluid rounded">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                        .images-row {
+                            margin-bottom: 15px;
+                            /* Add margin between rows */
+                        }
+
+                        .image img {
+                            width: 100%;
+                            height: auto;
+                        }
+
+                        .border-right {
+                            border-right: 1px solid black;
+                            /* Add border between columns */
+                        }
+
+                        hr {
+                            border: none;
+                            border-top: 1px solid black;
+                            /* Style horizontal rule */
+                        }
+                    </style>
+
+
+
+                </div>
+        </section>
+        <!-- Courses Start -->
+
+        <div class="container-fluid p-0">
+            <div id="course-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="container py-6">
+                            <div class="text-center mb-5">
+                                <h6 class="text-primary text-uppercase mb-2">Trending Courses</h6>
+                                <h1 class="display-6 mb-4">Upskill Yourself With Professional Training</h1>
+                            </div>
+                            <div class="row justify-content-center" style="flex-wrap: nowrap;">
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="courses-item">
+                                        <div class="text-center p-4">
+                                            <h5 class="mb-3">Java</h5>
+                                            <p>"Unlock your potential with our cutting-edge technical courses designed
+                                                for
+                                                success."</p>
+                                        </div>
+                                        <img class="img-fluid" src="{%static 'assets/img/opera.jpg'%}" alt="">
+                                        <!-- <div class="courses-overlay">
+                                        <a class="btn btn-outline-light border-2" href="#">Read More</a>
+                                    </div> -->
+
+                                        <!-- <div class="courses-overlay">
+                                        <a class="btn btn-outline-light border-2" href="#">Read More</a>
+                                    </div> -->
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="courses-item">
+                                        <div class="text-center p-4">
+                                            <h5 class="mb-3">Accounts</h5>
+                                            <p>"Unlock your potential with our cutting-edge technical courses designed
+                                                for
+                                                success."</p>
+                                        </div>
+                                        <img class="img-fluid" src="{%static 'assets/img/acc.jpg'%}" alt="">
+                                        <!-- <div class="courses-overlay">
+                                        <a class="btn btn-outline-light border-2" href="#">Read More</a>
+                                    </div> -->
+                                    </div>
+                                </div>
+                                <!-- Add more course items here -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="courses-item">
+                                        <div class="text-center p-4">
+                                            <h5 class="mb-3">Competative Exams</h5>
+                                            <p>"Unlock your potential with our cutting-edge technical courses designed
+                                                for
+                                                success."</p>
+                                        </div>
+                                        <img class="img-fluid" src="{%static 'assets/img/comp.jpg'%}" alt="">
+                                        <!-- <div class="courses-overlay">
+                                        <a class="btn btn-outline-light border-2" href="#">Read More</a>
+                                    </div> -->
+                                    </div>
+                                </div>
+                                <!-- Add more course items here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container py-6">
+                            <div class="text-center mb-5">
+                                <h6 class="text-primary text-uppercase mb-2">Trending Courses</h6>
+                                <h1 class="display-6 mb-4">Upskill Yourself With Professional Training</h1>
+                            </div>
+                            <div class="row justify-content-center" style="flex-wrap: nowrap;">
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="courses-item">
+                                        <div class="text-center p-4">
+                                            <h5 class="mb-3">Java</h5>
+                                            <p>"Unlock your potential with our cutting-edge technical courses designed
+                                                for
+                                                success."</p>
+                                        </div>
+                                        <img class="img-fluid" src="{%static 'assets/img/tech.jpg'%}" alt="">
+                                        <!-- <div class="courses-overlay">
+                                        <a class="btn btn-outline-light border-2" href="#">Read More</a>
+                                    </div> -->
+                                    </div>
+                                </div>
+                                <!-- Add more course items here -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="courses-item">
+                                        <div class="text-center p-4">
+                                            <h5 class="mb-3">CCC</h5>
+                                            <p>"Unlock your potential with our cutting-edge technical courses designed
+                                                for
+                                                success."</p>
+                                        </div>
+                                        <img class="img-fluid" src="{%static 'assets/img/eng.jpg'%}" alt="">
+                                        <!-- <div class="courses-overlay">
+                                        <a class="btn btn-outline-light border-2" href="#">Read More</a>
+                                    </div> -->
+                                    </div>
+                                </div>
+                                <!-- Add more course items here -->
+                                <div class="col-lg-4 col-md- col-12">
+                                    <div class="courses-item">
+                                        <div class="text-center p-4">
+                                            <h5 class="mb-3">AutoCad</h5>
+                                            <p>"Unlock your potential with our cutting-edge technical courses designed
+                                                for
+                                                success."</p>
+                                        </div>
+                                        <img class="img-fluid" src="{%static 'assets/img/edu.jpg'%}" alt="">
+                                        <!-- <div class="courses-overlay">
+                                        <a class="btn btn-outline-light border-2" href="#">Read More</a>
+                                    </div> -->
+                                    </div>
+                                </div>
+                                <!-- Add more course items here -->
+                            </div>
+                        </div>
+                        <!-- Add another carousel item -->
+                        <!-- Repeat the same structure for the second carousel item -->
+                    </div>
+                </div>
+                <!-- Carousel controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#course-carousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#course-carousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+        <!-- Courses End -->
+
+        <!-- Features Start -->
+        <div class="container-xxl py-6">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <h6 class="text-primary text-uppercase mb-2">Why Choose Us!</h6>
+                        <h1 class="display-6 mb-4">Rama Technical Education (RTC) is delivering freedom
+                            based education to
+                            each student doesn’t matter which location he/she belongs to.</h1>
+                        <p class="mb-5">RTC is highly ornamented with the experts and top- notch faculties
+                            in their
+                            respective fields. We not only believe in time bound teaching in the classrooms
+                            but also believe
+                            to broaden the horizon of capacity and productivity of each and every aspirant
+                            to achieve their
+                            desired position. We are committed to the candidates to make them accessible to
+                            the world of
+                            quality education.
+                        </p>
+                        <div class="row gy-5 gx-4">
+                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0 btn-square bg-primary me-3">
+                                        <i class="fa fa-check text-white"></i>
+                                    </div>
+                                    <h5 class="mb-0">Proven Track Record</h5>
+                                </div>
+                                <span>Our educational institute boasts a rich history of success, with
+                                    countless graduates
+                                    excelling in their fields worldwide.</span>
+                            </div>
+                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.2s">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0 btn-square bg-primary me-3">
+                                        <i class="fa fa-check text-white"></i>
+                                    </div>
+                                    <h5 class="mb-0">Expert Faculty</h5>
+                                </div>
+                                <span>Our team comprises seasoned professionals and experts in their
+                                    respective fields,
+                                    ensuring you receive top-tier education and mentorship.</span>
+                            </div>
+                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0 btn-square bg-primary me-3">
+                                        <i class="fa fa-check text-white"></i>
+                                    </div>
+                                    <h5 class="mb-0">Holistic Approach</h5>
+                                </div>
+                                <span>We go beyond textbooks, offering a holistic educational experience
+                                    that emphasizes
+                                    practical skills, critical thinking, and personal development.</span>
+                            </div>
+                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0 btn-square bg-primary me-3">
+                                        <i class="fa fa-check text-white"></i>
+                                    </div>
+                                    <h5 class="mb-0">Supportive Community</h5>
+                                </div>
+                                <span>Join a vibrant community of passionate learners and educators
+                                    dedicated to your
+                                    success.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="position-relative overflow-hidden pe-5 pt-5 h-100" style="min-height: 400px;">
+                            <img class="position-absolute w-100 h-100" src="{%static 'assets/img/build.jpeg'%}" alt=""
+                                style="object-fit: cover;">
+                            <img class="position-absolute top-0 end-0 bg-white ps-3 pb-3"
+                                src="{%static 'assets/img/build2.jpeg'%}" alt="" style="width: 200px; height: 200px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="overlay" id="overlay">
+            <div class="popup container">
+                <h2 class="mt-3">Enquiry</h2>
+                <form id="registerForm">
+                    <button id="studentRegisterBtn" class="btn btn-primary">Student Register</button>
+                    <button id="branchRegisterBtn" class="btn btn-primary">Branch Register</button>
+                </form>
+                <button class="close-btn close" id="closeBtn">&times;</button>
+            </div>
+        </div>
+
+        <!-- Features End -->
+
+        <div class="overlay" id="register" data-wow-delay="0.1s">
+            <div class="popup container">
+                <div class="bg-secondary text-center p-5">
+                    <button class="close-btn close" id="closeFormBtn">&times;</button>
+                    <h1 class="mb-4">Student Admission Enquiry</h1>
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="gname"
+                                        placeholder="Gurdian Name">
+                                    <label for="gname">Your Name</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control border-0" id="gmail"
+                                        placeholder="Gurdian Email">
+                                    <label for="gmail">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="cname"
+                                        placeholder="Child Name">
+                                    <label for="cname">Course to apply</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="cage" placeholder="Child Age">
+                                    <label for="cage">Contact Number</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control border-0" placeholder="Residential Address"
+                                        id="message"></textarea>
+                                    <label for="message">Address</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-dark w-100 py-3" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <style>
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                visibility: hidden;
+                opacity: 0;
+                transition: visibility 0s, opacity 0.5s;
+            }
+
+            .overlay.show {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .popup {
+                background: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                width: 100%;
+                max-width: 600px;
+                position: relative;
+            }
+
+            .close-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 24px;
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            .holiday-slide {
+                color: black;
+                display: none;
+            }
+
+            .holiday-slide.show {
+                display: block;
+            }
+
+            #showHolidayDataBtn {
+                height: 35px;
+                margin: 0;
+                padding: 6px 10px;
+                position: fixed;
+                color: white;
+                top: 75%;
+                right: -6%;
+                bottom: 0;
+                background: #0C2B4B;
+                font-size: 15px;
+                font-weight: bold;
+                text-transform: uppercase;
+                text-align: center;
+                z-index: 99;
+                -webkit-transform: rotate(90deg);
+                -moz-transform: rotate(90deg);
+                transform: rotate(90deg);
+            }
+
+            @media(max-width:480px) {
+                #showHolidayDataBtn {
+                    height: 35px;
+                    margin: 0;
+                    padding: 6px 10px;
+                    position: fixed;
+                    color: white;
+                    top: 80%;
+                    right: -22%;
+                    bottom: 0;
+                    background: #0C2B4B;
+                    font-size: 15px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    text-align: center;
+                    z-index: 99;
+                    -webkit-transform: rotate(90deg);
+                    -moz-transform: rotate(90deg);
+                    transform: rotate(90deg);
+                }
+            }
+        </style>
+        <button class="btn btn-info" id="showHolidayDataBtn">Show Holiday Details</button>
+        <div class="overlay" id="holidayDataOverlay">
+            <div class="popup container">
+                <div class="bg-secondary text-center p-5">
+                    <button class="close-btn" id="closeHolidayDataBtn">&times;</button>
+                    <h1 class="mb-4">Holiday Details</h1>
+                    <div id="holidaySlides">
+                        <!-- Holiday slides will be appended here dynamically -->
+                    </div>
+                    <button id="nextHolidayBtn" class="btn btn-primary mt-4">Next</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            function formatDate(dateString) {
+                const [year, month, day] = dateString.split('-');
+                return `${day}/${month}/${year}`;
+            }
+            let currentSlideIndex = 0;
+
+            document.getElementById('showHolidayDataBtn').addEventListener('click', function () {
+                fetch('/get_holiday_data')
+                    .then(response => response.json())
+                    .then(data => {
+                        const holidaySlides = document.getElementById('holidaySlides');
+                        holidaySlides.innerHTML = '';
+                        data.forEach((holiday, index) => {
+                            const slide = document.createElement('div');
+                            slide.className = 'holiday-slide';
+                            if (index === 0) slide.classList.add('show');
+                            slide.innerHTML = `
+                                <h2>${holiday.name}</h2>
+                                <p><strong>Date From:</strong> ${formatDate(holiday.date_from)}&nbsp;&nbsp;&nbsp;<strong>Date To:</strong> ${formatDate(holiday.date_to)}</p>
+                                <p><strong>No of Holidays:</strong> ${holiday.no_of_holidays}</p>
+                                <p><strong>Remarks:</strong> ${holiday.remarks}</p>
+                            `;
+                            holidaySlides.appendChild(slide);
+                        });
+                        document.getElementById('holidayDataOverlay').classList.add('show');
+                    })
+                    .catch(error => console.error('Error fetching holiday data:', error));
+            });
+
+            document.getElementById('closeHolidayDataBtn').addEventListener('click', function () {
+                document.getElementById('holidayDataOverlay').classList.remove('show');
+            });
+
+            document.getElementById('nextHolidayBtn').addEventListener('click', function () {
+                const slides = document.querySelectorAll('.holiday-slide');
+                slides[currentSlideIndex].classList.remove('show');
+                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                slides[currentSlideIndex].classList.add('show');
+            });
+        </script>
+
+        <div class="overlay" id="branch" data-wow-delay="0.1s">
+            <div class="popup container">
+                <div class="bg-secondary text-center p-5">
+                    <button class="close-btn close" id="closeFormBtn">&times;</button>
+                    <h1 class="mb-4">Branch Enquiry</h1>
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="gname"
+                                        placeholder="Gurdian Name">
+                                    <label for="gname">Your Name</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control border-0" id="gmail"
+                                        placeholder="Gurdian Email">
+                                    <label for="gmail">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="cname"
+                                        placeholder="Child Name">
+                                    <label for="cname">place of institute</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="cage" placeholder="Child Age">
+                                    <label for="cage">Contact Number</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control border-0" placeholder="Residential Address"
+                                        id="message"></textarea>
+                                    <label for="message">Address</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-dark w-100 py-3" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="background-wrapper">
+            <div class="headline">
+                <h2>Numbers Say It All</h2>
+            </div>
+            <div class="choosewrapper">
+                <div class="choose">
+                    <i class="chooseimage fa-regular fa-book-open"></i>
+                    <span class="num" data-val="500">000</span>
+                    <span class="text">Certified Courses</span>
+                </div>
+                <div class="choose">
+                    <i class="chooseimage fas fa-smile-beam"></i>
+                    <span class="num" data-val="10000">000</span>
+                    <span class="text">Students Enrolled</span>
+                </div>
+                <div class="choose">
+                    <i class=" chooseimage fas fa-list"></i>
+                    <span class="num" data-val="7000">000</span>
+                    <span class="text">Placements Achieved</span>
+                </div>
+                <div class="choose">
+                    <i class="chooseimage fas fa-star"></i>
+                    <span class="num num1" data-val="100">000%</span>
+                    <span class="text">Students Satisfaction</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="auto-container">
+
+
+
+
+
+            <div class="schedule-tabs tabs-box">
+
+
+
+                <div class="tabs-content">
+
+                    <!--Tab-->
+
+                    <div class="tab active-tab" id="tab-1">
+
+                        <div class="schedule-timeline">
+
+                            <!-- schedule Block -->
+
+                            <div class="schedule-block">
+
+                                <div class="inner-box">
+
+                                    <div class="inner">
+
+                                        <div class="date">
+
+                                            <span><i class="fa-regular fa-lightbulb"
+                                                    style="font-size: 3rem;"></i></span>
+
+                                        </div>
+
+                                        <div class=" ">
+                                            <h4 class="name">STUDENTS STUDY TIME</h4>
+                                        </div>
+
+                                        <p class="ideacard"> RTC innovate such type of education
+                                            system where no time boundation for education. Students can learn any
+                                            time,
+                                            any
+                                            where and any situation. Rama Technical College give
+                                            freedom in education system for students. Any students can learm in all
+                                            india
+                                            institute of training and education</p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- schedule Block -->
+
+                            <div class="schedule-block even">
+
+                                <div class="inner-box">
+
+                                    <div class="inner">
+
+                                        <div class="date">
+
+                                            <span><i class="fa-regular fa-lightbulb"
+                                                    style="font-size: 3rem;"></i></span>
+
+                                        </div>
+
+                                        <div class=" ">
+                                            <h4 class="name">PLACEMENT ASSISTANCE</h4>
+                                        </div>
+
+                                        <p class="ideacard"> Rama Technical College support our student after
+                                            completion of education for best opportunities.
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- schedule Block -->
+
+                            <div class="schedule-block">
+
+                                <div class="inner-box">
+
+                                    <div class="inner">
+
+                                        <div class="date">
+
+                                            <span><i class="fa-regular fa-lightbulb"
+                                                    style="font-size: 3rem;"></i></span>
+
+                                        </div>
+
+                                        <div class=" ">
+                                            <h4 class="name">EASY TO ACCESS</h4>
+                                        </div>
+
+                                        <p class="ideacard"> Rama Technical College giving easy access to lean
+                                            education system to our students. Rama Technical College
+                                            innovate fantastic way of education.
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- schedule Block -->
+
+                            <div class="schedule-block even">
+
+                                <div class="inner-box">
+
+                                    <div class="inner">
+
+                                        <div class="date">
+
+                                            <span><i class="fa-regular fa-lightbulb"
+                                                    style="font-size: 3rem;"></i></span>
+
+                                        </div>
+
+                                        <div class=" ">
+                                            <h4 class="name">STUDY ON THE GO
+
+                                            </h4>
+                                        </div>
+
+                                        <p class="ideacard"> Rama Technical College creating such type of
+                                            educational
+                                            environment for students that they can learn any time, any where and any
+                                            situation. Rama Technical College give freedom in
+                                            education system for students. Any student can learn in all india
+                                            institute
+                                            of
+                                            training and education.
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!-- schedule Block -->
+
+                            <div class="schedule-block">
+
+                                <div class="inner-box">
+
+                                    <div class="inner">
+
+                                        <div class="date">
+
+                                            <span><i class="fa-regular fa-lightbulb"
+                                                    style="font-size: 3rem;"></i></span>
+
+                                        </div>
+
+                                        <div class=" ">
+                                            <h4 class="name">GET AN INNOVATIVE,
+                                                IN-DEPTH TRANSITION</h4>
+                                        </div>
+
+                                        <p class="ideacard">Rama Technical College provides a unique platform to
+                                            enhance knowledge in innovative &amp; in-depth way. We provide complete
+                                            support
+                                            system access to our students so that they can learn the subject deeply
+                                            &amp;
+                                            innovative way.
+
+
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- schedule Block -->
+                        </div>
+
+                    </div>
+
+
+
+                    <!--Tab-->
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="container-xxl py-6">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <h6 class="text-primary text-uppercase mb-2">Achievements & Awards</h6>
+                    <h1 class="display-6 mb-4">Some Milestones along the way</h1>
+
+                </div>
+                <div class="row g-0 team-items">
+                    <div class=" acard1 col-lg-3 col-md-6 wow fadeInUp " data-wow-delay="0.1s">
+                        <div class="team-item position-relative">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="{%static 'assets/img/award1.jpeg'%}" alt="">
+                            </div>
+                            <div class="bg-light text-center p-4">
+                                <h5 class="mt-2">Award1</h5>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp acard2" data-wow-delay="0.3s">
+                        <div class="team-item position-relative">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="{%static 'assets/img/award1.jpeg'%}" alt="">
+                            </div>
+                            <div class="bg-light text-center p-4">
+                                <h5 class="mt-2">Award2</h5>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp acard3" data-wow-delay="0.5s">
+                        <div class="team-item position-relative">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="{%static 'assets/img/award1.jpeg'%}" alt="">
+                            </div>
+                            <div class="bg-light text-center p-4">
+                                <h5 class="mt-2">Award3</h5>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                        <div class="team-item position-relative">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="{%static 'assets/img/award1.jpeg'%}" alt="">
+                            </div>
+                            <div class="bg-light text-center p-4">
+                                <h5 class="mt-2">Award4</h5>
+                                <span></span>
+                            </div>
+                            <div class=" text-center awardbtn btn-box">
+
+                                <a href="" class="awardbtn theme-btn btn-style-one"><span class="btn-title">Read
+                                        More</span></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-xxl py-6">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <h6 class="text-primary text-uppercase mb-2">Placed Students</h6>
+                    <h1 class="display-6 mb-4">We Have Great Track Record</h1>
+
+                </div>
+                <div class="row g-0 team-items">
+                    <div class="col-lg-3 col-md-6 wow fadeInUp Pcard1" data-wow-delay="0.1s">
+                        <div class="team-item position-relative">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="{%static 'assets/img/team-1.jpg'%}" alt="">
+                            </div>
+                            <div class="bg-light text-center p-4">
+                                <h5 class="mt-2">Full Name</h5>
+                                <span>Google</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp Pcard2" data-wow-delay="0.3s">
+                        <div class="team-item position-relative">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="{%static 'assets/img/team-2.jpg'%}" alt="">
+                            </div>
+                            <div class="bg-light text-center p-4">
+                                <h5 class="mt-2">Name</h5>
+                                <span>HCL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp Pcard3" data-wow-delay="0.5s">
+                        <div class="team-item position-relative">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="{%static 'assets/img/team-3.jpg'%}" alt="">
+                            </div>
+                            <div class="bg-light text-center p-4">
+                                <h5 class="mt-2">Full Name</h5>
+                                <span>infosys</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp Pcard4" data-wow-delay="0.7s">
+                        <div class="team-item position-relative">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="{%static 'assets/img/team-4.jpg'%}" alt="">
+                            </div>
+                            <div class="bg-light text-center p-4">
+                                <h5 class="mt-2">Full Name</h5>
+                                <span>Cognizent</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center placebutton btn-box">
+
+                        <a href="" class="theme-btn btn-style-one"><span class="btn-title">Read
+                                More</span></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Testimonial Start -->
+        <div class="container-xxl py-6">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <h6 class="text-primary text-uppercase mb-2">Testimonial</h6>
+                    <h1 class="display-6 mb-4">What Our Students Say!</h1>
+
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="owl-carousel testimonial-carousel">
+                            <div class="testimonial-item text-center">
+                                <div class="position-relative mb-5">
+                                    <img class="img-fluid rounded-circle mx-auto"
+                                        src="{%static 'assets/img/testimonial-1.jpg'%}" alt="">
+                                    <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                        style="width: 60px; height: 60px;">
+                                        <i class="fa fa-quote-left fa-2x text-primary"></i>
+                                    </div>
+                                </div>
+                                <p class="fs-4">
+                                </p>
+                                <hr class="w-25 mx-auto">
+                                <h5> Student Name</h5>
+                                <span>Course</span>
+                            </div>
+                            <div class="testimonial-item text-center">
+                                <div class="position-relative mb-5">
+                                    <img class="img-fluid rounded-circle mx-auto"
+                                        src="{%static 'assets/img/testimonial-2.jpg'%}" alt="">
+                                    <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                        style="width: 60px; height: 60px;">
+                                        <i class="fa fa-quote-left fa-2x text-primary"></i>
+                                    </div>
+                                </div>
+                                <p class="fs-4">
+                                </p>
+                                <hr class="w-25 mx-auto">
+                                <h5> Student Name</h5>
+                                <span>Course</span>
+                            </div>
+                            <div class="testimonial-item text-center">
+                                <div class="position-relative mb-5">
+                                    <img class="img-fluid rounded-circle mx-auto"
+                                        src="{%static 'assets/img/testimonial-3.jpg'%}" alt="">
+                                    <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                        style="width: 60px; height: 60px;">
+                                        <i class="fa fa-quote-left fa-2x text-primary"></i>
+                                    </div>
+                                </div>
+                                <p class="fs-4">
+                                </p>
+                                <hr class="w-25 mx-auto">
+                                <h5>Student Name</h5>
+                                <span>Course</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Testimonial End -->
+
+
+        <!-- Footer Start -->
+
+        <div class="container-fluid bg-dark text-light footer my-6 mb-0 py-6 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="text-white mb-2">Get In Touch</h4>
+                        <h5 class="text-white mb-2">Corporate Address</h5>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Behind Allahabad Bank ,
+                            Maharajganj Road
+                            Anandnagar,Distt.-Maharajganj U.P 273155</p>
+                        <h5 class="text-white mb-2">Head Address</h5>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>G.No.-64V, Part-2 BLK-E
+                            Third Floor, 60
+                            Foota Road, Molarband, Badarpur, South (Delhi) 110044</p>
+                        <p class="mb-4"><i class="fa fa-phone-alt me-3"></i>+919452313195</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@rtcdelhi.com</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="text-light mb-4">Quick Links</h4>
+                        <a class="btn btn-link" href="{% url 'about' %}">About Us</a>
+                        <a class="btn btn-link" href="{% url 'contact' %}">Contact Us</a>
+                        <a class="btn btn-link" href="{% url 'facilities' %}">Our Services</a>
+                        <a class="btn btn-link" href="">Credentials</a>
+                        <!-- <a class="btn btn-link" href="">Terms & Condition</a> -->
+                        <a class="btn btn-link" href="">Support</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="text-light mb-4">Popular Links</h4>
+                        <a class="btn btn-link" href="{% url 'about' %}">About Us</a>
+                        <a class="btn btn-link" href="{% url 'contact' %}">Contact Us</a>
+                        <a class="btn btn-link" href="">Placements</a>
+                        <a class="btn btn-link" href="{% url 'pdfmaterial' %}">Downloads</a>
+                        <a class="btn btn-link" href="{% url 'gallery' %}">Gallery</a>
+                        <a class="btn btn-link" href="{% url 'termsandconditions' %}">Terms & Condition</a>
+                        <a class="btn btn-link" href="{% url 'refundpolicy' %}">Refund Policy</a>
+                        <a class="btn btn-link" href="{% url 'privacypolicy' %}">Privacy Policy</a>
+
+
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="text-light mb-4">Enquiry</h4>
+                        <form action="">
+                            <div class="input-group">
+                                <input type="text" class="form-control p-3 border-0" placeholder="Your Email Address">
+                                <button class="btn btn-primary">Sign Up</button>
+                            </div>
+                        </form>
+                        <br>
+                        <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0"
+                            marginwidth="0"
+                            src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=27.103984276686575,%2083.27984090651937+(RAMA%20TECHNICAL%20COLLEGE%20-%20ANANDNAGAR)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a href="/" style="color: #dad602;">RAMA TECHNICAL COLLEGE</a>, All Right
+                        Reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Copyright Start -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static 'assets/lib/wow/wow.min.js' %}"></script>
+        <script src="{% static 'assets/lib/easing/easing.min.js' %}"></script>
+        <script src="{% static 'assets/lib/waypoints/waypoints.min.js' %}"></script>
+        <script src="{% static 'assets/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+        <!-- Template Javascript -->
+        <script src="{% static 'assets/js/main1.js' %}"></script>
+        <script src="https://kit.fontawesome.com/d753e98eb0.js" crossorigin="anonymous"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Get references to the anchor tags and the popup divs
+                var branchEnquiryLink = document.getElementById('branchEnquiryLink');
+                var branchEnquiryForm = document.getElementById('branchEnquiryform');
+                var studentEnquiryLink = document.getElementById('studentEnquiryLink');
+                var branchPopup = document.getElementById('branch');
+                var studentPopup = document.getElementById('register');
+
+
+
+                // Add click event listeners to the anchor tags
+                branchEnquiryLink.addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    branchPopup.style.display = 'block'; // Show branch popup
+                    studentPopup.style.display = 'none'; // Hide student popup
+                });
+
+                studentEnquiryLink.addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    studentPopup.style.display = 'block'; // Show student popup
+                    branchPopup.style.display = 'none'; // Hide branch popup
+                });
+
+                branchEnquiryForm.addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    branchPopup.style.display = 'block'; // Show branch popup
+                    studentPopup.style.display = 'none'; // Hide student popup
+                });
+
+                // Close button functionality
+                var closeButtons = document.querySelectorAll('.close-btn');
+                closeButtons.forEach(function (button) {
+                    button.addEventListener('click', function () {
+                        branchPopup.style.display = 'none';
+                        studentPopup.style.display = 'none';
+                    });
+                });
+            });
+        </script>
+
+        <script>
+// function setCookie(name, value, days) {
+//     const date = new Date();
+//     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+//     const expires = "expires=" + date.toUTCString();
+//     document.cookie = name + "=" + value + ";" + expires + ";path=/";
+// }
+
+// function getCookie(name) {
+//     const decodedCookie = decodeURIComponent(document.cookie);
+//     const cookies = decodedCookie.split(';');
+//     for (let i = 0; i < cookies.length; i++) {
+//         let cookie = cookies[i];
+//         while (cookie.charAt(0) === ' ') {
+//             cookie = cookie.substring(1);
+//         }
+//         if (cookie.indexOf(name) === 0) {
+//             return cookie.substring(name.length + 1, cookie.length);
+//         }
+//     }
+//     return "";
+// }
+
+// $(document).ready(function () {
+//     $("#studentRegisterBtn").click(function (e) {
+//         e.preventDefault(); 
+//         $("#register").fadeIn(); 
+//     });
+
+//     $("#closeBtn").click(function () {
+//         $("#register").fadeOut(); 
+//     });
+// });
+
+// $(document).ready(function () {
+//     $("#branchRegisterBtn").click(function (e) {
+//         e.preventDefault(); 
+//         $("#branch").fadeIn(); 
+//     });
+
+//     $("#closeBtn").click(function () {
+//         $("#branch").fadeOut(); 
+//     });
+// });
+
+// $(document).ready(function () {
+//     $("#branchRegisterBtn").click(function (e) {
+//         e.preventDefault(); 
+//         $("#branch").fadeIn(); 
+//     });
+
+//     $("#studentRegisterBtn").click(function (e) {
+//         e.preventDefault(); 
+//         $("#register").fadeIn(); 
+//     });
+
+//     $("#closeBtn, #closeFormBtn").click(function () {
+//         $("#branch, #register").fadeOut(); 
+//     });
+// });
+        </script>
+
+
+
+    </body>
+
+</html>

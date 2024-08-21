@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>RTC-RAMA TECHNICAL COLLEGE</title>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'assets/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-n3D4NvOgeDZ6fuZlFgGUoZVoK3fcr2Q4jc4Fko3pJ21+4r1XGcJJJ6m5IAGfFkC1xMfMnjVvuV6oE5eZr6dU9Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <div class="ferry-head-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-6"
+                    style="display: flex;align-items: center;flex-direction: row;min-inline-size: max-content;align-content: center;">
+                    <ul class="info-left" style="list-style-type: none; margin: 0; padding: 0;">
+                        <li style="color: #dad602; margin-right: 10px;"><a href="tel:+916390424209"><i
+                                    class="fa fa-phone"></i>+919452313195</a></li>
+                        <li style="margin-right: 30px;"><a href="mailto:info@rtcdelhi.com" title="Mail Me"><i
+                                    class="fa fa-envelope"></i> info@rtcdelhi.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-xs-12 icons" style="display: flex; align-items: center;">
+                    <ul class="info-right"
+                        style="list-style-type: none; margin-top: 10px;margin-bottom: 10px;padding: 0;">
+                        <!-- <li style="margin-right: 10px;"><a href="#">Admission</a></li>
+                        <li style="margin-right: 10px;"><a href="#">Branch Login</a></li> -->
+                        <li style="margin-right: 10px;"><a href="#" id="branchEnquiryLink">Branch Enquiry</a></li>
+                        <li style="margin-right: 10px;"><a href="#" id="studentEnquiryLink">Student Enquiry</a></li>
+
+                    </ul>
+                    <!-- <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-twitter"></i></a> -->
+                    <a class="btn btn-square btn-outline-light me-1"
+                        href="https://www.facebook.com/profile.php?id=61555714598383&mibextid=ZbWKwL"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-outline-light me-1"
+                        href="https://www.instagram.com/ramah1309?utm_source=qr&igsh=MTE5Y3U1a3F1Z3h5cw=="><i
+                            class="fab fa-instagram"></i></a>
+                    <!-- <a class="btn btn-square btn-outline-light me-0" href=""><i class="fab fa-linkedin-in"></i></a> -->
+                    <!-- <button class="navbar-toggler dropbutton navbar-toggler-icon" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#ftco-navbar" aria-controls="ftco-navbar"
+                        aria-expanded="false" aria-label="Toggle navigation" style="background-color: #dad602;">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="position: relative;background: #fff; display: inline-block;">
+        <div class="container mob">
+            <div class="row">
+                <div class="col-md-10 col-9 d-flex justify-content-end"><a href=""><img
+                            src="{% static '/assets/img/logo1.jpg' %}" class="img-fluid  "></a></div>
+                <div class="col-md-2 col-3 d-flex align-items-center"><img src="{%static 'assets/img/india.jpeg'%}"
+                        class="img-fluid  ">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <nav class="navbar1 navbar-expand-lg ftco_navbar ftco-navbar-light">
+        <div class="container navcontainer">
+            <div class="collapse navbar-collapse" id="ftco-navbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item active"><a href="{% url 'Home' %}" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            About
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="{% url 'about' %}" class="dropdown-item">About RTC</a></li>
+                            <li><a href="{% url 'director' %}" class="dropdown-item">Chairman's Message</a></li>
+                            <li><a href="{% url 'team' %}" class="dropdown-item">Board of Directors</a></li>
+                            <li><a href="{% url 'vision' %}" class="dropdown-item">Mission and Vision</a></li>
+                            <!-- <li><a href="Vision.html" class="dropdown-item">Vision</a></li> -->
+                            <li><a href="{% url 'certificate' %}" class="dropdown-item">Accreditation and Recognition</a></li>
+                            <li><a href="{% url 'excellence' %}" class="dropdown-item">Mark of Excellence</a></li>
+                            <!-- <li><a href="certificate.html" class="dropdown-item">Accreditation & recognition</a></li>
+                            <li><a href="Excellence.html" class="dropdown-item">The Mark of Excellence</a></li> -->
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="coursedropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Courses
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="coursedropdown">
+                            <li><a class="nav-link dropdown-toggle" href="#" id="certificatedropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Certificate</a>
+                                <ul class="dropdown-menu dropdown-submenu" aria-labelledby="certificatedropdown"
+                                    id="certificateMenu">
+                                    <li><a href="https://drive.google.com/file/d/1R0Unf783b4njnqjLQ481TeFJ4q6hKHb2/view?usp=sharing"
+                                            class="dropdown-item">Refridgration and Air Condition</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1AxYtJtG3CRVsb7z1lmPRYKTj2eb6QIqB/view?usp=sharing"
+                                            class="dropdown-item">Fan Motor Binding Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1Le6fcggS5irvLzEryPj1m34zo0I4kwo5/view?usp=sharing"
+                                            class="dropdown-item">Laptop Repairing Course</a></li>
+                                    <!-- <li><a href="#" class="dropdown-item">Computer Assembling and Formatting Course</a></li> -->
+                                    <li><a href="https://drive.google.com/file/d/1lNP-Vo8_WqdJpJVCSTToOHY1PDpjyDGC/view?usp=sharing"
+                                            class="dropdown-item">Computer Accounting Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1MNTwnlmj2HbgU6ctA5OrOAZfnlj97LGD/view?usp=sharing"
+                                            class="dropdown-item">Computer DTP Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1dFTQB4GI6tKjoaFtLtsi_jXxhsP0hxjp/view?usp=sharing"
+                                            class="dropdown-item">Digital Marketing Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1QsdMpqddPRkk5-ld5VS_cQlQN3677GWp/view?usp=sharing"
+                                            class="dropdown-item">CCC</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1sI0LMcy1wqW_k8UoAe_iHfs0N-rZ-Ca8/view?usp=sharing"
+                                            class="dropdown-item">Typing</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1lfNtDimRswIaCSqwRjet6EzHsGnKZDfx/view?usp=sharing"
+                                            class="dropdown-item">Auto Cad Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/11q9N_VEMX1Sk3Dmk8YMheXBYMHlCDRxM/view?usp=sharing"
+                                            class="dropdown-item">Mobile Phone Repairing Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1aIrSBthrsKpnmeelOPR-iv2maN87hbqe/view?usp=sharing"
+                                            class="dropdown-item">PCB Repairing Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1QPZUvE3ZZD_qi3oA7tcjqmNfpqyS3Ml6/view?usp=sharing"
+                                            class="dropdown-item">Programming Language Course</a></li>
+                                    <!-- <li><a href="#" class="dropdown-item">Python Programming Language</a></li> -->
+                                    <li><a href="https://drive.google.com/file/d/1gvrX-za61OJqrb6P6MG_mEla4AGcVVDm/view?usp=sharing"
+                                            class="dropdown-item">Core Java Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1YTZARQFOW_u78oVyNixCfZCfl5hvlT5Z/view?usp=sharing"
+                                            class="dropdown-item">Advance Java Course</a></li>
+                                    <!-- <li><a href="#" class="dropdown-item">Arc and Argon Veldor Certification Course</a></li>
+                                    <li><a href="#" class="dropdown-item">Argon Veldor Certification Course</a></li>
+                                    <li><a href="#" class="dropdown-item">Arc Veldor Certification Course</a></li>
+                                    <li><a href="#" class="dropdown-item">21 Plumber (Sanetory Fitting)</a></li>
+                                    <li><a href="#" class="dropdown-item">Pipe Fitter , Fabricator</a></li> -->
+                                    <li><a href="https://drive.google.com/file/d/1Po0dR9X8EPnGrWQx2ggptaDMis3tONeB/view?usp=sharing"
+                                            class="dropdown-item">Household and Commercial Wiring</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a class="nav-link dropdown-toggle" href="#" id="diplomadropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Diploma</a>
+                                <ul class="dropdown-menu dropdown-submenu" aria-labelledby="diplomadropdown"
+                                    id="diplomaMenu">
+                                    <li><a href="https://drive.google.com/file/d/1hoqt6v62sFeqmzG-yHaiWIcO6VmHmrbF/view?usp=sharing"
+                                            class="dropdown-item">Refridgration and Air Condition Diploma (DRA)</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1Sjm10I9MBD0h83ytsMiMryn4MTAfFLMQ/view?usp=sharing"
+                                            class="dropdown-item">Computer Diploma Course (DCA)</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1OrB1UpfIFsiLnBqpu2_rsf9g72_eXmks/view?usp=sharing"
+                                            class="dropdown-item">CCA</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1Dotle4GBwSCD2iDULkokfNC_9Vo2YUD6/view?usp=sharing"
+                                            class="dropdown-item">Diploma in Computer Hardware and Networking</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1-wDuaGAWeFtuBcjZZ6P4rZg1hBVVkKFF/view?usp=sharing"
+                                            class="dropdown-item">Web Designing</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1qp0wuU4FbzDNadBL-smJqEM7GvyYiAF5/view?usp=sharing"
+                                            class="dropdown-item">Electrical Diploma (DELE)</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a class="nav-link dropdown-toggle" href="#" id="advdiplomadropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Advanced Diploma</a>
+                                <ul class="dropdown-menu dropdown-submenu" aria-labelledby="advdiplomadropdown"
+                                    id="advdiplomaMenu">
+                                    <li><a href="https://drive.google.com/file/d/1YBCGlZRkavo8P7DPPwvEI7QUeV7Tk-2A/view?usp=sharing"
+                                            class="dropdown-item">Advanced Diploma in Computer Applications (ADCA)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <script>
+                        // JavaScript to toggle visibility of nested dropdown menu
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const certDropdownToggle = document.getElementById('certificatedropdown');
+                            const certDropdownMenu = document.getElementById('certificateMenu');
+                            const dipDropdownToggle = document.getElementById('diplomadropdown');
+                            const dipDropdownMenu = document.getElementById('diplomaMenu');
+                            const advdipDropdownToggle = document.getElementById('advdiplomadropdown');
+                            const advdipDropdownMenu = document.getElementById('advdiplomaMenu');
+
+                            certDropdownToggle.addEventListener('click', function (event) {
+                                // Optional: uncomment if future links need to prevent default behavior
+                                // event.preventDefault();
+                                dipDropdownMenu.style.display = 'none'
+                                advdipDropdownMenu.style.display = 'none'
+                                certDropdownMenu.style.display = (certDropdownMenu.style.display === 'none' || certDropdownMenu.style.display === '') ? 'block' : 'none';
+                            });
+                            dipDropdownToggle.addEventListener('click', function (event) {
+                                // Optional: uncomment if future links need to prevent default behavior
+                                // event.preventDefault();
+                                certDropdownMenu.style.display = 'none'
+                                advdipDropdownMenu.style.display = 'none'
+                                dipDropdownMenu.style.display = (dipDropdownMenu.style.display === 'none' || dipDropdownMenu.style.display === '') ? 'block' : 'none';
+                            });
+                            advdipDropdownToggle.addEventListener('click', function (event) {
+                                // Optional: uncomment if future links need to prevent default behavior
+                                // event.preventDefault();
+                                certDropdownMenu.style.display = 'none'
+                                dipDropdownMenu.style.display = 'none'
+                                advdipDropdownMenu.style.display = (advdipDropdownMenu.style.display === 'none' || advdipDropdownMenu.style.display === '') ? 'block' : 'none';
+                            });
+                        });
+                    </script>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Student Zone
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="{% url 'signup' %}" class="dropdown-item">Online Registration</a></li>
+                            <!-- <li><a href="" class="dropdown-item">Verify Student</a></li> -->
+                            <li><a href="{% url 'login' %}" class="dropdown-item">Student Login</a></li>
+                            <li><a href="" class="dropdown-item">Download ID Card</a></li>
+                            <li><a href="{% url 'admitcarddownload' %}" class="dropdown-item">Download Admit Card</a>
+                            </li>
+                            <li><a href="{% url 'certificatedownload' %}" class="dropdown-item">Download certificate</a>
+                            </li>
+                            <li><a href="{% url 'results' %}" class="dropdown-item">View Result</a></li>
+                            <li><a href="{% url 'feespayment' %}" class="dropdown-item">fee payement</a></li>
+                            <li><a href="" class="dropdown-item">Apply final exam</a></li>
+                            <!-- <li><a href="certificate.html" class="dropdown-item">Accreditation & recognition</a></li>
+                            <li><a href="Excellence.html" class="dropdown-item">The Mark of Excellence</a></li> -->
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Download
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="{% url 'brochure' %}" class="dropdown-item">Brochure</a></li>
+                            <li><a href="{% url 'pdfmaterial' %}" class="dropdown-item">Pdf Material</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="{% url 'gallery' %}" class="nav-link">Gallery</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Branch
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="" class="dropdown-item">Enquiry Form</a></li>
+                            <li><a href="{% url 'branchlisthome' %}" class="dropdown-item">Branch List</a></li>
+                        </ul>
+                    </li> <!-- <li class="nav-item"><a href="#" class="nav-link">Results</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Career</a></li> -->
+                    <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Login
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="{% url 'login' %}" class="dropdown-item"> Admin Login</a></li>
+                            <li><a href="{% url 'login' %}" class="dropdown-item"> Student Login</a></li>
+                            <li><a href="{% url 'branchlogin' %}" class="dropdown-item"> Branch Login</a></li>
+                            <li><a href="{% url 'teacherlogin' %}" class="dropdown-item"> Faculty Login</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+            <!-- <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5" style="
+                        justify-content: center">
+                        <img src="img/logo.png" width="200" height="200" class="custom-logo" alt="RAMA TECHNICAL COLLEGE"
+                            decoding="async">
+                    </a>
+        
+                    <ul class="logo-detail col-md-7 mb-0">
+                        <li>रमा टेक्निकल कालेज, नई दिल्ली</li>
+                        <li>RAMA TECHNICAL COLLEGE (RTC), NEW DELHI</li>
+                        <li>AN AUTONOMOUS ORGANIZATION REDG. BY GOVT. OF NCT-DELHI UNDER ITA 2083 GOVT. OF INDIA</li>
+                        <li>REGD. UNDER CR-ACT1957, MINISTRY OF HRD GOVT. OF INDIA</li>
+                        <li>Niti Aayog, Government of india. regd.DL/2019/0248331</li>
+                        <li>(AN ISO 9001:2015 CERTIFIED ORGANIZATION)</li>
+                    </ul>
+        
+                    <div class="ms-auto d-flex extra-detail">
+                        <div class="col-md-10" style="margin-left: 50px;">
+                            Helpline No:<br>
+                            <span>+91 6390-424-209</span><br>
+                            <img src="img/india.png" width="200" height="150"> -->
+
+        </div>
+        <button class="navbar-toggler navbar-toggler-icon" type="button" data-bs-toggle="collapse"
+            data-bs-target="#ftco-navbar" aria-controls="ftco-navbar" aria-expanded="false"
+            aria-label="Toggle navigation" style="background-color: #dad602;">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+        </button>
+        </div>
+    </nav>
+
+    <style>
+        /* Custom CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .brochure-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .brochure-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .brochure-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .brochure-subtitle {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .brochure-content {
+            margin-bottom: 30px;
+        }
+
+        .brochure-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .brochure-image {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .brochure-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .brochure-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 500px;
+        }
+
+        .brochure-footer {
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+
+    <div class="brochure-container">
+        <div class="brochure-header">
+            <h1>Welcome to Our Brochure Page</h1>
+            <h3>Explore our services and offerings</h3>
+        </div>
+
+        <div class="brochure-content">
+            <p>Rama Technical College is committed to providing high-quality education and training in the field of
+                technology
+                and engineering. With state-of-the-art facilities and experienced faculty, we aim to nurture the next
+                generation of innovators and problem solvers.</p>
+            <p>Our comprehensive programs cover a wide range of disciplines, including computer science, electrical
+                engineering, mechanical engineering, and more. We offer hands-on learning experiences, industry
+                collaborations, and internship opportunities to ensure our students are well-prepared for their future
+                careers.</p>
+            <p>At Rama Technical College, we prioritize innovation, creativity, and excellence. Our students are
+                encouraged to think critically, collaborate effectively, and pursue their passions. Join us and embark
+                on
+                a journey towards a rewarding and fulfilling career in technology.</p>
+        </div>
+
+
+        <div class="pdf-viewer">
+            <embed src="{% static 'assets/pdf/brochure.pdf' %}" type="application/pdf" width="100%" height="100%">
+        </div>
+
+    </div>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <div class="container-fluid bg-dark text-light footer my-6 mb-0 py-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-2">Get In Touch</h4>
+                    <h5 class="text-white mb-2">Corporate Address</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Behind Allahabad Bank ,
+                        Maharajganj Road
+                        Anandnagar,Distt.-Maharajganj U.P 273155</p>
+                    <h5 class="text-white mb-2">Head Address</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>G.No.-64V, Part-2 BLK-E
+                        Third Floor, 60
+                        Foota Road, Molarband, Badarpur, South (Delhi) 110044</p>
+                    <p class="mb-4"><i class="fa fa-phone-alt me-3"></i>+91 6390424209</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@rtcdelhi.com</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="{% url 'about' %}">About Us</a>
+                    <a class="btn btn-link" href="{% url 'contact' %}">Contact Us</a>
+                    <a class="btn btn-link" href="{% url 'facilities' %}">Our Services</a>
+                    <a class="btn btn-link" href="">Credentials</a>
+                    <a class="btn btn-link" href="">Terms & Condition</a>
+                    <a class="btn btn-link" href="">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Popular Links</h4>
+                    <a class="btn btn-link" href="{% url 'about' %}">About Us</a>
+                    <a class="btn btn-link" href="{% url 'contact' %}">Contact Us</a>
+                    <a class="btn btn-link" href="">Placements</a>
+                    <a class="btn btn-link" href="{% url 'pdfmaterial' %}">Downloads</a>
+                    <a class="btn btn-link" href="{% url 'gallery' %}">Gallery</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Enquiry</h4>
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control p-3 border-0" placeholder="Your Email Address">
+                            <button class="btn btn-primary">Sign Up</button>
+                        </div>
+                    </form>
+                    <br>
+                    <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=27.103984276686575,%2083.27984090651937+(RAMA%20TECHNICAL%20COLLEGE%20-%20ANANDNAGAR)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a href="/" style="color: #dad602;">RAMA TECHNICAL COLLEGE</a>, All Right
+                    Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'assets/lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'assets/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'assets/lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'assets/js/main1.js' %}"></script>
+    <script src="https://kit.fontawesome.com/d753e98eb0.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

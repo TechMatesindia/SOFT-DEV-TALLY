@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branch Admin Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS styles */
+        .profile-image {
+            max-width: 200px;
+            max-height: 200px;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Branch Admin Profile</h1>
+        <form id="profile-form">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" value="{{ branch_admin.manager }}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" value="{{ branch_admin.email }}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone:</label>
+                <input type="tel" id="phone" name="phone" class="form-control" value="{{ branch_admin.phone_number }}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="branch" class="form-label">Branch:</label>
+                <input type="text" id="branch" name="branch" class="form-control" value="{{ branch_admin.name }}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="profile-picture" class="form-label">Profile Picture:</label>
+                <img id="profile-picture" class="profile-image img-fluid rounded-circle" src="/Ramatechnicalcollege/media/{{ branch_admin.profile_picture }}" alt="Profile Picture">
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

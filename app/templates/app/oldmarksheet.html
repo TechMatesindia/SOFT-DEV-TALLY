@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Old Marksheet Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Manual Marksheet Registration</h1>
+        <form action="#" id="oldform" method="post" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="student_name" class="form-label">Student Name:</label>
+                    <input type="text" id="student_name" name="student_name" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="father_name" class="form-label">Father's Name:</label>
+                    <input type="text" id="father_name" name="father_name" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="mother_name" class="form-label">Mother's Name:</label>
+                    <input type="text" id="mother_name" name="mother_name" class="form-control" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="profile_picture" class="form-label">Profile Picture:</label>
+                    <input type="file" id="profile_picture" name="profile_picture" class="form-control"
+                        accept="image/*">
+                    <span id="fileSizeError" class="error-message">Image size should not exceeds 200Kb</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="branch" class="form-label">Branch:</label>
+                <select id="branch" name="branch" class="form-select" required>
+                    <option value="" disabled selected>Select Branch</option>
+                    {% for branch in branches %}
+                    <option value="{{branch.id}}">{{branch.name}}</option>
+                    {% endfor %}
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="dob" class="form-label">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="mobile_number" class="form-label">Mobile Number:</label>
+                    <input type="tel" id="mobile_number" name="mobile_number" class="form-control" pattern="[0-9]{10}"
+                        required>
+                </div>
+                <div class="col-md-4">
+                    <label for="address" class="form-label">Address:</label>
+                    <textarea id="address" name="address" class="form-control" rows="2" required></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="enrollment_no" class="form-label">Enrollment No:</label>
+                    <input type="text" id="enrollment_no" name="enrollment_no" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="serial_number" class="form-label">Serial Number:</label>
+                    <input type="text" id="serial_number" name="serial_number" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="roll_number" class="form-label">Roll Number:</label>
+                    <input type="text" id="roll_number" name="roll_number" class="form-control" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="session" class="form-label">Session:</label>
+                    <input type="text" id="session" name="session" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="registration_date" class="form-label">Registration Issue Date:</label>
+                    <input type="date" id="registration_date" name="registration_date" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="course_category" class="form-label">Course Category:</label>
+                    <select id="course_category" name="course_category" class="form-select" required>
+                        <option value="" disabled selected>Select Course Category</option>
+                        <option value="">Select Course Type</option>
+                        <option value="Certificate">Certificate</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="Advance Diploma">Advance Diploma</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label for="course" class="form-label">Course:</label>
+                    <select id="course" name="course" class="form-select" required>
+                        <option value="" disabled selected>Select Course</option>
+                        <!-- Populate course options dynamically -->
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-10">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Subject</th>
+                                
+                                <th scope="col">Theory Max Marks</th>
+                                <th scope="col">Theory Marks</th>
+                                
+                                <th scope="col">Practical Max Marks</th>
+                                <th scope="col">Practical Marks</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subjectFields">
+                            <!-- Subject rows will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="total_obtained_marks" class="form-label">Total Obtained Marks:</label>
+                    <input type="number" id="total_obtained_marks" name="total_obtained_marks" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="total_max_marks" class="form-label">Total Max Marks:</label>
+                    <input type="number" id="total_max_marks" name="total_max_marks" class="form-control">
+                </div>
+            </div> -->
+            <div class="row mb-3">
+                <div class="col-md-6 offset-md-3 text-center">
+                    <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+        <div class="row mt-3">
+            <div class="col-md-6 offset-md-3 text-center">
+                <button type="submit" id="generatemarksheetBtn" class="btn btn-danger"
+                    onclick="goToOtherPage()">Generate
+                    Marksheet</button>
+                <button type="submit" class="btn btn-success" onclick="gotocertificatepage()">Generate
+                    Certificate</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.getElementById('course_category').addEventListener('change', function () {
+        var selectedCourseType = this.value;
+
+        var formData = new FormData();
+        formData.append('course_type', selectedCourseType);
+
+        fetch('/fetch_old_subjects/', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                var courseDropdown = document.getElementById('course');
+                courseDropdown.innerHTML = '';
+
+                // Add the default "Select Course" option
+                var defaultOption = document.createElement('option');
+                defaultOption.value = '';
+                defaultOption.textContent = 'Select Course';
+                courseDropdown.appendChild(defaultOption);
+
+                // Append the fetched courses as options
+                data.forEach(course => {
+                    var option = document.createElement('option');
+                    option.value = course.id;
+                    option.textContent = course.name;
+                    courseDropdown.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching courses:', error);
+            });
+    });
+    document.getElementById('course').addEventListener('change', function () {
+        var selectedCourseId = this.value;
+
+        var formData = new FormData();
+        formData.append('course', selectedCourseId);
+
+        console.log(formData);
+
+        fetch('/fetch_subjects/', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                var subjectFields = document.getElementById('subjectFields');
+                subjectFields.innerHTML = '';
+                data.forEach(subject => {
+                    var subjectRow = document.createElement('tr');
+                    var subjectNameCell = document.createElement('td');
+                    subjectNameCell.textContent = subject.subject_name;
+                    subjectRow.appendChild(subjectNameCell);
+
+                   
+                    var theoryMaxMarksCell = createInputCell('theory_max_marks_' + subject.id);
+                    theoryMaxMarksCell.children[0].value = subject.theory_max_marks;
+                    var theoryMarksCell = createInputCell('theory_marks_' + subject.id); // Pre-fill theory max marks
+                    var practicalMaxMarksCell = createInputCell('practical_max_marks_' + subject.id);
+                    practicalMaxMarksCell.children[0].value = subject.practical_max_marks; 
+                    var practicalMarksCell = createInputCell('practical_marks_' + subject.id);// Pre-fill practical max marks
+
+                    
+                    subjectRow.appendChild(theoryMaxMarksCell);
+                    subjectRow.appendChild(theoryMarksCell);
+                    
+                    subjectRow.appendChild(practicalMaxMarksCell);
+                    subjectRow.appendChild(practicalMarksCell);
+
+                    subjectFields.appendChild(subjectRow);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching subjects:', error);
+            });
+    });
+    function createInputCell(inputName) {
+        var cell = document.createElement('td');
+        var input = document.createElement('input');
+        input.type = 'number';
+        input.name = inputName;
+        input.classList.add('form-control');
+        cell.appendChild(input);
+        return cell;
+    };
+    $(document).ready(function () {
+        $('#submitBtn').click(function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var subjectMarksData = collectSubjectMarks();
+
+            var formData = new FormData($('#oldform')[0]);
+
+            formData.append('subject_marks', JSON.stringify(subjectMarksData));
+
+            $.ajax({
+                type: 'POST',
+                url: '/submit_form/',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    alert('Form submitted successfully!');
+
+                },
+                error: function (xhr, status, error) {
+                    alert('Error submitting form: ' + error);
+                }
+            });
+        });
+    });
+    function collectSubjectMarks() {
+        var subjectMarksData = [];
+
+        // Loop through each subject row
+        $('#subjectFields tr').each(function () {
+            var subjectData = {};
+
+            // Extract subject marks from each row
+            subjectData.subject_name = $(this).find('td:first-child').text();
+            
+            subjectData.theory_max_marks = $(this).find('input[name^="theory_max_marks"]').val();
+            subjectData.theory_marks = $(this).find('input[name^="theory_marks"]').val();
+            
+            subjectData.practical_max_marks = $(this).find('input[name^="practical_max_marks"]').val();
+            subjectData.practical_marks = $(this).find('input[name^="practical_marks"]').val();
+
+            // Push subject marks data to the array
+            subjectMarksData.push(subjectData);
+            console.log(subjectData)
+        });
+
+        return subjectMarksData;
+    }
+
+</script>
+<script>
+    function goToOtherPage() {
+        // Gather data from the form
+        const formData = new FormData(document.getElementById('oldform'));
+
+        // Construct the URL with query parameters
+        let queryString = '';
+        for (const [key, value] of formData.entries()) {
+            queryString += `${key}=${encodeURIComponent(value)}&`;
+        }
+        queryString = queryString.slice(0, -1); // Remove the trailing "&"
+
+        const url = `/printoldmarksheet/?${queryString}`;
+
+        // Change the window location to the constructed URL
+        window.location.href = url;
+    }
+</script>
+<script>
+    function gotocertificatepage() {
+        // Gather data from the form
+        const formData = new FormData(document.getElementById('oldform'));
+
+        // Construct the URL with query parameters
+        let queryString = '';
+        for (const [key, value] of formData.entries()) {
+            queryString += `${key}=${encodeURIComponent(value)}&`;
+        }
+        queryString = queryString.slice(0, -1); // Remove the trailing "&"
+
+        const url = `/printoldcertificate/?${queryString}`;
+
+        // Change the window location to the constructed URL
+        window.location.href = url;
+    }
+</script>
+<script>
+    document.getElementById('profile_picture').addEventListener('change', function (event) {
+        var file = event.target.files[0];
+        var maxSize = 200 * 1024; // 2 MB in bytes
+
+        if (file.size > maxSize) {
+            document.getElementById('fileSizeError').style.display = 'inline';
+            event.target.value = '';
+            alert("Image size exceeds 200Kb") // Clear the file input
+        } else {
+            document.getElementById('fileSizeError').style.display = 'none';
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>RTC-RAMA TECHNICAL COLLEGE LMS</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/data-icon.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Profile</title>
+    <style>
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .edit-mode input[type="text"],
+        .edit-mode input[type="email"],
+        .edit-mode textarea {
+            border: 1px solid #007bff;
+        }
+
+        .edit-mode input[type="text"]:focus,
+        .edit-mode input[type="email"]:focus,
+        .edit-mode textarea:focus {
+            outline: none;
+            box-shadow: 0 0 5px #007bff;
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Teacher Profile</h1>
+    <form id="teacherProfileForm">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ teacher.name }}"
+                readonly>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ teacher.user.email }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="phone_number">Phone Number:</label>
+            <input type="text" id="phone_number" name="phone_number" value="{{ teacher.phone_number }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="qualification">Qualification:</label>
+            <input type="text" id="qualification" name="qualification" value="{{ teacher.qualification }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="experience">Experience:</label>
+            <input type="text" id="experience" name="experience" value="{{ teacher.experience }}" readonly>
+        </div>
+        <button type="button" id="editBtn">Edit</button>
+        <button type="submit" id="submitBtn" class="submit-btn">Save</button>
+    </form>
+
+    <script>
+        const editBtn = document.getElementById('editBtn');
+        const saveBtn = document.getElementById('submitBtn');
+
+        editBtn.addEventListener('click', () => {
+            const inputs = document.querySelectorAll('#teacherProfileForm input');
+            inputs.forEach(input => input.removeAttribute('readonly'));
+            editBtn.style.display = 'none';
+            saveBtn.style.display = 'block';
+        });
+
+        document.getElementById('teacherProfileForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            var user_id = '{{ teacher.user.id }}';
+            fetch(`/save_teacher_profile/${user_id}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Profile updated successfully');
+                    } else {
+                        console.error('Failed to update profile');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating profile:', error);
+                });
+        });
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.startsWith(name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+</body>
+
+</html>

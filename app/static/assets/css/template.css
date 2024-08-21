@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+
+.certificatecontainer {
+    position: relative;
+    height: 900px;
+    width: 650px;
+    border: 1px solid black;
+    background: url("{% static 'assets/img/ramaold.png' %}") no-repeat center center;
+    background-size: cover;
+}
+
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .certificatecontainer {
+        border: none;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+.info {
+    position: absolute;
+    /* Adjust the positions according to your layout */
+}
+
+#studentName {
+    top: 100px;
+    left: 50px;
+}
+
+#studentCourse {
+    top: 150px;
+    left: 50px;
+}

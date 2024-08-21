@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style1.css' %}">
+    <script src="https://kit.fontawesome.com/d753e98eb0.js" crossorigin="anonymous"></script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    {% block content %}
+    <div class="auth-wrapper">
+        <div class="auth-content">
+            <div class="auth-bg">
+                <span class="r"></span>
+                <span class="r s"></span>
+                <span class="r s"></span>
+                <span class="r"></span>
+            </div>
+            <div class="card">
+                <form method="post" class="card-body text-center" action="{% url 'register' %}">
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        <i class="feather icon-user-plus auth-icon"></i>
+                    </div>
+                    <h3 class="mb-4">Sign up</h3>
+
+                    <div class="input-group mb-3" style="width: 100%;">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Username"
+                            required>
+
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password"
+                            required>
+
+                        <label for="confirmpassword">Confirm Password:</label>
+                        <input type="password" name="confirmpassword" id="confirmpassword" class="form-control"
+                            placeholder="Confirm Password" required>
+
+                        <label for="signup_type">Signup Type:</label>
+                        <select name="signup_type" id="signup_type" class="form-control" required>
+                            <option value="">Select Signup Type</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="student">Student</option>
+                        </select>
+
+                        <label for="branch_id">Branch ID:</label>
+                        <select name="branch_id" id="branch_id" class="form-control" required>
+                            <option value="">Select Branch ID</option>
+                            {% for branch in branches %}
+                            <option value="{{ branch.id }}">{{ branch.name }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <span class="text-danger d-block text-left"></span>
+
+                        <!-- <div class="form-group text-left mt-4">
+                        <div class="checkbox checkbox-fill d-inline">
+                            <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-1" checked>
+                            <label for="checkbox-fill-1" class="cr"> Save Details</label>
+                        </div>
+                    </div> -->
+                        <div class="form-group text-left">
+
+                            <button type="submit" class="btn btn-primary shadow-2 mb-4" style="margin-top: 70px;">Sign
+                                up</button>
+                            <p class="mb-0 text-muted">Already have an account? <a
+                                    href="{% url 'login' %}"> Log in</a></p>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <label class="d-none">
+        <i class="icon fa-solid fa-user-plus" id="theme-indicator"></i>
+        <!-- <i class="icon feather icon-sun" id="theme-indicator"></i> -->
+        <input type="checkbox" id="theme-switch" class="d-none">
+    </label>
+
+    {% endblock %}
+
+</body>
+
+</html>

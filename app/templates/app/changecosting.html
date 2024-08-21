@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Branch</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        Update Branch
+                    </div>
+                    <div class="card-body">
+                        <form id="updateForm">
+                            <div class="form-group">
+                                <label for="BranchStaticid">Branch Static ID:</label>
+                                <input type="text" class="form-control" id="BranchStaticid" name="BranchStaticid" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup_request">Signup Request:</label>
+                                <input type="number" class="form-control" id="signup_request" name="signup_request">
+                            </div>
+                            <div class="form-group">
+                                <label for="marksheet_amount">Marksheet Amount:</label>
+                                <input type="number" class="form-control" id="marksheet_amount" name="marksheet_amount">
+                            </div>
+                            <button type="button" class="btn btn-primary" id="updateButton">Update</button>
+                        </form>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Branch Details</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Branch Name</th>
+                                    <th scope="col">Branch Code</th>
+                                    <th scope="col">Signup Request</th>
+                                    <th scope="col">Marksheet Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for wallet in wallet %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td>{{wallet.branch.name}}</td>
+                                    <td>{{wallet.branch.branchstaticid}}</td>
+                                    <td>{{wallet.signup_request}}</td>
+                                    <td>{{wallet.marksheet_amount}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#updateButton').click(function () {
+                var formData = $('#updateForm').serialize();
+                $.ajax({
+                    url: '/update_branch/', // Update with your endpoint URL
+                    type: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        alert("Branch updated successfully.");
+                        // Clear form fields after successful update
+                        $('#updateForm')[0].reset();
+                    },
+                    error: function (xhr, status, error) {
+                        alert("An error occurred while updating the branch.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

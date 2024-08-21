@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Marksheet</title>
+    {% load static %}
+
+    <style>
+        * {
+            -webkit-print-color-adjust: exact !important;
+            /* Chrome, Safari 6 – 15.3, Edge */
+            color-adjust: exact !important;
+            /* Firefox 48 – 96 */
+            print-color-adjust: exact !important;
+            /* Firefox 97+, Safari 15.4+ */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            /* Ensure consistent font */
+        }
+
+        #bgimg {
+            height: 1124px;
+            width: 724px;
+            /* object-fit: contain; */
+        }
+
+        .certificatecontainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* Center align text */
+            position: relative;
+            height: 1124px;
+            width: 724px;
+            /* background-image: url("{% static 'cf/img/rama.png' %}");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain; */
+        }
+
+        #studentName {
+            font-size: 14px;
+            position: absolute;
+            bottom: 78%;
+            /* Adjust as needed */
+            left: 28%;
+
+        }
+
+        #studentCourse {
+            font-size: 14px;
+            position: absolute;
+            bottom: 78%;
+            /* Adjust as needed */
+            left: 71%;
+            transform: translateX(-50%);
+        }
+
+        #studentBranchCode {
+            font-size: 14px;
+            position: absolute;
+            bottom: 78%;
+            /* Adjust as needed */
+            left: 72%;
+            transform: translateX(-50%);
+        }
+
+        #studentFatherName {
+            font-size: 14px;
+            position: absolute;
+            bottom: 75.7%;
+            /* Adjust as needed */
+            left: 28%;
+        }
+
+        #studentBranchCode {
+            font-size: 14px;
+            position: absolute;
+            bottom: 71.5%;
+            /* Adjust as needed */
+            left: 72%;
+            transform: translateX(-50%);
+        }
+
+        #studentEnrollmentNo {
+            font-size: 14px;
+            position: absolute;
+            bottom: 73.5%;
+            /* Adjust as needed */
+            left: 28%;
+        }
+
+        #studentSession {
+            font-size: 14px;
+            position: absolute;
+            bottom: 73.5%;
+            /* Adjust as needed */
+            left: 65%;
+            transform: translateX(-50%);
+        }
+
+        #studentDOB {
+            font-size: 14px;
+            position: absolute;
+            bottom: 71.2%;
+            /* Adjust as needed */
+            left: 33%;
+            transform: translateX(-50%);
+        }
+
+        #studentIssueDate {
+            font-size: 14px;
+            position: absolute;
+            bottom: 3.5%;
+            /* Adjust as needed */
+            left: 90%;
+            transform: translateX(-50%);
+        }
+
+        #studentBranchName {
+            font-size: 14px;
+            position: absolute;
+            bottom: 68.2%;
+            /* Adjust as needed */
+            left: 25%;
+        }
+
+        #grade {
+            font-size: 14px;
+            position: absolute;
+            bottom: 15.6%;
+            /* Adjust as needed */
+            left: 94.4%;
+            transform: translateX(-50%);
+        }
+
+        #Division {
+            font-size: 14px;
+            position: absolute;
+            bottom: 15.6%;
+            /* Adjust as needed */
+            left: 20.4%;
+            transform: translateX(-50%);
+        }
+        #GrandobtainedTotal{
+            font-size: 14px;
+            position: absolute;
+            bottom: 15.6%;
+            /* Adjust as needed */
+            left: 86.4%;
+            transform: translateX(-50%);
+        }
+        #GrandTotal{
+            font-size: 14px;
+            position: absolute;
+            bottom: 15.6%;
+            /* Adjust as needed */
+            left: 66.4%;
+            transform: translateX(-50%);
+        
+        }
+        #studentCourseName {
+            font-size: 14px;
+            position: absolute;
+            bottom: 66.2%;
+            left: 24%;
+        }
+
+        #MarksTable {
+            position: absolute;
+            top: 42%;
+            left: 3%;
+
+        }
+
+        .MtRow {
+            height: 8px;
+            /* height: 30px; */
+            width: 660px;
+            /* display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center; */
+            font-size: 12px;
+            font-weight: none;
+
+        }
+
+        .counter {
+            height: 8px;
+            width: 40px;
+        }
+
+        .MtSub {
+            height: 8px;
+            width: 360px;
+            text-align: left;
+        }
+
+        .MtMMT {
+            height: 8px;
+            width: 50px;
+        }
+
+        .MtOMT {
+            height: 8px;
+            width: 50px;
+        }
+
+        .MtMMP {
+            height: 8px;
+            width: 50px;
+        }
+
+        .MtOMP {
+            height: 8px;
+            width: 50px;
+        }
+
+        .MtMMTo {
+            height: 8px;
+            width: 50px;
+        }
+
+        .MtOMto {
+
+            height: 8px;
+            width: 50px;
+        }
+        .image{
+            position: absolute;
+            bottom: 72.3%;
+            /* Adjust as needed */
+            left: 89%;
+            transform: translateX(-50%);  
+        }
+
+
+        .print-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="certificatecontainer">
+        <img id="bgimg" src="{% static 'assets/img/ramacopy.png' %}" alt="certificate" />
+        {% for otherdetail in otherdetails %}
+        <div id="studentName">{{ otherdetail.student.name}}</div>
+        <!-- <div id="studentCourse">{{otherdetail.course}}</div> -->
+        <div id="studentFatherName">{{otherdetail.student.father_name}}</div>
+        <div id="studentBranchCode">{{otherdetail.branch.branchstaticid}}</div>
+        <div id="studentEnrollmentNo">{{otherdetail.student.Studentid}}</div>
+        <div id="studentSession">{{otherdetail.student.studentsession}}</div>
+        <div id="studentDOB">{{otherdetail.student.dob}}</div>
+        <div id="studentIssueDate">26/04/2024</div>
+        <div id="studentBranchName">{{otherdetail.branch.name}}</div>
+        <div id="studentCourseName">{{otherdetail.course.name}}</div>
+        <img src="/media/profile_pictures/IMG_5862.JPG" class="image" alt="Profile Picture" width="80px" height="80px">
+        
+        {% endfor %}
+
+        <table id="MarksTable">
+            {% for mark in marks %}
+            <tr class="MtRow">
+                <td class="MtSub">{{mark.subject_id.name}}</td>
+                <td class="MtMMT">{{mark.theory_max_marks}}</td>
+                <td class="MtOMT">{{mark.theory_marks}}</td>
+                <td class="MtMMP">{{mark.practical_total_marks}}</td>
+                <td class="MtOMP">{{mark.practical_marks}}</td>
+                <!-- <td class="MtMMTo">100</td> -->
+                <td class="MtOMto">68</td>
+            </tr>
+            {% endfor %}
+
+
+            <!-- <tr class="MtRow">
+                <td class="MtSub">{{marksheet.subject.name}}</td>
+                <td class="MtMMT">{{marksheet.theory_max_marks}}</td>
+                <td class="MtOMT">{{marksheet.theory_marks_obtained}}</td>
+                <td class="MtMMP">{{marksheet.practical_max_marks}}</td>
+                <td class="MtOMP">{{marksheet.practical_marks_obtained}}</td>
+                <td class="MtMMTo">100</td>
+                <td class="MtOMto">68</td>
+            </tr>
+            <tr class="MtRow">
+                <td class="MtSub">{{marksheet.subject.name}}</td>
+                <td class="MtMMT">{{marksheet.theory_max_marks}}</td>
+                <td class="MtOMT">{{marksheet.theory_marks_obtained}}</td>
+                <td class="MtMMP">{{marksheet.practical_max_marks}}</td>
+                <td class="MtOMP">{{marksheet.practical_marks_obtained}}</td>
+                <td class="MtMMTo">100</td>
+                <td class="MtOMto">68</td>
+            </tr>
+            <tr class="MtRow">
+                <td class="MtSub">{{marksheet.subject.name}}</td>
+                <td class="MtMMT">{{marksheet.theory_max_marks}}</td>
+                <td class="MtOMT">{{marksheet.theory_marks_obtained}}</td>
+                <td class="MtMMP">{{marksheet.practical_max_marks}}</td>
+                <td class="MtOMP">{{marksheet.practical_marks_obtained}}</td>
+                <td class="MtMMTo">100</td>
+                <td class="MtOMto">68</td>
+            </tr>
+        </table> -->
+
+
+            <div id="grade">B</div>
+            <div id="Division">Grand Total</div>
+            <div id="GrandobtainedTotal"></div>
+            <div id="GrandTotal"></div>
+
+
+    </div>
+    <button class="print-button" onclick="printPage()">Print</button>
+</body>
+<script>
+    function printPage() {
+        window.print();
+    }
+</script>
+<!-- <script>
+    // Function to fetch student details from the server
+    function fetchStudentDetails() {
+        // Make AJAX request to fetch student details
+        fetch('/fetch-students/')
+            .then(response => response.json())
+            .then(data => {
+                // Get the student name from the data
+                const studentName = data.students[0].name; // Assuming only one student is returned
+                // Display the student name on the page
+                document.getElementById('studentName').textContent = studentName;
+            })
+            .catch(error => console.error('Error fetching student details:', error));
+    }
+
+    // Function to fetch marks details from the server
+    function fetchMarksDetails() {
+        // Make AJAX request to fetch marks details
+        fetch('/fetch-marks')
+            .then(response => response.json())
+            .then(data => {
+                // Construct HTML for the marks table
+                let marksTableHTML = '<table border="1"><thead><tr><th>Subject</th><th>Marks</th></tr></thead><tbody>';
+                // Iterate over subjects and marks and add rows to the table
+                data.subjects.forEach(subject => {
+                    marksTableHTML += `<tr><td>${subject.name}</td><td>${subject.marks}</td></tr>`;
+                });
+                marksTableHTML += '</tbody></table>';
+                // Display the marks table on the page
+                document.getElementById('marksTable').innerHTML = marksTableHTML;
+            })
+            .catch(error => console.error('Error fetching marks details:', error));
+    }
+
+    // Call the functions to fetch student and marks details when the page loads
+    document.addEventListener('DOMContentLoaded', function () {
+        fetchStudentDetails();
+        fetchMarksDetails();
+    });
+</script> -->
+<script>
+    function printPage() {
+        window.print();
+    }
+
+    // Function to get the current date in the format DD/MM/YYYY
+    function getCurrentDate() {
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, '0');
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const year = today.getFullYear();
+        return `${day}/${month}/${year}`;
+    }
+
+    function populateIssueDate() {
+        document.querySelectorAll('#studentIssueDate').forEach(element => {
+            element.textContent = getCurrentDate();
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        populateIssueDate();
+    });
+    function populateTotalMarks() {
+    let totalObtainedMarks = 0; // Initialize total obtained marks
+    let totalPossibleMarks = 0; // Initialize total possible marks
+    let totalObtainedMarksAllSubjects = 0;
+    let totalMaxMarksAllSubjects = 0; // Initialize total obtained marks for all subjects
+
+    const rows = document.querySelectorAll('.MtRow');
+    rows.forEach(row => {
+        const theoryObtainedMarks = parseInt(row.querySelector('.MtOMT').textContent);
+        const practicalObtainedMarks = parseInt(row.querySelector('.MtOMP').textContent);
+        const theoryMaxMarks = parseInt(row.querySelector('.MtMMT').textContent);
+        const practicalMaxMarks = parseInt(row.querySelector('.MtMMP').textContent);
+
+        const totalObtainedMarksSubject = theoryObtainedMarks + practicalObtainedMarks; // Total obtained marks for the subject
+        const totalMaxMarksSubject = theoryMaxMarks + practicalMaxMarks; // Total possible marks for the subject
+
+        totalObtainedMarks += totalObtainedMarksSubject; // Add total obtained marks for the subject to the total obtained marks
+        totalPossibleMarks += totalMaxMarksSubject; // Add total possible marks for the subject to the total possible marks
+        totalObtainedMarksAllSubjects += totalObtainedMarksSubject; 
+        totalMaxMarksAllSubjects += totalMaxMarksSubject;
+        
+
+        // Populate total obtained marks and total possible marks for the subject in HTML elements
+        row.querySelector('.MtOMto').textContent = totalObtainedMarksSubject;
+        // row.querySelector('.MtMMTo').textContent = totalMaxMarksSubject;
+    });
+
+    document.getElementById('grade').textContent = calculateGrade(totalObtainedMarks, totalPossibleMarks);
+    // document.getElementById('Division').textContent = calculateDivision(totalObtainedMarks, totalPossibleMarks);
+
+    console.log("Total Obtained Marks for All Subjects:", totalObtainedMarksAllSubjects,totalMaxMarksAllSubjects);
+    document.getElementById('GrandobtainedTotal').textContent = totalObtainedMarksAllSubjects
+    document.getElementById('GrandTotal').textContent = totalMaxMarksAllSubjects
+}
+    function calculateDivision(percentage) {
+        if (percentage >= 75) {
+            return 'First Division';
+        } else if (percentage >= 60) {
+            return 'Second Division';
+        } else if (percentage >= 45) {
+            return 'Third Division';
+        } else {
+            return 'Fail';
+        }
+    }
+
+    function calculateGrade(percentage) {
+        if (percentage >= 90) {
+            return 'A+';
+        } else if (percentage >= 80) {
+            return 'A';
+        } else if (percentage >= 70) {
+            return 'B';
+        } else if (percentage >= 60) {
+            return 'C';
+        } else if (percentage >= 50) {
+            return 'D';
+        } else {
+            return 'F';
+        }
+    }
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        populateIssueDate();
+        populateTotalMarks();
+    });
+</script>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style1.css' %}">
+</head>
+
+<body>
+    {% block content %}
+    <div class="auth-wrapper">
+        <div class="auth-content">
+            <div class="auth-bg">
+                <span class="r"></span>
+                <span class="r s"></span>
+                <span class="r s"></span>
+                <span class="r"></span>
+            </div>
+            <div class="card">
+                <form method="post" class="card-body text-center"  action="{% url 'teacherlogin' %}">
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        <i class="feather icon-unlock auth-icon"></i>
+                    </div>
+                    <h3 class="mb-4"> Teacher Login</h3>
+
+                    <div class="text-danger d-block my-3">
+                    </div>
+
+                    <div class="input-group mb-3">
+
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Email"
+                            required>
+
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" class="form-control"
+                            placeholder="Password" required>
+
+                    </div>
+                    <div class="form-group text-left mt-4">
+                        <div class="checkbox checkbox-fill d-inline">
+                            <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
+                            <label for="checkbox-fill-a1" class="cr"> Save Details</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary shadow-2 mb-4">Login</button>
+                    <!-- <p class="mb-2 text-muted">Forgot password? <a href="">Reset</a></p> -->
+                    <p class="mb-0 text-muted">Don’t have an account? <a href="{% url 'signup' %}">Signup</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <label class="d-none">
+        <i class="icon feather icon-sun" id="theme-indicator"></i>
+        <input type="checkbox" id="theme-switch" class="d-none">
+    </label>
+
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+    {% endblock %}
+
+</body>
+
+</html>

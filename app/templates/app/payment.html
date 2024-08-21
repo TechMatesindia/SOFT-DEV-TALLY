@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Course Info</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="course_name">Course Name:</label>
+                    <input type="text" id="course_name" name="course_name" class="form-control"
+                        value="{{ course_name }}" readonly>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="course_duration">Course Duration in months:</label>
+                    <input type="text" id="course_duration" name="course_duration" class="form-control"
+                        value="{{ course_duration }}" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h1>Course Payment</h1>
+            <h2>{{ course_name }}</h2>
+            <p>Price: ₹{{ course_price }}</p>
+
+            <form id="paymentForm" action="{% url 'payment_approval' %}" method="post">
+                <!-- Add the action attribute with the appropriate URL -->
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="payment_amount">Enter Amount to Pay:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-rupee-sign"></i></span>
+                        </div>
+                        <input type="number" id="payment_amount" name="payment_amount" min="1"
+                            value="{{ course_price }}" class="form-control">
+                    </div>
+                </div>
+                <button type="submit" id="payNowButton" class="btn btn-primary">Pay Now <i
+                        class="fas fa-chevron-circle-right"></i></button>
+                <button type="button" class="btn btn-secondary ml-2" id="payAllButton">Pay All</button>
+            </form>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+        <script>
+            document.getElementById('payNowButton').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the default form submission behavior
+                var paymentAmount = parseInt(document.getElementById('payment_amount').value);
+                var courseId = "{{ course_id }}";
+                var branchId = "{{ branch_id }}";
+
+                // Create the request body
+                var data = {
+                    'payment_amount': paymentAmount,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                };
+
+                // Fetch API to send payment details to the server
+                fetch('/payment-approval/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => {
+                        if (response.status === 200) {
+                            alert("Request sent to branch admin. Please pay cash to the branch.");
+                            window.location.href = "{% url 'login' %}"; // Redirect to login panel
+                        } else {
+                            // Handle other status codes here
+                            throw new Error('Network response was not ok.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+
+        </script>
+
+
+</body>
+
+</html>

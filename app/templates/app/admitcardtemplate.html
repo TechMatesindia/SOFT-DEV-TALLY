@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Marksheet</title>
+    {% load static %}
+
+    <style>
+        * {
+            -webkit-print-color-adjust: exact !important;
+            color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .certificatecontainer {
+            position: relative;
+            height: 1122px;
+            /* Height of A4 at 96 DPI */
+            width: 794px;
+            /* Width of A4 at 96 DPI */
+            border: 1px solid black;
+            background-size: cover;
+            box-sizing: border-box;
+            /* Ensure border is included in size */
+        }
+
+        #bgimg {
+            height: 1123px;
+            width: 794px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .certificatecontainer {
+                border: none;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        .info {
+            font-size: 14px;
+            position: absolute;
+        }
+
+        #studentName {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 68.5%;
+            left: 75.5%;
+        }
+
+        #studentCourse {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 51.5%;
+            left: 37%;
+        }
+
+        #studentFatherName {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 58.5%;
+            left: 74.6%;
+        }
+
+        #studentBranchCode {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 40.6%;
+            left: 79%;
+        }
+
+        #studentEnrollmentNo {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 63.5%;
+            left: 74.4%;
+        }
+
+        #studentSession {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 70.5%;
+            left: 66%;
+        }
+
+        #studentDOB {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 56%;
+            left: 74%;
+        }
+
+        #studentIssueDate {
+            font-weight: bold;
+            font-size: 11px;
+            bottom: 71.2%;
+            left: 50%;
+        }
+
+        #studentBranchName {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 40.6%;
+            left: 47%;
+        }
+
+        #branchaddress {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 47%;
+            left: 42%;
+        }
+
+        #Division {
+            font-size: 11px;
+            bottom: 13.6%;
+            left: 20.4%;
+        }
+
+        #studentregistrationdate {
+            font-weight: bold;
+            font-size: 11px;
+            bottom: 4%;
+            left: 20%;
+        }
+
+        #studentCourseName {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 44.2%;
+            left: 60%;
+        }
+
+        #MarksTable {
+            font-weight: bold;
+            position: absolute;
+            top: 40.2%;
+            left: 3.5%;
+        }
+
+        #studentrollnumber {
+            font-weight: bold;
+            font-size: 12px;
+            bottom: 36.5%;
+            left: 36%;
+        }
+
+        #studentserialnumber {
+            bottom: 81.8%;
+            left: 84%;
+        }
+
+        .MtRow {
+            height: 8px;
+            width: 660px;
+            font-size: 8px;
+        }
+
+        .MtSub {
+            height: 8px;
+            width: 260px;
+        }
+
+        .counter,
+        .MtMMT,
+        .MtOMT,
+        .MtMMP,
+        .MtOMP,
+        .MtMMTo,
+        .MtOMto {
+            height: 8px;
+            width: 40px;
+        }
+
+        .stampimg {
+            position: absolute;
+            top: 83%;
+            left: 37%;
+            transform: translateX(-50%);
+        }
+
+        .grandtotal,
+        .grand_sum,
+        .total,
+        .grade {
+            font-size: small;
+            position: absolute;
+            bottom: 26%;
+        }
+
+        .grandtotal {
+            left: 81%;
+        }
+
+        .grand_sum {
+            left: 70%;
+        }
+
+        .total {
+            left: 31%;
+        }
+
+        .grade {
+            left: 90%;
+        }
+
+        .print-button,
+        .download-button {
+            position: fixed;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .print-button {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .download-button {
+            bottom: 20px;
+            right: 100px;
+        }
+
+        @media print {
+
+            .print-button,
+            .download-button {
+                display: none;
+            }
+        }
+
+        #studentexamhours {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 30%;
+            left: 38%;
+        }
+
+        #studentexamtime {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 32.5%;
+            left: 73%;
+        }
+
+        #studentexamdate {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 32.5%;
+            left: 47%;
+        }
+
+        #studentrollno {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 66%;
+            left: 75%;
+        }
+
+        #sign {
+            font-size: 11px;
+            bottom: 57.5%;
+            left: 15%;
+        }
+
+        #profile {
+            font-size: 11px;
+            bottom: 63%;
+            left: 15%;
+        }
+
+        #studentmobilenumber {
+            font-weight: bold;
+            font-size: 14px;
+            bottom: 61%;
+            left: 74.9%;
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="certificatecontainer" id="certificatecontainer">
+        <img id="bgimg" src="{% static 'assets/img/monthlyadmitcard.png' %}" alt="certificate" />
+        <div id="studentName" class="info">{{student.name}}</div>
+        <div id="studentCourse" class="info">{{student.course.name}}</div>
+        <div id="studentEnrollmentNo" class="info">{{student.enrollment_number}}</div>
+        <div id="studentrollno" class="info">{{student.roll_number}}</div>
+        <div id="studentFatherName" class="info">{{student.father_name}}</div>
+        <div id="studentBranchCode" class="info">{{student.branch.branchstaticid}}</div>
+        <div id="studentmobilenumber" class="info">{{student.phone_number}}</div>
+        <div id="studentSession" class="info">{{student.studentsession}}</div>
+        <div id="studentDOB" class="info">{{student.dob}}</div>
+        <div id="studentBranchName" class="info">{{student.branch.name}}</div>
+        <div id="studentCourseName" class="info">{{monthly_admit_card.paper_name}}</div>
+        <div id="branchaddress" class="info">{{monthly_admit_card.semester}}</div>
+        <div id="studentrollnumber" class="info">{{monthly_admit_card.exam_centre}}</div>
+        <div id="studentexamdate" class="info">{{monthly_admit_card.exam_date}}</div>
+        <div id="studentexamtime" class="info">{{monthly_admit_card.start_time}}-{{monthly_admit_card.end_time}}</div>
+        <div id="studentexamhours" class="info">{{monthly_admit_card.total_hours}} Hr</div>
+        <div id="studentserialnumber" class="info"></div>
+        <img src="/Ramatechnicalcollege/media/{{student.upload_sign}}" id="sign" alt="Sign" width="80px" height="50px"
+            class="info">
+        <img src="/Ramatechnicalcollege/media/{{student.profile_picture}}" id="profile" alt="Profile Picture"
+            width="80px" height="80px" class="info">
+    </div>
+    <div class="loader" id="loader"></div>
+    <button id="downloadBtn" class="download-button">Download PDF</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function () {
+            var loader = document.getElementById('loader');
+            loader.style.display = 'block';
+
+            var element = document.getElementById('certificatecontainer');
+            var opt = {
+                margin: 0,
+                filename: 'monthlyadmitcard.pdf',
+                image: { type: 'jpeg', quality: 10 },
+                html2canvas: {
+                    quality:4,
+                    scale:4,
+                    dpi: 192,
+                    scale: 4,
+                    letterRendering: true,
+                    useCORS: true
+                }, // Increased scale for higher resolution
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+                var pdfBlob = pdf.output('blob');
+
+                const branchId = "{{ student.branch.id }}";
+                var formData = new FormData();
+                formData.append('pdf', pdfBlob, 'monthlyadmitcard.pdf');
+                formData.append('studentid', '{{ student.Studentid }}');
+
+                fetch("{% url 'save_admit_pdf' %}", {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    }
+                }).then(response => response.json())
+                    .then(data => {
+                        loader.style.display = 'none'; // Hide the loader
+                        if (data.success) {
+                            pdf.save('monthlyadmitcard.pdf');
+                            window.location.href = `/branchdashboard/${branchId}/`;
+                        } else {
+                            alert('Failed to save PDF: ' + data.error);
+                        }
+                    }).catch(error => {
+                        loader.style.display = 'none'; // Hide the loader
+                        console.error('Error:', error);
+                        alert('An error occurred while saving the PDF');
+                    });
+            });
+        });
+    </script>
+</body>
+
+</html>

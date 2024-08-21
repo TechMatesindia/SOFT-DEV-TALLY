@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Marks</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5">Enter Marks</h1>
+        <form id="enterMarksForm" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="branch">Branch:</label>
+                <select class="form-control" id="branch" name="branch">
+                    <option value="">Select Branch Name</option>
+                    {% for branch in branches%}
+                    <option value="{{ branch.id }}">{{ branch.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="batch">Batch:</label>
+                <select class="form-control" id="batch" name="batch">
+                    <option value="">Select Batch Name</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="studentId">Enter Student ID:</label>
+                <input type="text" id="studentId" class="form-control" placeholder="Enter Student ID" required>
+            </div>
+            <div class="form-group">
+                <label for="coursetype">Course Type:</label>
+                <select class="form-control" id="coursetype" name="coursetype">
+                    <option value="">Select Course type</option>
+                    <option value="Certificate">Certificate</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="Adv Diploma">Adv Diploma</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="course">Course:</label>
+                <select class="form-control" id="course" name="course">
+                    <option value="">Select Course Name</option>
+                    {% for course in courses %}
+                    <option value="{{ course.id }}">{{ course.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="markRows"></div>
+        </form>
+        <button id="enterMarksButton" class="btn btn-primary">Submit</button>
+
+        <h1 class="mt-5">Student Marks</h1>
+        <table class="table table-striped table-bordered" id="marksTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Student Name</th>
+                    <th>Subject</th>
+                    <th> Theory Obtained Marks</th>
+                    <th> Theory Max Marks</th>
+                    <th> Practical Obtained Marks</th>
+                    <th> Practical Max Marks</th>
+                </tr>
+            </thead>
+            <tbody id="marksTableBody">
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('branch').addEventListener('change', function () {
+            const branchId = this.value;
+            if (branchId) {
+                fetchBatches(branchId);
+            } else {
+                document.getElementById('batch').innerHTML = '';
+            }
+        });
+
+        function fetchBatches(branchId) {
+            const data = { branch_id: branchId };
+            fetch(`/fetch_batches/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const batchDropdown = document.getElementById('batch');
+                    batchDropdown.innerHTML = '<option value="">Select Batch Name</option>';
+                    data.batches.forEach(batch => {
+                        const option = document.createElement('option');
+                        option.value = batch.id;
+                        option.text = batch.name;
+                        batchDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching batches:', error));
+        }
+
+        document.getElementById('studentId').addEventListener('input', function () {
+            const studentId = this.value.trim();
+            if (studentId) {
+                fetchStudentMarks(studentId);
+            } else {
+                document.getElementById('marksTableBody').innerHTML = '';
+            }
+        });
+
+        function fetchStudentMarks(studentId) {
+            fetch(`/fetch_student_marks/${studentId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    const marksTableBody = document.getElementById('marksTableBody');
+                    marksTableBody.innerHTML = '';
+                    data.marks.forEach(mark => {
+                        const row = document.createElement('tr');
+                        console.log(data)
+                        row.innerHTML = `
+                            <td>${mark.student_name}</td>
+                            <td>${mark.subject_name}</td>
+                            <td>${mark.theory_marks}</td>
+                            <td>${mark.theory_max_marks}</td>
+                            <td>${mark.practical_marks}</td>
+                            <td>${mark.practical_max_marks}</td>
+                        `;
+                        marksTableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error fetching student marks:', error));
+        }
+
+        document.getElementById('course').addEventListener('change', function () {
+            const course_id = this.value;
+            const markRows = document.getElementById('markRows');
+
+            if (course_id) {
+                markRows.innerHTML = '';
+
+                fetch(`/fetch_subjects_max_marks/${course_id}/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        for (let i = 0; i < data.subjects.length; i++) {
+                            const subject = data.subjects[i];
+                            const row = document.createElement('div');
+                            row.className = 'form-row mb-3 marksrow';
+
+                            const subjectidcol = document.createElement('div');
+                            subjectidcol.className = 'col-md-2';
+                            const subjectidInput = document.createElement('input');
+                            subjectidInput.type = 'number';
+                            subjectidInput.className = 'form-control';
+                            subjectidInput.value = subject.id;
+                            subjectidInput.readOnly = true; // Set the subject ID value // Use the same name as in the form
+                            subjectidcol.appendChild(subjectidInput);
+
+                            const subjectCol = document.createElement('div');
+                            subjectCol.className = 'col-md-4';
+                            const subjectInput = document.createElement('input');
+                            subjectInput.type = 'text';
+                            subjectInput.className = 'form-control';
+                            subjectInput.value = subject.name;
+                            subjectInput.readOnly = true;
+                            subjectCol.appendChild(subjectInput);
+
+                            const theoryMarksCol = document.createElement('div');
+                            theoryMarksCol.className = 'col-md-2';
+                            const theoryMarksInput = document.createElement('input');
+                            theoryMarksInput.type = 'number';
+                            theoryMarksInput.className = 'form-control';
+                            theoryMarksInput.name = `theory_marks_obtained`;
+                            theoryMarksInput.placeholder = 'Theory Marks Obtained';
+                            theoryMarksCol.appendChild(theoryMarksInput);
+
+                            const theoryMaxMarksCol = document.createElement('div');
+                            theoryMaxMarksCol.className = 'col-md-2';
+                            const theoryMaxMarksInput = document.createElement('input');
+                            theoryMaxMarksInput.type = 'number';
+                            theoryMaxMarksInput.className = 'form-control';
+                            theoryMaxMarksInput.value = subject.theory_max_marks;
+                            theoryMaxMarksInput.readOnly = true;
+                            theoryMaxMarksCol.appendChild(theoryMaxMarksInput);
+
+                            const practicalMarkscol = document.createElement('div');
+                            practicalMarkscol.className = 'col-md-2';
+                            const practicalMarksInput = document.createElement('input');
+                            practicalMarksInput.type = 'number';
+                            practicalMarksInput.className = 'form-control';
+                            practicalMarksInput.name = `practical_marks_obtained`;
+                            practicalMarksInput.placeholder = 'Practical Marks Obtained';
+                            practicalMarkscol.appendChild(practicalMarksInput);
+
+                            const practicalMaxMarkscol = document.createElement('div');
+                            practicalMaxMarkscol.className = 'col-md-2';
+                            const practicalMaxMarksInput = document.createElement('input');
+                            practicalMaxMarksInput.type = 'number';
+                            practicalMaxMarksInput.className = 'form-control';
+                            practicalMaxMarksInput.value = subject.practical_max_marks;
+                            practicalMaxMarksInput.readOnly = true;
+                            practicalMaxMarkscol.appendChild(practicalMaxMarksInput);
+
+                            row.appendChild(subjectCol);
+                            row.appendChild(theoryMarksCol);
+                            row.appendChild(theoryMaxMarksCol);
+                            row.appendChild(practicalMarkscol);
+                            row.appendChild(practicalMaxMarkscol);
+                            row.appendChild(subjectidcol);
+
+                            markRows.appendChild(row);
+                        }
+                    })
+                    .catch(error => console.error('Error fetching subjects and max marks:', error));
+            }
+        });
+
+        document.getElementById('studentId').addEventListener('input', function () {
+            const studentId = this.value.trim();
+            const courseType = document.getElementById('coursetype').value;
+            if (studentId) {
+                fetchCourses(studentId, courseType);
+            } else {
+                document.getElementById('course').innerHTML = '<option value="">Select Course Name</option>';
+            }
+        });
+
+        document.getElementById('enterMarksButton').addEventListener('click', function () {
+            const branchid = document.getElementById('branch').value;
+            const batchid = document.getElementById('batch').value;
+            const course = document.getElementById('course').value;
+            const studentid = document.getElementById('studentId').value;
+
+            var rows = document.getElementsByClassName("marksrow");
+            var marks = [];
+            for (var i = 0; i <= rows.length - 1; i++) {
+                var rows2 = rows[i].getElementsByTagName("div");
+                var subjectmarks = [];
+                for (var j = 0; j <= rows2.length - 1; j++) {
+                    var rows3 = rows2[j].getElementsByTagName("input");
+                    subjectmarks.push(parseInt(rows3[0].value));
+                }
+                marks.push(subjectmarks);
+            }
+            const data = [{ 'branchid': branchid, 'batchid': batchid, 'studentid': studentid, 'course': course, 'marks': marks }];
+            fetch('/save_marks/', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Marks saved successfully");
+                    } else {
+                        console.error('Failed to save marks');
+                    }
+                })
+                .catch(error => {
+                    alert('Error:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    {% load static %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Add your custom CSS styles here */
+        .container {
+            max-width: 600px;
+            /* Adjust container width as needed */
+            margin-top: 50px;
+        }
+
+        .mt-5 {
+            margin-top: 50px;
+        }
+
+        /* Add more custom styles as needed */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5">Create Marksheet</h1>
+        <form>
+            <div class="form-group">
+                <label for="branch">Select Branch:</label>
+                <select id="branch" name="branch" onchange="branchchange()" class="form-control" required>
+                    <option selected>choose branch</option>
+                    {% for branch in branches %}
+                    <option value="{{ branch.id }}">{{ branch.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="batch">Select Batch:</label>
+                <select id="batch" name="batch" class="form-control" required>
+                    <option selected>choose Batch</option>
+                    {% for batch in batches %}
+                    <option value="{{ batch.id }}">{{ batch.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="studentId">Enter Student ID:</label>
+                    <input type="text" id="studentId" class="form-control" placeholder="Enter Student ID" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="course">Select Course:</label>
+                <select id="course" name="course" class="form-control" required>
+                    <!-- Options dynamically populated based on selected student -->
+                    <option selected>choose Course</option>
+                    <!-- {% for course in courses %} -->
+                    <!-- <option value="{{ course.id }}">{{ course.name }}</option> -->
+                    <option value="1">PYTHON</option>
+                    <!-- {% endfor %} -->
+                </select>
+            </div>
+        </form>
+        <div id="marksTable" class="mt-5" style="display: none;">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Subject</th>
+                        <th>Obtained Marks</th>
+                        <th>Max Marks</th>
+                    </tr>
+                </thead>
+                <tbody id="marksTableBody">
+                    <!-- Table body dynamically populated with subject marks -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container text-center mt-3">
+        <button id="generatePdfBtn" class="btn btn-primary" onclick="goToOtherPage()">Generate Marksheet</button>
+        <button id="generatePdfBtn" class="btn btn-primary" onclick="gotocertificatepage()">Generate
+            Certificate</button>
+    </div>
+    <!-- Bootstrap JS and jQuery CDN links -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function branchchange() {
+            console.log("hello")
+        }
+    </script>
+
+    <!-- <script>
+        function fetchBranches() {
+            fetch('/fetch-branches')
+                .then(response => response.json())
+                .then(data => {
+                    const branchDropdown = document.getElementById('branch');
+                    branchDropdown.innerHTML = ''; 
+                    data.branches.forEach(branch => {
+                        const option = document.createElement('option');
+                        option.value = branch.id;
+                        option.text = branch.name;
+                        branchDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching branches:', error));
+        }
+        document.getElementById('branch').addEventListener('change', function () {
+            const branchId = this.value;
+            console.log(branchId)
+            if (branchId) {
+                fetchBatches(branchId);
+            } else {
+                document.getElementById('batch').innerHTML = ''; // Clear batch dropdown if no branch selected
+            }
+        });
+
+        // Function to fetch batches based on selected branch and populate the batch dropdown
+        function fetchBatches(branchId) {
+            // Construct the request body
+
+            // Make a fetch request to fetch batches based on branch from the server
+            fetch(`/fetch_batches/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' // Add CSRF token header if necessary
+                },
+                body: JSON.stringify({ 'branch_id': branchId })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const batchDropdown = document.getElementById('batch');
+                    batchDropdown.innerHTML = ''; // Clear existing options
+                    // Populate options dynamically
+                    data.batches.forEach(batch => {
+                        const option = document.createElement('option');
+                        option.value = batch.id;
+                        option.text = batch.name;
+                        batchDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching batches:', error));
+
+        }
+        // Add event listener to branch dropdown to fetch batches when a branch is selected
+
+        // Add event listener to batch dropdown to fetch students when a batch is selected
+        document.getElementById('batch').addEventListener('change', function () {
+            const batchId = this.value;
+            if (batchId) {
+                fetchStudents(batchId);
+            } else {
+                document.getElementById('student').innerHTML = ''; // Clear student dropdown if no batch selected
+            }
+        });
+
+        // Function to fetch students based on selected batch and populate the student dropdown
+        function fetchStudents(batchId) {
+            // Make a fetch request to fetch students based on batch from the server
+            fetch(`/fetch-students/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' // Add CSRF token header
+                },
+                body: JSON.stringify({ 'batch_id': batchId }) // Send batch_id as JSON in the body
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const studentDropdown = document.getElementById('student');
+                    studentDropdown.innerHTML = ''; // Clear existing options
+                    // Populate options dynamically
+                    data.students.forEach(student => {
+                        const option = document.createElement('option');
+                        option.value = student.id;
+                        option.text = student.fields.name; // Adjust property access based on your model structure
+                        studentDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching students:', error));
+        }
+
+
+        // Add event listener to student dropdown to fetch courses when a student is selected
+        document.getElementById('student').addEventListener('change', function () {
+            const studentId = this.value;
+            if (studentId) {
+                fetchCourses(studentId);
+            } else {
+                document.getElementById('course').innerHTML = ''; // Clear course dropdown if no student selected
+            }
+        });
+
+        // Function to fetch courses based on selected student and populate the course dropdown
+        function fetchCourses(studentId) {
+            // Make a fetch request to fetch courses based on student from the server
+            fetch(`/fetch-courses?student_id=${studentId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const courseDropdown = document.getElementById('course');
+                    courseDropdown.innerHTML = ''; // Clear existing options
+                    // Populate options dynamically
+                    data.courses.forEach(course => {
+                        const option = document.createElement('option');
+                        option.value = course.id;
+                        option.text = course.name;
+                        courseDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching courses:', error));
+        }
+
+        // Function to fetch marks based on selected course and populate the marks table
+        function fetchMarks(courseId) {
+            // Make a fetch request to fetch marks based on course from the server
+            fetch(`/fetch-marks?course_id=${courseId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const marksTable = document.getElementById('marksTable');
+                    marksTable.innerHTML = '';
+                    const headerRow = document.createElement('tr');
+                    data.subjects.forEach(subject => {
+                        const th = document.createElement('th');
+                        th.textContent = subject.name;
+                        headerRow.appendChild(th);
+                    });
+                    marksTable.appendChild(headerRow);
+                    data.students.forEach(student => {
+                        const bodyRow = document.createElement('tr');
+                        student.marks.forEach(mark => {
+                            const td = document.createElement('td');
+                            td.textContent = mark;
+                            bodyRow.appendChild(td);
+                        });
+                        marksTable.appendChild(bodyRow);
+                    });
+                    marksTable.style.display = 'block';
+                })
+                .catch(error => console.error('Error fetching marks:', error));
+        }
+    </script> -->
+    <script>
+        document.getElementById('branch').addEventListener('change', function () {
+            const branchId = this.value;
+            if (branchId) {
+                fetchBatches(branchId); // Call function to fetch and populate batches
+            } else {
+                document.getElementById('batch').innerHTML = ''; // Clear batch dropdown if no branch selected
+            }
+        });
+
+        function fetchBatches(branchId) {
+            const data = { branch_id: branchId };
+            console.log(data)
+            fetch(`/fetch_batches/`, {
+
+
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const batchDropdown = document.getElementById('batch');
+                    // batchDropdown.innerHTML = ''; 
+                    data.batches.forEach(batch => {
+                        const option = document.createElement('option');
+                        option.value = batch.id;
+                        option.text = batch.name;
+                        batchDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching batches:', error));
+        }
+        document.getElementById('batch').addEventListener('change', function () {
+            const batchId = this.value;
+            console.log(batchId)
+            if (batchId) {
+                fetchStudents(batchId);
+            } else {
+                document.getElementById('batch').innerHTML = '';
+            }
+        });
+        // function fetchStudents(batchId) {
+        //     const data = { batch_id: batchId }; // Prepare data to send in the request body
+        //     fetch(`/fetch_students/`, {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             'X-CSRFToken': '{{ csrf_token }}'
+        //         },
+        //         body: JSON.stringify(data)
+        //     })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             const studentDropdown = document.getElementById('student');
+        //             data.students.forEach(student => {
+        //                 const option = document.createElement('option');
+        //                 option.value = student.id;
+        //                 option.text = student.name;
+        //                 studentDropdown.appendChild(option);
+        //             });
+        //         })
+        //         .catch(error => console.error('Error fetching students:', error));
+        // }
+
+        document.getElementById('studentId').addEventListener('input', function () {
+            const studentId = this.value.trim(); // Get the value of the student ID input field
+            if (studentId) {
+                fetchCourse(studentId); // Call fetchCourse function with the student ID
+            } else {
+                // Clear the courses dropdown if no student ID is entered
+                document.getElementById('course').innerHTML = '<option value="">Select Course</option>';
+            }
+        });
+        // });
+        function fetchCourse(studentId) {
+            const data = { student_id: studentId };
+            console.log(data) // Prepare data to send in the request body
+            fetch(`/fetch_courses/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const coursesDropdown = document.getElementById('course');
+                    data.courses.forEach(course => {
+                        const option = document.createElement('option');
+                        option.value = course.id;
+                        option.text = course.name;
+                        coursesDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error fetching courses:', error));
+        }
+
+
+    </script>
+    <!-- <script>
+          function goToOtherPage() {
+            window.location.href ="{% url 'printmarksheet' %}" ;
+          }
+          function gotocertificatepage() {
+            window.location.href ="{% url 'printcertificate' %}" ;
+          }
+
+        </script> -->
+
+    <script>
+        function goToOtherPage() {
+            const branchId = document.getElementById('branch').value;
+            const batchId = document.getElementById('batch').value;
+            const studentId = document.getElementById('studentId').value;
+            const courseId = document.getElementById('course').value;
+
+            // Construct the URL with query parameters
+            const url = `{% url 'printmarksheet' %}?branch_id=${branchId}&batch_id=${batchId}&student_id=${studentId}&course_id=${courseId}`;
+
+            // Change the window location to the constructed URL
+            window.location.href = url;
+        }
+    </script>
+    <script>
+        function gotocertificatepage() {
+            const branchId = document.getElementById('branch').value;
+            const batchId = document.getElementById('batch').value;
+            const studentId = document.getElementById('studentId').value;
+            const courseId = document.getElementById('course').value;
+
+            // Construct the URL with query parameters
+            const url = `{% url 'printcertificate' %}?branch_id=${branchId}&batch_id=${batchId}&student_id=${studentId}&course_id=${courseId}`;
+
+            // Change the window location to the constructed URL
+            window.location.href = url;
+        }
+    </script>
+
+</body>
+
+</html>

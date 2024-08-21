@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Form</title>
+    {% load static %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link href="{% static 'assets/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/style1.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-n3D4NvOgeDZ6fuZlFgGUoZVoK3fcr2Q4jc4Fko3pJ21+4r1XGcJJJ6m5IAGfFkC1xMfMnjVvuV6oE5eZr6dU9Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Add your custom CSS styles here */
+
+        /* Increase space between columns */
+        .table th,
+        .table td {
+            padding: 8px;
+        }
+
+        /* Style dropdowns */
+        .form-control {
+            min-width: 100px;
+        }
+
+        /* Increase font size for day columns */
+        th {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Alternate row background color */
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Center table content */
+        .table-responsive {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Add margin to the form */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        /* Styling for checkboxes */
+        .checkbox {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .checkbox label {
+            display: block;
+            position: relative;
+            padding-left: 25px;
+            cursor: pointer;
+        }
+
+        .checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 18px;
+            width: 18px;
+            background-color: #eee;
+            border-radius: 3px;
+        }
+
+        .checkbox input:checked~.checkmark:after {
+            display: block;
+        }
+
+        .checkbox .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid black;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="mt-5 mb-4">Attendance Form</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="batch">Select Batch:</label>
+                <select class="form-control" id="batch" name="batch">
+                    <option selected>Select Batch</option>
+                    {% for batch in batches %}
+                    <option value="{{ batch.id }}">{{ batch.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr id="attendanceTableHead">
+                            <th>Student ID</th>
+                            <th>Student Name</th>
+                            <!-- {% for day in daysinthismonth %}
+                            <th>{{ day }}</th>
+                            {% endfor %} -->
+                        </tr>
+                    </thead>
+                    <tbody id="attendanceTable">
+                        <!-- {% for student in students %}
+                        <tr>
+                            <td>{{ student.id }}</td>
+                            <td>{{ student.name }}</td>
+                            {% for day in days_in_month %}
+                            <td class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="student_{{ student.id }}_day{{ day }}" value="Present">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %} -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- <button class="btn btn-primary">Submit Attendance</button> -->
+        </form>
+        <button class="btn btn-primary" onclick="{submitAttendance()}">submit</button>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr id="attendanceTableHead">
+                        <th>Student ID</th>
+                        <th>Student Name</th>
+                        <th>Status</th>
+                        <!-- {% for day in daysinthismonth %}
+                        <th>{{ day }}</th>
+                        {% endfor %} -->
+                    </tr>
+                </thead>
+                <tbody id="attendenceregister">
+                    <!-- {% for student in students %}
+                    <tr>
+                        <td>{{ student.id }}</td>
+                        <td>{{ student.name }}</td>
+                        {% for day in days_in_month %}
+                        <td class="checkbox">
+                            <label>
+                                <input type="checkbox" name="student_{{ student.id }}_day{{ day }}" value="Present">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %} -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        function daysInMonth(month, year) {
+            return new Date(year, month, 0).getDate();
+        }
+        var date = new Date()
+        var today = date.getDate()<10?"0"+date.getDate():date.getDate()
+        var year = date.getFullYear()
+        var month = date.getMonth()+1<10?"0"+(date.getMonth()+1):date.getMonth()+1
+        var datetoday = year+"-"+month+"-"+today
+        var daysinthismonth = daysInMonth(month + 1, year)
+        console.log()
+        const attendanceTableHead = document.getElementById('attendanceTableHead');
+        const th = document.createElement("th")
+        th.innerText = datetoday;
+        attendanceTableHead.appendChild(th)
+
+        document.getElementById('batch').addEventListener('change', function () {
+            const batchhId = this.value;
+            if (batchhId) {
+                fetchStudents(batchhId); 
+            }
+        });
+
+        function fetchStudents(batchhId) {
+            const data = { batch_id: batchhId };
+            console.log(data)
+            fetch(`/fetch_students_attendance/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const attendanceTable = document.getElementById('attendanceTable');
+                    console.log(data)
+                    attendanceTable.innerHTML = '';
+                    data.students.forEach(student => {
+                        console.log(student)
+                        const tr = document.createElement('tr');
+                        const td1 = document.createElement('td');
+                        td1.innerText = student.id
+                        tr.appendChild(td1)
+                        const td2 = document.createElement('td');
+                        td2.innerText = student.name
+                        tr.appendChild(td2)
+                        const td = document.createElement("td")
+                        const label = document.createElement("label")
+                        label.htmlFor = student.id
+                        const input = document.createElement("input")
+                        input.type = 'checkbox'
+                        input.value = 'present'
+                        input.name = 'student_' + student.id + '_day' + datetoday
+                        input.id = student.id
+                        td.appendChild(input)
+                        td.appendChild(label)
+                        tr.appendChild(td)
+                        attendanceTable.appendChild(tr);
+                    });
+                    const attendenceregister = document.getElementById('attendenceregister');
+                    attendenceregister.innerHTML = '';
+                    data.attendance.forEach(at => {
+                        const tr = document.createElement('tr');
+                        const td1 = document.createElement('td');
+                        td1.innerText = at.student_id
+                        tr.appendChild(td1)
+                        const td2 = document.createElement('td');
+                        td2.innerText = at.student_name
+                        tr.appendChild(td2)
+                        const td3 = document.createElement('td');
+                        td3.innerText = at.status
+                        tr.appendChild(td3)
+                        attendenceregister.appendChild(tr);
+                    });
+                })
+                .catch(error => console.error('Error fetching batches:', error));
+        }
+        function submitAttendance() {
+            const Batch_id = document.getElementById("batch").value
+            const tr = document.getElementById("attendanceTable").getElementsByTagName("tr")
+            const attendance=[]
+            for (var i = 0; i <= tr.length-1; i++) {
+                var td = tr[i].getElementsByTagName('td')
+                const values = {}
+                for (var j = 0; j <= td.length-1; j++) {
+                    if (j === 2) {
+                        var input = td[j].getElementsByTagName("input")
+                        values.Present=input[0].checked
+                    }else if (j===1){
+                        values.Name=td[j].innerHTML
+                    }else{
+                        values.Student_id=td[j].innerHTML
+
+                    }
+                }
+                attendance.push(values)
+            }
+            const data=[{"Batchid":Batch_id,"Date":datetoday},{"Attendance":attendance}]
+            console.log(data)
+            postAttendance(data)
+        }
+        function postAttendance(data){
+            fetch(`/post_attendance/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .catch(error => console.error('Error posting attendence:', error));
+        }
+    </script>
+
+
+    <!-- Bootstrap JS (optional, only required if you're using Bootstrap JS components) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

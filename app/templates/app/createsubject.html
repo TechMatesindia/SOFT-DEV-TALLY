@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Subject to Course</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        button[type="submit"],
+        button[type="button"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        button[type="submit"]:hover,
+        button[type="button"]:hover {
+            background-color: #007bff;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+        }
+
+        .subject-row {
+            margin-bottom: 10px;
+        }
+
+        .subject-name {
+            flex: 4;
+        }
+
+        .other-fields {
+            flex: 1;
+        }
+
+        .row {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Add Subject to Course</h1>
+        <form id="addSubjectForm" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <select name="course_type" id="course_type" class="form-control" required>
+                    <option value="">Select Course Type</option>
+                    <option value="Certificate">Certificate</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="Advance Diploma">Advance Diploma</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="course">Select Course:</label>
+                <select class="form-control" id="course" name="course">
+                    <option value="">Select Course Type</option>
+                    {% for course in courses %}
+                    <option value="{{ course.id }}">{{ course.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="subjectRow" style="display: none;">
+                <div class="subject-row">
+                    <div class="row mb-2">
+                        <div class="col subject-name">
+                            <input type="text" class="form-control" name="subject_name[]" placeholder="Subject">
+                        </div>
+                        <div class="col other-fields">
+                            <input type="number" class="form-control" name="theory_marks_obtained[]" placeholder="Theory Obtained">
+                        </div>
+                        <div class="col other-fields">
+                            <input type="number" class="form-control" name="theory_max_marks[]" placeholder="Theory Max Marks">
+                        </div>
+                        <div class="col other-fields">
+                            <input type="number" class="form-control" name="practical_marks_obtained[]" placeholder="Practical Obtained">
+                        </div>
+                        <div class="col other-fields">
+                            <input type="number" class="form-control" name="practical_max_marks[]" placeholder="Practical Max Marks">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="addSubjectButton" type="button" class="btn btn-primary">Add Subject</button>
+            <button type="submit" class="btn btn-primary">Save Subjects</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('course').addEventListener('change', function () {
+            var courseType = document.getElementById('course_type').value;
+            var course = this.value;
+    
+            document.getElementById('subjectRow').style.display = 'block';
+        });
+    
+        document.getElementById('addSubjectButton').addEventListener('click', function () {
+            var subjectRowClone = document.querySelector('.subject-row').cloneNode(true);
+            document.getElementById('subjectRow').appendChild(subjectRowClone);
+        });
+    
+        document.getElementById('addSubjectForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+    
+            var theoryMarks = document.querySelectorAll('input[name="theory_marks_obtained[]"]');
+            theoryMarks.forEach(function (mark) {
+                if (mark.value === '') {
+                    mark.value = '0';
+                }
+            });
+    
+            var formData = new FormData(this);
+    
+            fetch('/add_subject_to_course/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Subjects saved successfully")
+                        window.location.href = "/createsubject/";
+                    } else {
+                        console.error('Failed to save subjects');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>

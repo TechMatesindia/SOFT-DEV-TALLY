@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Sign Up</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style1.css' %}">
+    <script src="https://kit.fontawesome.com/d753e98eb0.js" crossorigin="anonymous"></script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+</head>
+
+<body>
+    {% block content %}
+    <div class="auth-wrapper">
+        <div class="auth-content">
+            <div class="auth-bg">
+                <span class="r"></span>
+                <span class="r s"></span>
+                <span class="r s"></span>
+                <span class="r"></span>
+            </div>
+            <div class="card" id="registrationForm">
+                <form method="post" class="card-body text-center" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        <i class="feather icon-user-plus auth-icon"></i>
+                    </div>
+                    <h3 class="mb-4">Student Sign up</h3>
+
+                    <label for="course Type">Session</label>
+                    <select name="course Type" id="Session" class="form-control" required>
+                        <option value="">Select Session</option>
+                        <option value="2024-25">2024-25</option>
+                    </select>
+                    <div class="input-group mb-3" style="width: 100%;">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Username"
+                            required>
+
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password"
+                            required>
+
+                        <label for="confirmpassword">Confirm Password:</label>
+                        <input type="password" name="confirmpassword" id="confirmpassword" class="form-control"
+                            placeholder="Confirm Password" required>
+
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="name" required>
+
+                        <label for="father_name">Father's Name:</label>
+                        <input type="text" name="father_name" id="father_name" class="form-control"
+                            placeholder="Father's Name" required>
+
+                        <label for="mother_name">Mother's Name:</label>
+                        <input type="text" name="mother_name" id="mother_name" class="form-control"
+                            placeholder="Mother's Name" required>
+
+                        <label for="gender">Gender:</label>
+                        <select name="gender" id="gender" class="form-control" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <label for="Mobile Number">Mobile Number:</label>
+                        <input type="number" name="number" id="mobilenumber" class="form-control" placeholder="number"
+                            required>
+
+                        <label for="Gaurdian Number"> Gaurdian Mobile Number:</label>
+                        <input type="number" name="number" id="gaurdiannumber" class="form-control" placeholder="number"
+                            required>
+
+
+                        <label for="dob">Date of Birth:</label>
+                        <input type="date" name="dob" id="dob" class="form-control" placeholder="Date of Birth"
+                            required>
+
+                        <label for="residential_address">Residential Address:</label>
+                        <textarea name="residential_address" id="residential_address" class="form-control"
+                            placeholder="Residential Address" required></textarea>
+
+
+                        <label for="branch">Branch:</label>
+                        <select name="branch" id="branch" class="form-control" required>
+                            <option value="">Select Branch</option>
+                            {% for branch in branches %}
+                            <option value="{{ branch.id }}">{{ branch.name }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <label for="course Type">Course Category:</label>
+                        <select name="course Type" id="course_type" class="form-control" required>
+                            <option value="">Select Course Type</option>
+                            <option value="Certificate">Certificate</option>
+                            <option value="Diploma">Diploma</option>
+                            <option value="Advance Diploma">Advance Diploma</option>
+                        </select>
+
+                        <label for="course">Course:</label>
+                        <select name="course" id="course" class="form-control" required>
+                            <option value="">Select Course</option>
+                            {% for course in courses %}
+                            <option value="{{ course.id }}">{{ course.name }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <label for="profile_picture">Profile Picture:</label>
+                        <input type="file" name="profile_picture" id="profile_picture" class="form-control"
+                            accept="image/*" required>
+
+                        <label for="signature">Upload Signature:</label>
+                        <input type="file" name="signature" id="signature" class="form-control" accept="image/*"
+                            required>
+
+                        <span class="text-danger d-block text-left"></span>
+
+                        <div class="form-group text-left">
+                            <button type="button" class="btn btn-primary" id="verifyButton">Verify</button>
+                            <p class="mb-0 text-muted">Already have an account? <a href="{% url 'login' %}"> Log in</a>
+                            </p>
+                        </div>
+                        <div id="otpVerification" class="container" style="display: none;">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="otp" placeholder="Enter OTP">
+                            </div>
+                            <button type="button" class="btn btn-success" id="signupButton">Signup</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <label class="d-none">
+        <i class="icon fa-solid fa-user-plus" id="theme-indicator"></i>
+        <!-- <i class="icon feather icon-sun" id="theme-indicator"></i> -->
+        <input type="checkbox" id="theme-switch" class="d-none">
+    </label>
+
+    {% endblock %}
+
+</body>
+<script>
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    // Include CSRF token in AJAX request headers
+    $(document).ready(function () {
+        // Set CSRF token for AJAX requests
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                    // Only send the token to relative URLs
+                    xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                }
+            }
+        });
+
+        $('#verifyButton').click(function () {
+            var formData = new FormData();
+            formData.append('name', $('#name').val());
+            formData.append('username', $('#username').val());
+            formData.append('email', $('#email').val());
+            formData.append('password', $('#password').val());
+            formData.append('confirmpassword', $('#confirmpassword').val());
+            formData.append('father_name', $('#father_name').val());
+            formData.append('mobilenumber', $('#mobilenumber').val());
+            formData.append('gaurdiannumber', $('#gaurdiannumber').val());
+            formData.append('mother_name', $('#mother_name').val());
+            formData.append('dob', $('#dob').val());
+            formData.append('gender', $('#gender').val());
+            formData.append('residential_address', $('#residential_address').val());
+            formData.append('branch_id', $('#branch').val());
+            formData.append('course', $('#course').val());
+            formData.append('session', $('#Session').val());
+            formData.append('profile_picture', $('#profile_picture')[0].files[0]);
+            formData.append('signature', $('#signature')[0].files[0]);
+
+            $.ajax({
+                url: '/register/',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    alert("Wait for OTP");
+                    $('#otpVerification').show();
+                },
+                error: function (xhr, status, error) {
+                    var errorMessage = xhr.responseJSON ? xhr.responseJSON.error : "An error occurred";
+                    alert("Error: " + errorMessage);
+                }
+            });
+        });
+
+
+        $('#signupButton').click(function () {
+            var otp = $('#otp').val();
+
+            $.ajax({
+                url: '/verify_otp/',
+                type: 'POST',
+                data: {
+                    otp: otp
+                },
+                success: function (response) {
+                    alert("Otp Verification Completed")
+                    window.location.href = "{% url 'payment' %}";
+                },
+                error: function (xhr, status, error) {
+                    var errorMessage = xhr.responseJSON ? xhr.responseJSON.error : "An error occurred";
+                    alert("Error: " + errorMessage);
+                }
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#course_type').change(function () {
+            var selectedBranchId = $("#branch").val();
+            var selectedCourseType = $('#course_type').val();
+
+            $.ajax({
+                url: '/filter_courses/',
+                type: 'GET',
+                data: { branch_id: selectedBranchId, course_type: selectedCourseType },
+                success: function (response) {
+                    $('#course').empty();
+                    $('#course').append($('<option>').text('Select Course').val(''));
+                    $.each(response.courses, function (index, course) {
+                        $('#course').append($('<option>').text(course.name).val(course.id));
+                    });
+                },
+                error: function (xhr, status, error) {
+                    var errorMessage = xhr.responseJSON ? xhr.responseJSON.error : "An error occurred";
+                    alert("Error: " + errorMessage);
+                }
+            });
+        });
+
+        // $('#branch').change(function () {
+        //     $('#course_type').trigger('change');
+        // });
+
+        // Trigger change event on page load to initialize course dropdown based on selected branch and course type
+    });
+</script>
+
+</html>

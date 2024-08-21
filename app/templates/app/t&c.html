@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>RTC-RAMA TECHNICAL COLLEGE</title>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'assets/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-n3D4NvOgeDZ6fuZlFgGUoZVoK3fcr2Q4jc4Fko3pJ21+4r1XGcJJJ6m5IAGfFkC1xMfMnjVvuV6oE5eZr6dU9Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        #certificateMenu {
+            display: none;
+            margin-left: 15vh !important;
+        }
+
+        #diplomaMenu {
+            display: none;
+            margin-left: 15vh !important;
+        }
+
+        #advdiplomaMenu {
+            display: none;
+            margin-left: 15vh !important;
+        }
+    </style>
+
+
+</head>
+
+
+<body>
+    <div class="akshat"></div>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <div class="ferry-head-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-6"
+                    style="display: flex;align-items: center;flex-direction: row;min-inline-size: max-content;align-content: center;">
+                    <ul class="info-left" style="list-style-type: none; margin: 0; padding: 0;">
+                        <li style="color: #dad602; margin-right: 10px;"><a href="tel:+916390424209"><i
+                                    class="fa fa-phone"></i>+919452313195</a></li>
+                        <li style="margin-right: 30px;"><a href="mailto:info@rtcdelhi.com" title="Mail Me"><i
+                                    class="fa fa-envelope"></i> info@rtcdelhi.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-xs-12 icons" style="display: flex; align-items: center;">
+                    <ul class="info-right"
+                        style="list-style-type: none; margin-top: 10px;margin-bottom: 10px;padding: 0;">
+                        <!-- <li style="margin-right: 10px;"><a href="#">Admission</a></li>
+                        <li style="margin-right: 10px;"><a href="#">Branch Login</a></li> -->
+                        <li style="margin-right: 10px;"><a href="#" id="branchEnquiryLink">Branch Enquiry</a></li>
+                        <li style="margin-right: 10px;"><a href="#" id="studentEnquiryLink">Student Enquiry</a></li>
+
+                    </ul>
+                    <!-- <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-twitter"></i></a> -->
+                    <a id="fb" class="btn btn-square btn-outline-light me-1"
+                        href="https://www.facebook.com/profile.php?id=61555714598383&mibextid=ZbWKwL"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a id="insta" class="btn btn-square btn-outline-light me-1"
+                        href="https://www.instagram.com/ramah1309?utm_source=qr&igsh=MTE5Y3U1a3F1Z3h5cw=="><i
+                            class="fab fa-instagram"></i></a>
+                    <!-- <a class="btn btn-square btn-outline-light me-0" href=""><i class="fab fa-linkedin-in"></i></a> -->
+                    <!-- <button class="navbar-toggler dropbutton navbar-toggler-icon" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#ftco-navbar" aria-controls="ftco-navbar"
+                        aria-expanded="false" aria-label="Toggle navigation" style="background-color: #dad602;">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- < Navbar Start > -->
+
+
+
+    <div class="container-fluid" style="position: relative;background: #fff; display: inline-block;">
+        <div class="container mob">
+            <div class="row">
+                <div class="col-md-10 col-9 d-flex justify-content-end"><a href=""><img
+                            src="{% static '/assets/img/logo1.jpg' %}" class="img-fluid  "></a></div>
+                <div class="col-md-2 col-3 d-flex align-items-center"><img src="{%static 'assets/img/india.jpeg'%}"
+                        class="img-fluid  ">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <nav class="navbar1 navbar-expand-lg ftco_navbar ftco-navbar-light">
+        <div class="container navcontainer">
+            <div class="collapse navbar-collapse" id="ftco-navbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item active"><a href="{% url 'Home' %}" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            About
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="{% url 'about' %}" class="dropdown-item">About RTC</a></li>
+                            <li><a href="{% url 'director' %}" class="dropdown-item">Chairman's Message</a></li>
+                            <li><a href="{% url 'team' %}" class="dropdown-item">Board of Directors</a></li>
+                            <li><a href="{% url 'vision' %}" class="dropdown-item">Mission and Vision</a></li>
+                            <!-- <li><a href="Vision.html" class="dropdown-item">Vision</a></li> -->
+                            <li><a href="{% url 'certificate' %}" class="dropdown-item">Accreditation and
+                                    Recognition</a></li>
+                            <li><a href="{% url 'excellence' %}" class="dropdown-item">Mark of Excellence</a></li>
+                            <!-- <li><a href="certificate.html" class="dropdown-item">Accreditation & recognition</a></li>
+                            <li><a href="Excellence.html" class="dropdown-item">The Mark of Excellence</a></li> -->
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="coursedropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Courses
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="coursedropdown">
+                            <li><a class="nav-link dropdown-toggle" href="#" id="certificatedropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Certificate</a>
+                                <ul class="dropdown-menu dropdown-submenu" aria-labelledby="certificatedropdown"
+                                    id="certificateMenu">
+                                    <li><a href="https://drive.google.com/file/d/1R0Unf783b4njnqjLQ481TeFJ4q6hKHb2/view?usp=sharing"
+                                            class="dropdown-item">Refridgration and Air Condition</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1AxYtJtG3CRVsb7z1lmPRYKTj2eb6QIqB/view?usp=sharing"
+                                            class="dropdown-item">Fan Motor Binding Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1Le6fcggS5irvLzEryPj1m34zo0I4kwo5/view?usp=sharing"
+                                            class="dropdown-item">Laptop Repairing Course</a></li>
+                                    <!-- <li><a href="#" class="dropdown-item">Computer Assembling and Formatting Course</a></li> -->
+                                    <li><a href="https://drive.google.com/file/d/1lNP-Vo8_WqdJpJVCSTToOHY1PDpjyDGC/view?usp=sharing"
+                                            class="dropdown-item">Computer Accounting Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1MNTwnlmj2HbgU6ctA5OrOAZfnlj97LGD/view?usp=sharing"
+                                            class="dropdown-item">Computer DTP Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1dFTQB4GI6tKjoaFtLtsi_jXxhsP0hxjp/view?usp=sharing"
+                                            class="dropdown-item">Digital Marketing Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1QsdMpqddPRkk5-ld5VS_cQlQN3677GWp/view?usp=sharing"
+                                            class="dropdown-item">CCC</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1sI0LMcy1wqW_k8UoAe_iHfs0N-rZ-Ca8/view?usp=sharing"
+                                            class="dropdown-item">Typing</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1lfNtDimRswIaCSqwRjet6EzHsGnKZDfx/view?usp=sharing"
+                                            class="dropdown-item">Auto Cad Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/11q9N_VEMX1Sk3Dmk8YMheXBYMHlCDRxM/view?usp=sharing"
+                                            class="dropdown-item">Mobile Phone Repairing Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1aIrSBthrsKpnmeelOPR-iv2maN87hbqe/view?usp=sharing"
+                                            class="dropdown-item">PCB Repairing Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1QPZUvE3ZZD_qi3oA7tcjqmNfpqyS3Ml6/view?usp=sharing"
+                                            class="dropdown-item">Programming Language Course</a></li>
+                                    <!-- <li><a href="#" class="dropdown-item">Python Programming Language</a></li> -->
+                                    <li><a href="https://drive.google.com/file/d/1gvrX-za61OJqrb6P6MG_mEla4AGcVVDm/view?usp=sharing"
+                                            class="dropdown-item">Core Java Course</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1YTZARQFOW_u78oVyNixCfZCfl5hvlT5Z/view?usp=sharing"
+                                            class="dropdown-item">Advance Java Course</a></li>
+                                    <!-- <li><a href="#" class="dropdown-item">Arc and Argon Veldor Certification Course</a></li>
+                                    <li><a href="#" class="dropdown-item">Argon Veldor Certification Course</a></li>
+                                    <li><a href="#" class="dropdown-item">Arc Veldor Certification Course</a></li>
+                                    <li><a href="#" class="dropdown-item">21 Plumber (Sanetory Fitting)</a></li>
+                                    <li><a href="#" class="dropdown-item">Pipe Fitter , Fabricator</a></li> -->
+                                    <li><a href="https://drive.google.com/file/d/1Po0dR9X8EPnGrWQx2ggptaDMis3tONeB/view?usp=sharing"
+                                            class="dropdown-item">Household and Commercial Wiring</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a class="nav-link dropdown-toggle" href="#" id="diplomadropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Diploma</a>
+                                <ul class="dropdown-menu dropdown-submenu" aria-labelledby="diplomadropdown"
+                                    id="diplomaMenu">
+                                    <li><a href="https://drive.google.com/file/d/1hoqt6v62sFeqmzG-yHaiWIcO6VmHmrbF/view?usp=sharing"
+                                            class="dropdown-item">Refridgration and Air Condition Diploma (DRA)</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1Sjm10I9MBD0h83ytsMiMryn4MTAfFLMQ/view?usp=sharing"
+                                            class="dropdown-item">Computer Diploma Course (DCA)</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1OrB1UpfIFsiLnBqpu2_rsf9g72_eXmks/view?usp=sharing"
+                                            class="dropdown-item">CCA</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1Dotle4GBwSCD2iDULkokfNC_9Vo2YUD6/view?usp=sharing"
+                                            class="dropdown-item">Diploma in Computer Hardware and Networking</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1-wDuaGAWeFtuBcjZZ6P4rZg1hBVVkKFF/view?usp=sharing"
+                                            class="dropdown-item">Web Designing</a></li>
+                                    <li><a href="https://drive.google.com/file/d/1qp0wuU4FbzDNadBL-smJqEM7GvyYiAF5/view?usp=sharing"
+                                            class="dropdown-item">Electrical Diploma (DELE)</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a class="nav-link dropdown-toggle" href="#" id="advdiplomadropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Advanced Diploma</a>
+                                <ul class="dropdown-menu dropdown-submenu" aria-labelledby="advdiplomadropdown"
+                                    id="advdiplomaMenu">
+                                    <li><a href="https://drive.google.com/file/d/1YBCGlZRkavo8P7DPPwvEI7QUeV7Tk-2A/view?usp=sharing"
+                                            class="dropdown-item">Advanced Diploma in Computer Applications (ADCA)</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <script>
+                        // JavaScript to toggle visibility of nested dropdown menu
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const certDropdownToggle = document.getElementById('certificatedropdown');
+                            const certDropdownMenu = document.getElementById('certificateMenu');
+                            const dipDropdownToggle = document.getElementById('diplomadropdown');
+                            const dipDropdownMenu = document.getElementById('diplomaMenu');
+                            const advdipDropdownToggle = document.getElementById('advdiplomadropdown');
+                            const advdipDropdownMenu = document.getElementById('advdiplomaMenu');
+
+                            certDropdownToggle.addEventListener('click', function (event) {
+                                // Optional: uncomment if future links need to prevent default behavior
+                                // event.preventDefault();
+                                dipDropdownMenu.style.display = 'none'
+                                advdipDropdownMenu.style.display = 'none'
+                                certDropdownMenu.style.display = (certDropdownMenu.style.display === 'none' || certDropdownMenu.style.display === '') ? 'block' : 'none';
+                            });
+                            dipDropdownToggle.addEventListener('click', function (event) {
+                                // Optional: uncomment if future links need to prevent default behavior
+                                // event.preventDefault();
+                                certDropdownMenu.style.display = 'none'
+                                advdipDropdownMenu.style.display = 'none'
+                                dipDropdownMenu.style.display = (dipDropdownMenu.style.display === 'none' || dipDropdownMenu.style.display === '') ? 'block' : 'none';
+                            });
+                            advdipDropdownToggle.addEventListener('click', function (event) {
+                                // Optional: uncomment if future links need to prevent default behavior
+                                // event.preventDefault();
+                                certDropdownMenu.style.display = 'none'
+                                dipDropdownMenu.style.display = 'none'
+                                advdipDropdownMenu.style.display = (advdipDropdownMenu.style.display === 'none' || advdipDropdownMenu.style.display === '') ? 'block' : 'none';
+                            });
+                        });
+                    </script>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Student Zone
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="{% url 'signup' %}" class="dropdown-item">Online Registration</a></li>
+                            <!-- <li><a href="" class="dropdown-item">Verify Student</a></li> -->
+                            <li><a href="{% url 'login' %}" class="dropdown-item">Student Login</a></li>
+                            <li><a href="" class="dropdown-item">Download ID Card</a></li>
+                            <li><a href="{% url 'admitcarddownload' %}" class="dropdown-item">Download Admit Card</a>
+                            </li>
+                            <li><a href="{% url 'certificatedownload' %}" class="dropdown-item">Download certificate</a>
+                            </li>
+                            <li><a href="{% url 'results' %}" class="dropdown-item">View Result</a></li>
+                            <li><a href="{% url 'feespayment' %}" class="dropdown-item">fee payement</a></li>
+                            <li><a href="" class="dropdown-item">Apply final exam</a></li>
+                            <!-- <li><a href="certificate.html" class="dropdown-item">Accreditation & recognition</a></li>
+                            <li><a href="Excellence.html" class="dropdown-item">The Mark of Excellence</a></li> -->
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Download
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="{% url 'brochure' %}" class="dropdown-item">Brochure</a></li>
+                            <li><a href="{% url 'pdfmaterial' %}" class="dropdown-item">Pdf Material</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="{% url 'gallery' %}" class="nav-link">Gallery</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Branch
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="" class="dropdown-item">Enquiry Form</a></li>
+                            <li><a href="{% url 'branchlisthome' %}" class="dropdown-item">Branch List</a></li>
+                        </ul>
+                    </li> <!-- <li class="nav-item"><a href="#" class="nav-link">Results</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Career</a></li> -->
+                    <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Login
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="{% url 'login' %}" class="dropdown-item"> Admin Login</a></li>
+                            <li><a href="{% url 'login' %}" class="dropdown-item"> Student Login</a></li>
+                            <li><a href="{% url 'branchlogin' %}" class="dropdown-item"> Branch Login</a></li>
+                            <li><a href="{% url 'teacherlogin' %}" class="dropdown-item"> Faculty Login</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+            <!-- <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5" style="
+                        justify-content: center">
+                        <img src="img/logo.png" width="200" height="200" class="custom-logo" alt="RAMA TECHNICAL COLLEGE"
+                            decoding="async">
+                    </a>
+        
+                    <ul class="logo-detail col-md-7 mb-0">
+                        <li>रमा टेक्निकल कालेज, नई दिल्ली</li>
+                        <li>RAMA TECHNICAL COLLEGE (RTC), NEW DELHI</li>
+                        <li>AN AUTONOMOUS ORGANIZATION REDG. BY GOVT. OF NCT-DELHI UNDER ITA 2083 GOVT. OF INDIA</li>
+                        <li>REGD. UNDER CR-ACT1957, MINISTRY OF HRD GOVT. OF INDIA</li>
+                        <li>Niti Aayog, Government of india. regd.DL/2019/0248331</li>
+                        <li>(AN ISO 9001:2015 CERTIFIED ORGANIZATION)</li>
+                    </ul>
+        
+                    <div class="ms-auto d-flex extra-detail">
+                        <div class="col-md-10" style="margin-left: 50px;">
+                            Helpline No:<br>
+                            <span>+91 6390-424-209</span><br>
+                            <img src="img/india.png" width="200" height="150"> -->
+
+        </div>
+        <button class="navbar-toggler navbar-toggler-icon" type="button" data-bs-toggle="collapse"
+            data-bs-target="#ftco-navbar" aria-controls="ftco-navbar" aria-expanded="false"
+            aria-label="Toggle navigation" style="background-color: #dad602;">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+        </button>
+        </div>
+    </nav>
+
+    <h2>INTELLECTUAL PROPERTY RIGHTS</h2>
+    <p>Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality,
+        software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the
+        “Content”) and the trademarks, service marks, and logos contained therein (the “Marks”) are owned or controlled
+        by us or licensed to us, and are protected by copyright and trademark laws and various other intellectual
+        property rights and unfair competition laws of the United States, international copyright laws, and
+        international conventions. The Content and the Marks are provided on the Site “AS IS” for your information and
+        personal use only. Except as expressly provided in these Terms of Use, no part of the Site and no Content or
+        Marks may be copied, reproduced, aggregated, republished, uploaded, posted, publicly displayed, encoded,
+        translated, transmitted, distributed, sold, licensed, or otherwise exploited for any commercial purpose
+        whatsoever, without our express prior written permission.Provided that you are eligible to use the Site, you are
+        granted a limited license to access and use the Site and to download or print a copy of any portion of the
+        Content to which you have properly gained access solely for your personal, non-commercial use. We reserve all
+        rights not expressly granted to you in and to the Site, the Content and the Marks.</p>
+    <h2>USER REPRESENTATIONS</h2>
+    <p>By using the Site, you represent and warrant that: (1) all registration information you submit will be true,
+        accurate, current, and complete; (2) you will maintain the accuracy of such information and promptly update such
+        registration information as necessary; (3) you have the legal capacity and you agree to comply with these Terms
+        of Use; (4) you are not a minor in the jurisdiction in which you reside, or if a minor, you have received
+        parental permission to use the Site; (5) you will not access the Site through automated or non-human means,
+        whether through a bot, script or otherwise; (6) you will not use the Site for any illegal or unauthorized
+        purpose; and (7) your use of the Site will not violate any applicable law or regulation.If you provide any
+        information that is untrue, inaccurate, not current, or incomplete, we have the right to suspend or terminate
+        your account and refuse any and all current or future use of the Site (or any portion thereof).</p>
+    <h2>USER REGISTRATION</h2>
+    <p>You may be required to register with the Site. You agree to keep your password confidential and will be
+        responsible for all use of your account and password. We reserve the right to remove, reclaim, or change a
+        username you select if we determine, in our sole discretion, that such username is inappropriate, obscene, or
+        otherwise objectionable.</p>
+    <h2>PRODUCTS</h2>
+    <p>All products are subject to availability. We reserve the right to discontinue any products at any time for any
+        reason. Prices for all products are subject to change.
+    </p>
+    <h2>PURCHASES AND PAYMENT</h2>
+    <p>We accept the following forms of payment:–  VisaYou agree to provide current, complete, and accurate purchase and
+        account information for all purchases made via the Site. You further agree to promptly update account and
+        payment information, including email address, payment method, and payment card expiration date, so that we can
+        complete your transactions and contact you as needed. Sales tax will be added to the price of purchases as
+        deemed required by us. We may change prices at any time. All payments shall be in Rupeer.You agree to pay all
+        charges at the prices then in effect for your purchases and any applicable shipping fees, and you authorize us
+        to charge your chosen payment provider for any such amounts upon placing your order. If your order is subject to
+        recurring charges, then you consent to our charging your payment method on a recurring basis without requiring
+        your prior approval for each recurring charge, until such time as you cancel the applicable order. We reserve
+        the right to correct any errors or mistakes in pricing, even if we have already requested or received payment.We
+        reserve the right to refuse any order placed through the Site. We may, in our sole discretion, limit or cancel
+        quantities purchased per person, per household, or per order. These restrictions may include orders placed by or
+        under the same customer account, the same payment method, and/or orders that use the same billing or shipping
+        address. We reserve the right to limit or prohibit orders that, in our sole judgment, appear to be placed by
+        dealers, resellers, or distributors.
+    </p>
+    <h2>PROHIBITED ACTIVITIES</h2>
+    <p></p>You may not access or use the Site for any purpose other than that for which we make the Site available. The
+    Site may not be used in connection with any commercial endeavors except those that are specifically endorsed or
+    approved by us.As a user of the Site, you agree not to:1.  Systematically retrieve data or other content from the
+    Site to create or compile, directly or indirectly, a collection, compilation, database, or directory without written
+    permission from us.2.  Make any unauthorized use of the Site, including collecting usernames and/or email addresses
+    of users by electronic or other means for the purpose of sending unsolicited email, or creating user accounts by
+    automated means or under false pretenses.3.  Use a buying agent or purchasing agent to make purchases on the
+    Site.4.  Use the Site to advertise or offer to sell goods and services.5.  Circumvent, disable, or otherwise
+    interfere with security-related features of the Site, including features that prevent or restrict the use or copying
+    of any Content or enforce limitations on the use of the Site and/or the Content contained therein.6.  Trick,
+    defraud, or mislead us and other users, especially in any attempt to learn sensitive account information such as
+    user passwords.7.  Engage in unauthorized framing of or linking to the Site.8.  Make improper use of our support
+    services or submit false reports of abuse or misconduct.9.  Engage in any automated use of the system, such as using
+    scripts to send comments or messages, or using any data mining, robots, or similar data gathering and extraction
+    tools.10.  Interfere with, disrupt, or create an undue burden on the Site or the networks or services connected to
+    the Site.11.  Attempt to impersonate another user or person or use the username of another user.12.  Sell or
+    otherwise transfer your profile.13.  Use any information obtained from the Site in order to harass, abuse, or harm
+    another person.14.  Use the Site as part of any effort to compete with us or otherwise use the Site and/or the
+    Content for any revenue-generating endeavor or commercial enterprise.15.  Decipher, decompile, disassemble, or
+    reverse engineer any of the software comprising or in any way making up a part of the Site.16.  Attempt to bypass
+    any measures of the Site designed to prevent or restrict access to the Site, or any portion of the Site.17.  Harass,
+    annoy, intimidate, or threaten any of our employees or agents engaged in providing any portion of the Site to
+    you.18.  Delete the copyright or other proprietary rights notice from any Content.19.  Copy or adapt the Site’s
+    software, including but not limited to Flash, PHP, HTML, JavaScript, or other code.20.  Upload or transmit (or
+    attempt to upload or to transmit) viruses, Trojan horses, or other material, including excessive use of capital
+    letters and spamming (continuous posting of repetitive text), that interferes with any party’s uninterrupted use and
+    enjoyment of the Site or modifies, impairs, disrupts, alters, or interferes with the use, features, functions,
+    operation, or maintenance of the Site.21.  Upload or transmit (or attempt to upload or to transmit) any material
+    that acts as a passive or active information collection or transmission mechanism, including without limitation,
+    clear graphics interchange formats (“gifs”), 1×1 pixels, web bugs, cookies, or other similar devices (sometimes
+    referred to as “spyware” or “passive collection mechanisms” or “pcms”).22.  Disparage, tarnish, or otherwise harm,
+    in our opinion, us and/or the Site.23.  Except as may be the result of standard search engine or Internet browser
+    usage, use, launch, develop, or distribute any automated system, including without limitation, any spider, robot,
+    cheat utility, scraper, or offline reader that accesses the Site, or using or launching any unauthorized script or
+    other software.24.  Use the Site in a manner inconsistent with any applicable laws or regulations.
+    <h2>USER GENERATED CONTRIBUTIONS</h2>
+    <p>The Site may invite you to chat, contribute to, or participate in blogs, message boards, online forums, and other
+        functionality, and may provide you with the opportunity to create, submit, post, display, transmit, perform,
+        publish, distribute, or broadcast content and materials to us or on the Site, including but not limited to text,
+        writings, video, audio, photographs, graphics, comments, suggestions, or personal information or other material
+        (collectively, “Contributions”). Contributions may be viewable by other users of the Site and the Marketplace
+        Offerings and through third-party websites. As such, any Contributions you transmit may be treated as
+        non-confidential and non-proprietary. When you create or make available any Contributions, you thereby represent
+        and warrant that:1.  The creation, distribution, transmission, public display, or performance, and the
+        accessing, downloading, or copying of your Contributions do not and will not infringe the proprietary rights,
+        including but not limited to the copyright, patent, trademark, trade secret, or moral rights of any third
+        party.2.  You are the creator and owner of or have the necessary licenses, rights, consents, releases, and
+        permissions to use and to authorize us, the Site, and other users of the Site to use your Contributions in any
+        manner contemplated by the Site and these Terms of Use.3.  You have the written consent, release, and/or
+        permission of each and every identifiable individual person in your Contributions to use the name or likeness of
+        each and every such identifiable individual person to enable inclusion and use of your Contributions in any
+        manner contemplated by the Site and these Terms of Use.4.  Your Contributions are not false, inaccurate, or
+        misleading.5.  Your Contributions are not unsolicited or unauthorized advertising, promotional materials,
+        pyramid schemes, chain letters, spam, mass mailings, or other forms of solicitation.6.  Your Contributions are
+        not obscene, lewd, lascivious, filthy, violent, harassing, libelous, slanderous, or otherwise objectionable (as
+        determined by us).7.  Your Contributions do not ridicule, mock, disparage, intimidate, or abuse anyone.8.  Your
+        Contributions are not used to harass or threaten (in the legal sense of those terms) any other person and to
+        promote violence against a specific person or class of people.9.  Your Contributions do not violate any
+        applicable law, regulation, or rule.10.  Your Contributions do not violate the privacy or publicity rights of
+        any third party.11.  Your Contributions do not violate any applicable law concerning child pornography, or
+        otherwise intended to protect the health or well-being of minors;12.  Your Contributions do not include any
+        offensive comments that are connected to race, national origin, gender, sexual preference, or physical
+        handicap.13.  Your Contributions do not otherwise violate, or link to material that violates, any provision of
+        these Terms of Use, or any applicable law or regulation.Any use of the Site or the Marketplace Offerings in
+        violation of the foregoing violates these Terms of Use and may result in, among other things, termination or
+        suspension of your rights to use the Site and the Marketplace Offerings.
+    </p>
+    <h2>CONTRIBUTION LICENSE</h2>
+    <p>By posting your Contributions to any part of the Site or making Contributions accessible to the Site by linking
+        your account from the Site to any of your social networking accounts, you automatically grant, and you represent
+        and warrant that you have the right to grant, to us an unrestricted, unlimited, irrevocable, perpetual,
+        non-exclusive, transferable, royalty-free, fully-paid, worldwide right, and license to host, use, copy,
+        reproduce, disclose, sell, resell, publish, broadcast, retitle, archive, store, cache, publicly perform,
+        publicly display, reformat, translate, transmit, excerpt (in whole or in part), and distribute such
+        Contributions (including, without limitation, your image and voice) for any purpose, commercial, advertising, or
+        otherwise, and to prepare derivative works of, or incorporate into other works, such Contributions, and grant
+        and authorize sublicenses of the foregoing. The use and distribution may occur in any media formats and through
+        any media channels.This license will apply to any form, media, or technology now known or hereafter developed,
+        and includes our use of your name, company name, and franchise name, as applicable, and any of the trademarks,
+        service marks, trade names, logos, and personal and commercial images you provide. You waive all moral rights in
+        your Contributions, and you warrant that moral rights have not otherwise been asserted in your Contributions.We
+        do not assert any ownership over your Contributions. You retain full ownership of all of your Contributions and
+        any intellectual property rights or other proprietary rights associated with your Contributions. We are not
+        liable for any statements or representations in your Contributions provided by you in any area on the Site. You
+        are solely responsible for your Contributions to the Site and you expressly agree to exonerate us from any and
+        all responsibility and to refrain from any legal action against us regarding your Contributions.We have the
+        right, in our sole and absolute discretion, (1) to edit, redact, or otherwise change any Contributions; (2) to
+        re-categorize any Contributions to place them in more appropriate locations on the Site; and (3) to pre-screen
+        or delete any Contributions at any time and for any reason, without notice. We have no obligation to monitor
+        your Contributions.
+    </p>
+    <h2>GUIDELINES FOR REVIEWS</h2>
+    <p>We may provide you areas on the Site to leave reviews or ratings. When posting a review, you must comply with the
+        following criteria: (1) you should have firsthand experience with the person/entity being reviewed; (2) your
+        reviews should not contain offensive profanity, or abusive, racist, offensive, or hate language; (3) your
+        reviews should not contain discriminatory references based on religion, race, gender, national origin, age,
+        marital status, sexual orientation, or disability; (4) your reviews should not contain references to illegal
+        activity; (5) you should not be affiliated with competitors if posting negative reviews; (6) you should not make
+        any conclusions as to the legality of conduct; (7) you may not post any false or misleading statements; and (8)
+        you may not organize a campaign encouraging others to post reviews, whether positive or negative.We may accept,
+        reject, or remove reviews in our sole discretion. We have absolutely no obligation to screen reviews or to
+        delete reviews, even if anyone considers reviews objectionable or inaccurate. Reviews are not endorsed by us,
+        and do not necessarily represent our opinions or the views of any of our affiliates or partners. We do not
+        assume liability for any review or for any claims, liabilities, or losses resulting from any review. By posting
+        a review, you hereby grant to us a perpetual, non-exclusive, worldwide, royalty-free, fully-paid, assignable,
+        and sublicensable right and license to reproduce, modify, translate, transmit by any means, display, perform,
+        and/or distribute all content relating to reviews.
+    </p>
+    <h2>SOCIAL MEDIA</h2>
+    <p>As part of the functionality of the Site, you may link your account with online accounts you have with
+        third-party service providers (each such account, a “Third-Party Account”) by either: (1) providing your
+        Third-Party Account login information through the Site; or (2) allowing us to access your Third-Party Account,
+        as is permitted under the applicable terms and conditions that govern your use of each Third-Party Account. You
+        represent and warrant that you are entitled to disclose your Third-Party Account login information to us and/or
+        grant us access to your Third-Party Account, without breach by you of any of the terms and conditions that
+        govern your use of the applicable Third-Party Account, and without obligating us to pay any fees or making us
+        subject to any usage limitations imposed by the third-party service provider of the Third-Party Account. By
+        granting us access to any Third-Party Accounts, you understand that (1) we may access, make available, and store
+        (if applicable) any content that you have provided to and stored in your Third-Party Account (the “Social
+        Network Content”) so that it is available on and through the Site via your account, including without limitation
+        any friend lists and (2) we may submit to and receive from your Third-Party Account additional information to
+        the extent you are notified when you link your account with the Third-Party Account. Depending on the
+        Third-Party Accounts you choose and subject to the privacy settings that you have set in such Third-Party
+        Accounts, personally identifiable information that you post to your Third-Party Accounts may be available on and
+        through your account on the Site. Please note that if a Third-Party Account or associated service becomes
+        unavailable or our access to such Third-Party Account is terminated by the third-party service provider, then
+        Social Network Content may no longer be available on and through the Site. You will have the ability to disable
+        the connection between your account on the Site and your Third-Party Accounts at any time. PLEASE NOTE THAT YOUR
+        RELATIONSHIP WITH THE THIRD-PARTY SERVICE PROVIDERS ASSOCIATED WITH YOUR THIRD-PARTY ACCOUNTS IS GOVERNED SOLELY
+        BY YOUR AGREEMENT(S) WITH SUCH THIRD-PARTY SERVICE PROVIDERS. We make no effort to review any Social Network
+        Content for any purpose, including but not limited to, for accuracy, legality, or non-infringement, and we are
+        not responsible for any Social Network Content. You acknowledge and agree that we may access your email address
+        book associated with a Third-Party Account and your contacts list stored on your mobile device or tablet
+        computer solely for purposes of identifying and informing you of those contacts who have also registered to use
+        the Site. You can deactivate the connection between the Site and your Third-Party Account by contacting us using
+        the contact information below or through your account settings (if applicable). We will attempt to delete any
+        information stored on our servers that was obtained through such Third-Party Account, except the username and
+        profile picture that become associated with your account.
+    </p>
+    <h2>SUBMISSIONS</h2>
+    <p>You acknowledge and agree that any questions, comments, suggestions, ideas, feedback, or other information
+        regarding the Site or the Marketplace Offerings (“Submissions”) provided by you to us are non-confidential and
+        shall become our sole property. We shall own exclusive rights, including all intellectual property rights, and
+        shall be entitled to the unrestricted use and dissemination of these Submissions for any lawful purpose,
+        commercial or otherwise, without acknowledgment or compensation to you. You hereby waive all moral rights to any
+        such Submissions, and you hereby warrant that any such Submissions are original with you or that you have the
+        right to submit such Submissions. You agree there shall be no recourse against us for any alleged or actual
+        infringement or misappropriation of any proprietary right in your Submissions.
+    </p>
+    <h2>SITE MANAGEMENT</h2>
+    <p>We reserve the right, but not the obligation, to: (1) monitor the Site for violations of these Terms of Use; (2)
+        take appropriate legal action against anyone who, in our sole discretion, violates the law or these Terms of
+        Use, including without limitation, reporting such user to law enforcement authorities; (3) in our sole
+        discretion and without limitation, refuse, restrict access to, limit the availability of, or disable (to the
+        extent technologically feasible) any of your Contributions or any portion thereof; (4) in our sole discretion
+        and without limitation, notice, or liability, to remove from the Site or otherwise disable all files and content
+        that are excessive in size or are in any way burdensome to our systems; and (5) otherwise manage the Site in a
+        manner designed to protect our rights and property and to facilitate the proper functioning of the Site and the
+        Marketplace Offerings.</p>
+    <h2>COPYRIGHT INFRINGEMENTS</h2>
+    <p>We respect the intellectual property rights of others. If you believe that any material available on or through
+        the Site infringes upon any copyright you own or control, please immediately notify us using the contact
+        information provided below (a “Notification”). A copy of your Notification will be sent to the person who posted
+        or stored the material addressed in the Notification. Please be advised that pursuant to applicable law you may
+        be held liable for damages if you make material misrepresentations in a Notification. Thus, if you are not sure
+        that material located on or linked to by the Site infringes your copyright, you should consider first contacting
+        an attorney.
+    </p>
+    <h2>TERM AND TERMINATION</h2>
+    <p>These Terms of Use shall remain in full force and effect while you use the Site. WITHOUT LIMITING ANY OTHER
+        PROVISION OF THESE TERMS OF USE, WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND WITHOUT NOTICE OR
+        LIABILITY, DENY ACCESS TO AND USE OF THE SITE AND THE MARKETPLACE OFFERINGS (INCLUDING BLOCKING CERTAIN IP
+        ADDRESSES), TO ANY PERSON FOR ANY REASON OR FOR NO REASON, INCLUDING WITHOUT LIMITATION FOR BREACH OF ANY
+        REPRESENTATION, WARRANTY, OR COVENANT CONTAINED IN THESE TERMS OF USE OR OF ANY APPLICABLE LAW OR REGULATION. WE
+        MAY TERMINATE YOUR USE OR PARTICIPATION IN THE SITE AND THE MARKETPLACE OFFERINGS OR DELETE YOUR ACCOUNT AND ANY
+        CONTENT OR INFORMATION THAT YOU POSTED AT ANY TIME, WITHOUT WARNING, IN OUR SOLE DISCRETION.If we terminate or
+        suspend your account for any reason, you are prohibited from registering and creating a new account under your
+        name, a fake or borrowed name, or the name of any third party, even if you may be acting on behalf of the third
+        party. In addition to terminating or suspending your account, we reserve the right to take appropriate legal
+        action, including without limitation pursuing civil, criminal, and injunctive redress.
+    </p>
+    <h2>MODIFICATIONS AND INTERRUPTIONS</h2>
+    <p>We reserve the right to change, modify, or remove the contents of the Site at any time or for any reason at our
+        sole discretion without notice. However, we have no obligation to update any information on our Site. We also
+        reserve the right to modify or discontinue all or part of the Marketplace Offerings without notice at any time.
+        We will not be liable to you or any third party for any modification, price change, suspension, or
+        discontinuance of the Site or the Marketplace Offerings.We cannot guarantee the Site and the Marketplace
+        Offerings will be available at all times. We may experience hardware, software, or other problems or need to
+        perform maintenance related to the Site, resulting in interruptions, delays, or errors. We reserve the right to
+        change, revise, update, suspend, discontinue, or otherwise modify the Site or the Marketplace Offerings at any
+        time or for any reason without notice to you. You agree that we have no liability whatsoever for any loss,
+        damage, or inconvenience caused by your inability to access or use the Site or the Marketplace Offerings during
+        any downtime or discontinuance of the Site or the Marketplace Offerings. Nothing in these Terms of Use will be
+        construed to obligate us to maintain and support the Site or the Marketplace Offerings or to supply any
+        corrections, updates, or releases in connection therewith.
+    </p>
+    <h2>GOVERNING LAW</h2>
+    <p>These terms shall be governed by and defined following the laws of India. Rama Technical College (RTC Delhi) and
+        yourself irrevocably consent that the courts of India shall have exclusive jurisdiction to resolve any dispute
+        which may arise in connection with these terms.</p>
+    <h2>DISPUTE RESOLUTIONBinding Arbitration</h2>
+    <p>Any dispute arising out of or in connection with this contract, including any question regarding its existence,
+        validity, or termination, shall be referred to and finally resolved by the International Commercial Arbitration
+        Court under the European Arbitration Chamber (Belgium, Brussels, Avenue Louise, 146) according to the Rules of
+        this ICAC, which, as a result of referring to it, is considered as the part of this clause. The number of
+        arbitrators shall be two (2). The seat, or legal place, or arbitration shall be Kanour, India. The language of
+        the proceedings shall be Hindi. The governing law of the contract shall be substantive law of India.</p>
+    <h2>Restrictions</h2>
+    <p>The Parties agree that any arbitration shall be limited to the Dispute between the Parties individually. To the
+        full extent permitted by law, (a) no arbitration shall be joined with any other proceeding; (b) there is no
+        right or authority for any Dispute to be arbitrated on a class-action basis or to utilize class action
+        procedures; and (c) there is no right or authority for any Dispute to be brought in a purported representative
+        capacity on behalf of the general public or any other persons.</p>
+    <h2>DISCLAIMER</h2>
+    <p>THE SITE IS PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. YOU AGREE THAT YOUR USE OF THE SITE SERVICES WILL BE AT
+        YOUR SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN
+        CONNECTION WITH THE SITE AND YOUR USE THEREOF, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
+        MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE MAKE NO WARRANTIES OR
+        REPRESENTATIONS ABOUT THE ACCURACY OR COMPLETENESS OF THE SITE’S CONTENT OR THE CONTENT OF ANY WEBSITES LINKED
+        TO THIS SITE AND WE WILL ASSUME NO LIABILITY OR RESPONSIBILITY FOR ANY (1) ERRORS, MISTAKES, OR INACCURACIES OF
+        CONTENT AND MATERIALS, (2) PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY NATURE WHATSOEVER, RESULTING FROM YOUR
+        ACCESS TO AND USE OF THE SITE, (3) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SECURE SERVERS AND/OR ANY AND ALL
+        PERSONAL INFORMATION AND/OR FINANCIAL INFORMATION STORED THEREIN, (4) ANY INTERRUPTION OR CESSATION OF
+        TRANSMISSION TO OR FROM THE SITE, (5) ANY BUGS, VIRUSES, TROJAN HORSES, OR THE LIKE WHICH MAY BE TRANSMITTED TO
+        OR THROUGH THE SITE BY ANY THIRD PARTY, AND/OR (6) ANY ERRORS OR OMISSIONS IN ANY CONTENT AND MATERIALS OR FOR
+        ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF ANY CONTENT POSTED, TRANSMITTED, OR OTHERWISE
+        MADE AVAILABLE VIA THE SITE. WE DO NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR ANY PRODUCT OR
+        SERVICE ADVERTISED OR OFFERED BY A THIRD PARTY THROUGH THE SITE, ANY HYPERLINKED WEBSITE, OR ANY WEBSITE OR
+        MOBILE APPLICATION FEATURED IN ANY BANNER OR OTHER ADVERTISING, AND WE WILL NOT BE A PARTY TO OR IN ANY WAY BE
+        RESPONSIBLE FOR MONITORING ANY TRANSACTION BETWEEN YOU AND ANY THIRD-PARTY PROVIDERS OF PRODUCTS OR SERVICES. AS
+        WITH THE PURCHASE OF A PRODUCT OR SERVICE THROUGH ANY MEDIUM OR IN ANY ENVIRONMENT, YOU SHOULD USE YOUR BEST
+        JUDGMENT AND EXERCISE CAUTION WHERE APPROPRIATE.
+    </p>
+    <h2>LIMITATIONS OF LIABILITY</h2>
+    <p>IN NO EVENT WILL WE OR OUR DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY DIRECT,
+        INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFIT, LOST
+        REVENUE, LOSS OF DATA, OR OTHER DAMAGES ARISING FROM YOUR USE OF THE SITE, EVEN IF WE HAVE BEEN ADVISED OF THE
+        POSSIBILITY OF SUCH DAMAGES. NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, OUR LIABILITY TO YOU FOR
+        ANY CAUSE WHATSOEVER AND REGARDLESS OF THE FORM OF THE ACTION, WILL AT ALL TIMES BE LIMITED TO THE AMOUNT PAID,
+        IF ANY, BY YOU TO US DURING THE six (6) MONTH PERIOD PRIOR TO ANY CAUSE OF ACTION ARISING. CERTAIN US STATE LAWS
+        AND INTERNATIONAL LAWS DO NOT ALLOW LIMITATIONS ON IMPLIED WARRANTIES OR THE EXCLUSION OR LIMITATION OF CERTAIN
+        DAMAGES. IF THESE LAWS APPLY TO YOU, SOME OR ALL OF THE ABOVE DISCLAIMERS OR LIMITATIONS MAY NOT APPLY TO YOU,
+        AND YOU MAY HAVE ADDITIONAL RIGHTS.</p>
+    <h2>CONTACT US</h2>
+    <p>In order to resolve a complaint regarding the Site or to receive further information regarding use of the Site,
+        please contact us at:Rama Technical College (RTC Delhi) G. No.-64V, Part-2 BLK-E Third Floor, 60 Foota Road,
+        Molarband, Badarpur, South (Delhi) 110044 Phone: privacy policy for Rama Technical College (RTC Delhi) at Rama
+        Technical College (RTC Delhi), accessible from rtcdelhi.com, one of our main priorities is the privacy of our
+        visitors. this privacy policy document contains types of information that is collected and recorded by Rama
+        Technical College (RTC Delhi) and how we use it. if you have additional questions or require more information
+        about our privacy policy, do not hesitate to contact us. this privacy policy applies only to our online
+        activities and is valid for visitors to our website with regards to the information that they shared and/or
+        collect in Rama Technical College (RTC Delhi). this policy is not applicable to any information collected
+        offline or via channels other than this website. our privacy policy was created with the help of the terms feed.
+        consent by using our website, you hereby consent to our privacy policy and agree to its terms. information we
+        collect the personal information that you are asked to provide, and the reasons why you are asked to provide it,
+        will be made clear to you at the point we ask you to provide your personal information. if you contact us
+        directly, we may receive additional information about you such as your name, email address, phone number, the
+        contents of the message and/or attachments you may send us, and any other information you may choose to provide.
+        when you register for an account, we may ask for your contact information, including items such as name, company
+        name, address, email address, and telephone number. how we use your information we use the information we
+        collect in various ways, including to: provide, operate, and maintain our website improve, personalize, and
+        expand our website understand and analyze how you use our website develop new products, services, features, and
+        functionality communicate with you, either directly or through one of our partners, including for customer
+        service, to provide you with updates and other information relating to the website, and for marketing and
+        promotional purposes send you emails find and prevent fraud log files Rama Technical College (RTC Delhi) follows
+        a standard procedure of using log files. these files log visitors when they visit websites. all hosting
+        companies do this and a part of hosting services’ analytics. the information collected by log files include
+        internet protocol (ip) addresses, browser type, internet service provider (isp), date and time stamp,
+        referring/exit pages, and possibly the number of clicks. these are not linked to any personally identifiable
+        information. the purpose of the information is for analyzing trends, administer the site, tracking users’
+        movement on the website, and gathering demographic information. cookies and web beacons like any other website,
+        Rama Technical College (RTC Delhi) uses ‘cookies’. these cookies are used to store information including
+        visitors’ preferences, and the pages on the website that the visitor accessed or visited. the information is
+        used to optimize the users’ experience by customizing our web page content based on visitors’ browser type
+        and/or other information. for more general information on cookies, please read “cookies” article from the
+        privacy policy generator. advertising partners privacy policies you may consult this list to find the privacy
+        policy for each of the advertising partners of Rama Technical College (RTC Delhi). third-party ad servers or ad
+        networks uses technologies like cookies, javascript, or web beacons that are used in their respective
+        advertisements and links that appear on Rama Technical College (RTC Delhi), which are sent directly to users’
+        browser. they automatically receive your ip address when this occurs. these technologies are used to measure the
+        effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on
+        websites that you visit. note that Rama Technical College (RTC Delhi) has no access to or control over these
+        cookies that are used by third-party advertisers. third party privacy policies Rama Technical College (RTC
+        Delhi)’s privacy policy does not apply to other advertisers or websites. thus, we are advising you to consult
+        the respective privacy policies of these third-party ad servers for more detailed information. it may include
+        their practices and instructions about how to opt-out of certain options. you can choose to disable cookies
+        through your individual browser options. to know more detailed information about cookie management with specific
+        web browsers, it can be found at the browsers’ respective websites. ccpa privacy rights (do not sell my personal
+        information) under the ccpa, among other rights, california consumers have the right to: request that a business
+        that collects a consumer’s personal data disclose the categories and specific pieces of personal data that a
+        business has collected about consumers. request that a business delete any personal data about the consumer that
+        a business has collected. request that a business that sells a consumer’s personal data, not sell the consumer’s
+        personal data. if you make a request, we have one month to respond to you. if you would like to exercise any of
+        these rights, please contact us. gdpr data protection rights we would like to make sure you are fully aware of
+        all of your data protection rights. every user is entitled to the following: the right to access – you have the
+        right to request copies of your personal data. we may charge you a small fee for this service. the right to
+        rectification – you have the right to request that we correct any information you believe is inaccurate. you
+        also have the right to request that we complete the information you believe is incomplete. the right to erasure
+        – you have the right to request that we erase your personal data, under certain conditions. the right to
+        restrict processing – you have the right to request that we restrict the processing of your personal data, under
+        certain conditions. the right to object to processing – you have the right to object to our processing of your
+        personal data, under certain conditions. the right to data portability – you have the right to request that we
+        transfer the data that we have collected to another organization, or directly to you, under certain conditions.
+        if you make a request, we have one month to respond to you. if you would like to exercise any of these rights,
+        please contact us. children’s information another part of our priority is adding protection for children while
+        using the internet. we encourage parents and guardians to observe, participate in, and/or monitor and guide
+        their online activity. Rama Technical College (RTC Delhi) does not knowingly collect any personal identifiable
+        information from children under the age of 13. if you think that your child provided this kind of information on
+        our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly
+        remove such information from our records.These terms of use were created using Termly’s Terms and Conditions
+        Generator</p>
+    <div class="container-fluid bg-dark text-light footer my-6 mb-0 py-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-2">Get In Touch</h4>
+                    <h5 class="text-white mb-2">Corporate Address</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Behind Allahabad Bank ,
+                        Maharajganj Road
+                        Anandnagar,Distt.-Maharajganj U.P 273155</p>
+                    <h5 class="text-white mb-2">Head Address</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>G.No.-64V, Part-2 BLK-E
+                        Third Floor, 60
+                        Foota Road, Molarband, Badarpur, South (Delhi) 110044</p>
+                    <p class="mb-4"><i class="fa fa-phone-alt me-3"></i>+919452313195</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@rtcdelhi.com</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="{% url 'about' %}">About Us</a>
+                    <a class="btn btn-link" href="{% url 'contact' %}">Contact Us</a>
+                    <a class="btn btn-link" href="{% url 'facilities' %}">Our Services</a>
+                    <a class="btn btn-link" href="">Credentials</a>
+                    <!-- <a class="btn btn-link" href="">Terms & Condition</a> -->
+                    <a class="btn btn-link" href="">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Popular Links</h4>
+                    <a class="btn btn-link" href="{% url 'about' %}">About Us</a>
+                    <a class="btn btn-link" href="{% url 'contact' %}">Contact Us</a>
+                    <a class="btn btn-link" href="">Placements</a>
+                    <a class="btn btn-link" href="{% url 'pdfmaterial' %}">Downloads</a>
+                    <a class="btn btn-link" href="{% url 'gallery' %}">Gallery</a>
+                    <a class="btn btn-link" href="{% url 'termsandconditions' %}">Terms & Condition</a>
+                    <a class="btn btn-link" href="{% url 'Home' %}">Refund Policy</a>
+                    <a class="btn btn-link" href="{% url 'Home' %}">Privacy Policy</a>
+
+
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Enquiry</h4>
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control p-3 border-0" placeholder="Your Email Address">
+                            <button class="btn btn-primary">Sign Up</button>
+                        </div>
+                    </form>
+                    <br>
+                    <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=27.103984276686575,%2083.27984090651937+(RAMA%20TECHNICAL%20COLLEGE%20-%20ANANDNAGAR)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a href="/" style="color: #dad602;">RAMA TECHNICAL COLLEGE</a>, All Right
+                    Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'assets/lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'assets/lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'assets/lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'assets/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+<!-- Template Javascript -->
+<script src="{% static 'assets/js/main1.js' %}"></script>
+<script src="https://kit.fontawesome.com/d753e98eb0.js" crossorigin="anonymous"></script>
+
+</html>

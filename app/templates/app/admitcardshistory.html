@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admit Cards</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .table-wrapper {
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+
+        .table-title {
+            padding: 15px;
+            background: #343a40;
+            color: #fff;
+            margin: -20px -20px 10px;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .table-title h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .table-responsive {
+            margin: 20px 0;
+        }
+
+        .table thead th {
+            background: #343a40;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container table-wrapper">
+        <div class="table-title">
+            <h2>Student <b>Admit Cards</b></h2>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Student Name</th>
+                        <th>Admit Card Type</th>
+                        <th>Session</th>
+                        <th>Course</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in Students %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ student.name }}</td>
+                        <td>
+                            {% if student.monthlyAdmitCard and student.YearlyAdmitCard %}
+                            Both
+                            {% elif student.monthlyAdmitCard %}
+                            Monthly
+                            {% elif student.YearlyAdmitCard %}
+                            Yearly
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if student.monthlyAdmitCard %}
+                            {{ student.studentsession }}
+                            {% elif student.YearlyAdmitCard %}
+                            {{ student.studentsession }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if student.monthlyAdmitCard %}
+                            {{ student.course.name }}
+                            {% elif student.YearlyAdmitCard %}
+                            {{ student.course.name }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if student.monthlyAdmitCard and student.YearlyAdmitCard %}
+                            <button class="btn btn-primary" onclick="openReceipt('{{ student.monthlyAdmitCard }}', 'monthly')">Monthly Admit Card</button>
+                            <button class="btn btn-primary" onclick="openReceipt('{{ student.YearlyAdmitCard }}', 'yearly')">Yearly Admit Card</button>
+                            {% elif student.monthlyAdmitCard %}
+                            <button class="btn btn-primary" onclick="openReceipt('{{ student.monthlyAdmitCard }}', 'monthly')">Monthly Admit Card</button>
+                            {% elif student.YearlyAdmitCard %}
+                            <button class="btn btn-primary" onclick="openReceipt('{{ student.YearlyAdmitCard }}', 'yearly')">Yearly Admit Card</button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    function openReceipt(receiptPath) {
+        window.open('/Ramatechnicalcollege/media/' + receiptPath, '_blank');
+    }
+    </script>
+</body>
+
+</html>

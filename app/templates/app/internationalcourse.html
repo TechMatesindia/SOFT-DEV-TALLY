@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>RTC-RAMA TECHNICAL COLLEGE</title>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'assets/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-n3D4NvOgeDZ6fuZlFgGUoZVoK3fcr2Q4jc4Fko3pJ21+4r1XGcJJJ6m5IAGfFkC1xMfMnjVvuV6oE5eZr6dU9Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+
+
+
+
+
+    <div class="ferry-head-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-6"
+                    style="display: flex;align-items: center;flex-direction: row;min-inline-size: max-content;align-content: center;">
+                    <ul class="info-left" style="list-style-type: none; margin: 0; padding: 0;">
+                        <li style="color: #dad602; margin-right: 10px;"><a href="tel:+916390424209"><i
+                                    class="fa fa-phone"></i>+91 6390-424-209</a></li>
+                        <li style="margin-right: 30px;"><a href="mailto:info@rtcdelhi.com" title="Mail Me"><i
+                                    class="fa fa-envelope"></i> info@rtcdelhi.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-xs-12 icons" style="display: flex; align-items: center;">
+                    <ul class="info-right"
+                        style="list-style-type: none; margin-top: 10px;margin-bottom: 10px;padding: 0;">
+                        <li style="margin-right: 10px;"><a href="#">Admission</a></li>
+                        <li style="margin-right: 10px;"><a href="#">Branch Login</a></li>
+                        <li style="margin-right: 10px;"><a href="#">Branch Enquiry</a></li>
+                        <li style="margin-right: 10px;"><a href="#">Student Enquiry</a></li>
+                    </ul>
+                    <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-square btn-outline-light me-0" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <!-- <button class="navbar-toggler dropbutton navbar-toggler-icon" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#ftco-navbar" aria-controls="ftco-navbar"
+                        aria-expanded="false" aria-label="Toggle navigation" style="background-color: #dad602;">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Navbar Start -->
+    <!-- <nav class="navbar  navbar-expand-lg bg-white navbar-light p-0">
+        <div class="container-fluid text-light p-0">
+
+            <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5" style="
+                justify-content: center">
+                <img src="img/logo.png" width="200" height="200" class="custom-logo" alt="RAMA TECHNICAL COLLEGE"
+                    decoding="async">
+            </a>
+
+            <ul class="logo-detail col-md-7 mb-0">
+                <li>रमा टेक्निकल कालेज, नई दिल्ली</li>
+                <li>RAMA TECHNICAL COLLEGE (RTC), NEW DELHI</li>
+                <li>AN AUTONOMOUS ORGANIZATION REDG. BY GOVT. OF NCT-DELHI UNDER ITA 2083 GOVT. OF INDIA</li>
+                <li>REGD. UNDER CR-ACT1957, MINISTRY OF HRD GOVT. OF INDIA</li>
+                <li>Niti Aayog, Government of india. regd.DL/2019/0248331</li>
+                <li>(AN ISO 9001:2015 CERTIFIED ORGANIZATION)</li>
+            </ul>
+
+            <div class="ms-auto d-flex extra-detail">
+                <div class="col-md-10" style="margin-left: 50px;">
+                    Helpline No:<br>
+                    <span>+91 6390-424-209</span><br>
+                    <img src="img/india.png" width="200" height="150">
+
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ftco-navbar"
+                    aria-controls="ftco-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+    </nav> -->
+    <div class="container-fluid" style="position: relative;background: #fff; display: inline-block;">
+        <div class="container mob">
+            <div class="row">
+                <div class="col-md-10 col-9 d-flex justify-content-end"><a href=""><img src="{%static 'assets/img/logo1.jpg'%}"
+                            class="img-fluid  "></a></div>
+                <div class="col-md-2 col-3 d-flex align-items-center"><img src="{%static 'assets/img/india.jpeg'%}" class="img-fluid  ">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <nav class="navbar1 navbar-expand-lg ftco_navbar ftco-navbar-light">
+        <div class="container navcontainer">
+            <div class="collapse navbar-collapse" id="ftco-navbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            About
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="about.html" class="dropdown-item">Our Profile</a></li>
+                            <li><a href="director.html" class="dropdown-item">Chairman's Message</a></li>
+                            <li><a href="team.html" class="dropdown-item">Board of Directors</a></li>
+                            <li><a href="mission.html" class="dropdown-item">Mission and Vision</a></li>                         
+                               <!-- <li><a href="Vision.html" class="dropdown-item">Vision</a></li> -->
+                            <li><a href="Vision.html" class="dropdown-item">Facilities</a></li>
+                            <li><a href="team.html" class="dropdown-item">Our Team</a></li>
+                            <!-- <li><a href="certificate.html" class="dropdown-item">Accreditation & recognition</a></li>
+                            <li><a href="Excellence.html" class="dropdown-item">The Mark of Excellence</a></li> -->
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Courses
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="course.html" class="dropdown-item"> COURSES</a></li>
+                            <li><a href="internationalcourse.html" class="dropdown-item"> INTERNATIONAL COURSES</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Student Zone
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="" class="dropdown-item">Online Registration</a></li>
+                            <li><a href="" class="dropdown-item">Verify Student</a></li>
+                            <li><a href="" class="dropdown-item">Student Login</a></li>
+                            <li><a href="" class="dropdown-item">Download ID Card</a></li>
+                            <li><a href="" class="dropdown-item">Download Admit Card</a></li>
+                            <li><a href="" class="dropdown-item">Download certificate</a></li>
+                            <li><a href="" class="dropdown-item">View Result</a></li>
+                            <li><a href="" class="dropdown-item">fee payement</a></li>
+                            <li><a href="" class="dropdown-item">Apply final exam</a></li>
+                            <!-- <li><a href="certificate.html" class="dropdown-item">Accreditation & recognition</a></li>
+                            <li><a href="Excellence.html" class="dropdown-item">The Mark of Excellence</a></li> -->
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Download
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="" class="dropdown-item">Brochure</a></li>
+                            <li><a href="" class="dropdown-item">Pdf Material</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Branch
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="" class="dropdown-item">Enquiry Form</a></li>
+                            <li><a href="" class="dropdown-item">Branch List</a></li>
+                        </ul>
+                    </li> <!-- <li class="nav-item"><a href="#" class="nav-link">Results</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Career</a></li> -->
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Login
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a href="" class="dropdown-item"> Admin Login</a></li>
+                            <li><a href="" class="dropdown-item"> Student Login</a></li>
+                            <li><a href="" class="dropdown-item"> Branch Login</a></li>
+                            <li><a href="" class="dropdown-item"> Faculty Login</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid page-header2 py-6 my-6 mt-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center">
+            <h1 class="display-4 text-white animated slideInDown mb-4">RTC International Course</h1>
+        </div>
+    </div>
+    <section class="about-section">
+
+        <div class="auto-container">
+
+            <div class="row">
+
+                <!-- Image Column -->
+
+                <div class="image-column col-lg-12 col-md-12 col-sm-12 m-0">
+                    <div class="table-responsive">
+
+                        <table class="table table-border">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>S.N.</th>
+                                    <th>COURSE NAME</th>
+                                    <!-- <th>COURSE CODE</th>
+                                    <th>MIN. QUALIFICATION</th> -->
+                                    <th>DURATION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <h3>IOSH- ( INSTITUTION OF OCCUPATIONAL SAFETY AND HEALTH)
+                                            DURATION-</h3>
+                                    </td>
+
+                                    <!-- <td>PGDSOM</td>
+                                    <td>GRADUATION</td> -->
+                                    <td>1 Year</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <h3>NEBOSH IGC and HSW (NATIONAL EXAMINATION BOARD OF SAFETY AND HEALTH)
+                                            DURATION-</h3>
+                                    </td>
+
+                                    <!-- <td>PGDSOM</td>
+                                    <td>GRADUATION</td> -->
+                                    <td>1 Year</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>
+                                        <h3>OSHA (OCCUPATIONAL SAFETY &amp; HEALTH ADMINISTRATION)
+                                            DURATION</h3>
+                                    </td>
+
+                                    <!-- <td>PGDSOM</td>
+                                    <td>GRADUATION</td> -->
+                                    <td>1 Year</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- Content Column -->
+
+
+
+            </div>
+
+        </div>
+
+    </section>
+    <div class="container-fluid bg-dark text-light footer my-6 mb-0 py-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-2">Get In Touch</h4>
+                    <h5 class="text-white mb-2">Corporate Address</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Behind Allahabad Bank , Maharajganj Road
+                        Anandnagar,Distt.-Maharajganj U.P 273155</p>
+                    <h5 class="text-white mb-2">Head Address</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>G.No.-64V, Part-2 BLK-E Third Floor, 60
+                        Foota Road, Molarband, Badarpur, South (Delhi) 110044</p>
+                    <p class="mb-4"><i class="fa fa-phone-alt me-3"></i>+91 6390424209</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@rtcdelhi.com</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="">About Us</a>
+                    <a class="btn btn-link" href="">Contact Us</a>
+                    <a class="btn btn-link" href="">Our Services</a>
+                    <a class="btn btn-link" href="">Terms & Condition</a>
+                    <a class="btn btn-link" href="">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Popular Links</h4>
+                    <a class="btn btn-link" href="">About Us</a>
+                    <a class="btn btn-link" href="">Contact Us</a>
+                    <a class="btn btn-link" href="">Placements</a>
+                    <a class="btn btn-link" href="">Downloads</a>
+                    <a class="btn btn-link" href="">Gallery</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Enquiry</h4>
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control p-3 border-0" placeholder="Your Email Address">
+                            <button class="btn btn-primary">Sign Up</button>
+                        </div>
+                    </form>
+                    <h6 class="text-white mt-4 mb-3">Follow Us</h6>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-light me-1" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-outline-light me-0" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a href="/" style="color: #dad602;">RAMA TECHNICAL COLLEGE</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Designed By <a href="https://techmatesindia.in" style="color: #dad602">TECHMATES INDIA</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'assets/lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'assets/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'assets/lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'assets/js/main1.js' %}"></script>
+    <script src="https://kit.fontawesome.com/d753e98eb0.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

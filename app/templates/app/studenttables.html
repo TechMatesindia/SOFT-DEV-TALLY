@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Soft Dev Tally LMS</title>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'assets/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include your custom JavaScript files -->
+    <script src="{% static 'assets/js/main1.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Add this before your script -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/style1.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-n3D4NvOgeDZ6fuZlFgGUoZVoK3fcr2Q4jc4Fko3pJ21+4r1XGcJJJ6m5IAGfFkC1xMfMnjVvuV6oE5eZr6dU9Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <nav class="pcoded-navbar">
+        <div class="navbar-wrapper">
+            <div class="navbar-brand header-logo">
+                <a href="/" class="b-brand">
+                    <div class="">
+                        <i href=></i>
+                    </div>
+                    <span class="b-title">Soft Dev Tally LMS</span>
+                </a>
+                <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+            </div>
+            <div class="navbar-content scroll-div">
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Navigation</label>
+                    </li>
+                    <li data-username="" class="nav-item ">
+
+                        <a href="" class="nav-link ">
+
+                            <span class="pcoded-micon"><i class="feather icon-home"></i></span><span
+                                class="pcoded-mtext">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active ">
+                        <a href="" class="nav-link "><span class="pcoded-micon"><i
+                                    class="feather icon-server text-c"></i></span><span
+                                class="pcoded-mtext">Students</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="" class="nav-link "><span class="pcoded-micon"><i
+                                    class="feather icon-book  text-c"></i></span><span
+                                class="pcoded-mtext">Teachers</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="" class="nav-link "><span class="pcoded-micon"><i
+                                    class="feather icon-book  text-c"></i></span><span
+                                class="pcoded-mtext">BRANCH</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header" style="margin-left: 270px;">
+                <h5>Student Table</h5>
+            </div>
+            <div class="card-block table-border-style">
+                <div class="table-responsive">
+                    <table class="table table-striped" style="margin-left:270px ;">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>Enrollment No</th>
+                                <th>Roll Number</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th>Date of Birth</th>
+                                <th>Phone Number</th>
+                                <th>Father Name</th>
+                                <th>Mother Name</th>
+                                <th>Address</th>
+                                <th>Course</th>
+                                <th>Receipt</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for student in students %}
+                            <tr>
+                                <th scope="row">{{ student.Studentid }}</th>
+                                <td>{{ student.name }}</td>
+                                <td>{{ student.enrollment_number }}</td>
+                                <td>{{ student.roll_number }}</td>
+                                <td>{{ student.email }}</td>
+                                <td>{{ student.user.password }}</td>
+                                <td>{{ student.dob }}</td>
+                                <td>{{ student.phone_number }}</td>
+                                <td>{{ student.father_name }}</td>
+                                <td>{{ student.mother_name }}</td>
+                                <td>{{ student.permanent_address }}</td>
+                                <td>{{ student.course.name }}</td>
+                                <td>
+                                    <button onclick="openReceipt('{{ student.receipt_path }}')">Open Receipt</button>
+                                </td>
+                                <td>
+                                    <button onclick="editStudent('{{ student.Studentid }}')"
+                                        class="btn btn-warning btn-sm">Edit</button>
+                                    <button onclick="deleteStudent('{{ student.Studentid }}')"
+                                        class="btn btn-danger btn-sm">Delete</button>
+                                </td>
+                                <td> <a href="{% url 'studentdashboard' student.id %}"
+                                    class="btn btn-primary btn-sm">Student Panel</a>
+                            </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for editing student -->
+    <div class="modal fade" id="editStudentModal" tabindex="-1" aria-labelledby="editStudentModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editStudentModalLabel">Edit Student</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editStudentForm">
+                        {% csrf_token %}
+                        <input type="hidden" id="editStudentId" name="Studentid">
+                        <div class="mb-3">
+                            <label for="editName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="editName" name="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEnrollmentNumber" class="form-label">Enrollment Number</label>
+                            <input type="text" class="form-control" id="editEnrollmentNumber" name="enrollment_number">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editRollNumber" class="form-label">Roll Number</label>
+                            <input type="text" class="form-control" id="editRollNumber" name="roll_number">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="editEmail" name="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editFatherName" class="form-label">Father Name</label>
+                            <input type="text" class="form-control" id="editFatherName" name="father_name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMotherName" class="form-label">Mother Name</label>
+                            <input type="text" class="form-control" id="editMotherName" name="mother_name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAddress" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="editAddress" name="permanent_address">
+                        </div>
+                        <!-- New fields for Phone Number and DOB -->
+                        <div class="mb-3">
+                            <label for="editPhoneNumber" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="editPhoneNumber" name="phone_number">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editDOB" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" id="editDOB" name="dob">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .modal-dialog {
+            max-width: 600px;
+        }
+
+        .modal-content {
+            border-radius: 10px;
+        }
+        @media (max-width: 768px) {
+            .card-header,
+            .mb-3,
+            .table {
+                margin-left: 0 !important;
+            }
+            .card{
+                padding: 30px 0px !important;
+            }
+        }
+    </style>
+
+    <script>
+        function openReceipt(receiptPath) {
+            window.open('/Ramatechnicalcollege/media/' + receiptPath, '_blank');
+        }
+
+        function editStudent(studentId) {
+            fetch(`/student/${studentId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('editStudentId').value = data.Studentid;
+                    document.getElementById('editName').value = data.name;
+                    document.getElementById('editEnrollmentNumber').value = data.enrollment_number;
+                    document.getElementById('editRollNumber').value = data.roll_number;
+                    document.getElementById('editEmail').value = data.email;
+                    document.getElementById('editFatherName').value = data.father_name;
+                    document.getElementById('editMotherName').value = data.mother_name;
+                    document.getElementById('editAddress').value = data.permanent_address;
+                    document.getElementById('editPhoneNumber').value = data.phone_number;
+                    document.getElementById('editDOB').value = data.dob;
+
+                    var editStudentModal = new bootstrap.Modal(document.getElementById('editStudentModal'));
+                    editStudentModal.show();
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function deleteStudent(studentId) {
+            if (confirm('Are you sure you want to delete this student?')) {
+                fetch('/delete_student/' + studentId + '/', {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Student deleted successfully');
+                            location.reload();
+                        } else {
+                            alert('Failed to delete student');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+        }
+
+        document.getElementById('editStudentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var studentId = document.getElementById('editStudentId').value;
+
+            fetch('/edit_student/' + studentId + '/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({
+                    Studentid: studentId,
+                    name: document.getElementById('editName').value,
+                    enrollment_number: document.getElementById('editEnrollmentNumber').value,
+                    roll_number: document.getElementById('editRollNumber').value,
+                    email: document.getElementById('editEmail').value,
+                    father_name: document.getElementById('editFatherName').value,
+                    mother_name: document.getElementById('editMotherName').value,
+                    permanent_address: document.getElementById('editAddress').value,
+                    phone_number: document.getElementById('editPhoneNumber').value,
+                    dob: document.getElementById('editDOB').value
+                })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Student updated successfully');
+                        location.reload();
+                    } else {
+                        alert('Failed to update student');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>

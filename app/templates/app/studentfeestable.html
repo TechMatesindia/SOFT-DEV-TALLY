@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Fees Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="mt-5">Student Fees Table</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Course</th>
+                    <th>Course Fees</th>
+                    <th>Fees Pending</th>
+                    <th>Status</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for studentdata in student_fee_data %}
+                <tr>
+                    <td>{{ studentdata.name }}</td>
+                    <td>{{ studentdata.course_name }}</td>
+                    <td>{{ studentdata.course_fees }}</td>
+                    <td>{{ studentdata.fee_amount }}</td>
+                    <td>{{ studentdata.fee_status }}</td>
+                </tr>
+                {% endfor %}
+                <!-- Add more rows for each fee entry -->
+            </tbody>
+        </table>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>RTC-RAMA TECHNICAL COLLEGE LMS</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/data-icon.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <style>
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Student Profile</h1>
+    <form id="teacherProfileForm">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ student.name }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ student.email }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="permanent_address">Permanent Address:</label>
+            <textarea id="permanent_address" name="permanent_address" readonly>{{ student.permanent_address }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="course_name">Course Name:</label>
+            <input type="text" id="course_name" name="course_name" value="{{ student.course.name }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="branch">Branch:</label>
+            <input type="text" id="branch" name="branch" value="{{ student.branch.name }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="enrollment_number">Enrollment Number:</label>
+            <input type="text" id="enrollment_number" name="enrollment_number" value="{{ student.enrollment_number }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="roll_number">Roll Number:</label>
+            <input type="text" id="roll_number" name="roll_number" value="{{ student.roll_number }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="father_name">Father's Name:</label>
+            <input type="text" id="father_name" name="father_name" value="{{ student.father_name }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="mother_name">Mother's Name:</label>
+            <input type="text" id="mother_name" name="mother_name" value="{{ student.mother_name }}" readonly>
+        </div>
+        <!-- <div class="form-group">
+            <label for="receipt_path">Receipt Path:</label>
+            <input type="text" id="receipt_path" name="receipt_path" value="{{ student.receipt_path }}" readonly>
+        </div> -->
+    </form>
+
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>
